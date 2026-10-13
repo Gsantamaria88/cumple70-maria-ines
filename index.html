@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡70 Años de María Inés Arteaga! | Fiesta Hippie 70s/80s</title>
+  
+  <!-- Favicon Hippie -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☮️</text></svg>">
+  
+  <!-- Google Fonts: Groovy & Retro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Shrikhande&family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            groovy: ['Shrikhande', 'cursive'],
+            retro: ['Righteous', 'sans-serif'],
+            fun: ['Fredoka', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            hippie: {
+              orange: '#FF6B35',
+              yellow: '#FDB813',
+              pink: '#FF1493',
+              magenta: '#E11D48',
+              purple: '#7C3AED',
+              green: '#10B981',
+              teal: '#0D9488',
+              cream: '#FFF9E6',
+              brown: '#4A2810'
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 12s linear infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'bounce-soft': 'bounce 2s infinite',
+            'pulse-glow': 'pulseGlow 2s infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(3deg)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '1', filter: 'drop-shadow(0 0 15px rgba(255, 107, 53, 0.6))' },
+              '50%': { opacity: '0.85', filter: 'drop-shadow(0 0 25px rgba(255, 20, 147, 0.8))' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Psychedelic Retro Background & Groovy Patterns */
+    body {
+      background: linear-gradient(135deg, #FFF9E6 0%, #FFE8CC 50%, #FFD6E8 100%);
+      color: #332211;
+      overflow-x: hidden;
+    }
+
+    .groovy-gradient-text {
+      background: linear-gradient(90deg, #FF1493, #FF6B35, #FDB813, #7C3AED, #10B981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 300% 300%;
+      animation: gradientShift 6s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .retro-box {
+      border: 4px solid #4A2810;
+      box-shadow: 6px 6px 0px #4A2810;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .retro-box:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 10px 10px 0px #4A2810;
+    }
+
+    .retro-btn {
+      border: 3px solid #4A2810;
+      box-shadow: 4px 4px 0px #4A2810;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .retro-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #4A2810;
+    }
+    .retro-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #4A2810;
+    }
+
+    .disco-ball-spin {
+      animation: spin 8s linear infinite;
+    }
+
+    /* Floating groovy flowers background */
+    .flower-bg {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.18;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFE8CC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FF6B35;
+      border-radius: 5px;
+      border: 2px solid #4A2810;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen relative selection:bg-pink-300 selection:text-pink-900">
+
+  <!-- FLOATING DECORATIONS -->
+  <div class="flower-bg top-10 left-5 text-7xl animate-float">🌸</div>
+  <div class="flower-bg top-40 right-10 text-8xl animate-float" style="animation-delay: 1.5s;">🌼</div>
+  <div class="flower-bg top-96 left-1/4 text-6xl animate-float" style="animation-delay: 2.5s;">☮️</div>
+  <div class="flower-bg bottom-40 right-1/4 text-7xl animate-float" style="animation-delay: 3s;">🌺</div>
+  <div class="flower-bg bottom-20 left-12 text-8xl animate-float" style="animation-delay: 0.8s;">🪩</div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-50 bg-[#FFF9E6]/95 backdrop-blur-md border-b-4 border-[#4A2810] px-4 py-3 shadow-md">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl animate-bounce-soft">☮️</span>
+        <div>
+          <span class="font-groovy text-xl md:text-3xl tracking-wide text-hippie-orange">MARÍA INÉS</span>
+          <span class="hidden sm:inline-block font-retro text-xs md:text-sm ml-2 px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 border-2 border-[#4A2810]">70 Años de Amor & Sabor</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-4 font-fun font-semibold text-sm">
+        <a href="#countdown" class="hover:text-hippie-orange transition">Cuenta Regresiva</a>
+        <a href="#reproductor" class="hover:text-hippie-orange transition">Tocadiscos</a>
+        <a href="#playlist" class="hover:text-hippie-orange transition">Playlist</a>
+        <a href="#sugerencias" class="hover:text-hippie-orange transition">Pide tu Canción</a>
+        <a href="#cronograma" class="hover:text-hippie-orange transition">Cronograma</a>
+        <a href="#actividades" class="hover:text-hippie-orange transition">Actividades</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <button id="confetti-nav-btn" onclick="lanzarConfetiFiesta()" class="retro-btn bg-hippie-yellow px-3 py-1.5 rounded-xl font-fun font-bold text-xs md:text-sm flex items-center gap-1">
+          <span>🎉</span> <span class="hidden sm:inline">¡Celebrar!</span>
+        </button>
+        <button id="disco-mode-btn" onclick="toggleDiscoMode()" class="retro-btn bg-hippie-pink text-white px-3 py-1.5 rounded-xl font-fun font-bold text-xs md:text-sm flex items-center gap-1">
+          <span>🪩</span> <span class="hidden sm:inline">Modo Disco</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative z-10 pt-8 pb-12 px-4 text-center max-w-5xl mx-auto">
+    <!-- Badges biculturales -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
+      <span class="retro-btn bg-amber-200 text-amber-900 text-xs md:text-sm font-fun font-bold px-3 py-1 rounded-full flex items-center gap-1">
+        <span>🇨🇴</span> De Colombia
+      </span>
+      <span class="retro-btn bg-red-200 text-red-900 text-xs md:text-sm font-fun font-bold px-3 py-1 rounded-full flex items-center gap-1">
+        <span>🇪🇸</span> 25 Años en España
+      </span>
+      <span class="retro-btn bg-sky-200 text-sky-900 text-xs md:text-sm font-fun font-bold px-3 py-1 rounded-full flex items-center gap-1">
+        <span>📍</span> En Logroño
+      </span>
+      <span class="retro-btn bg-rose-200 text-rose-900 text-xs md:text-sm font-fun font-bold px-3 py-1 rounded-full flex items-center gap-1">
+        <span>👑</span> Fan #1 Marco Antonio Solís
+      </span>
+      <span class="retro-btn bg-purple-200 text-purple-900 text-xs md:text-sm font-fun font-bold px-3 py-1 rounded-full flex items-center gap-1">
+        <span>✌️</span> Hippie 70s & 80s
+      </span>
+    </div>
+
+    <!-- Título Principal Groovy Personalizado -->
+    <h1 class="font-groovy text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight mb-2">
+      <span class="text-[#4A2810]">¡LOS 70 AÑOS DE</span><br>
+      <span class="groovy-gradient-text drop-shadow-sm">MARÍA INÉS!</span>
+    </h1>
+
+    <p class="font-fun text-lg md:text-2xl text-stone-700 max-w-3xl mx-auto mb-6">
+      Celebramos las siete décadas de vida, amor y alegría de nuestra querida <strong>María Inés Arteaga</strong>. Una fiesta inolvidable con flores, pantalones de campana, cantando a <em>Marco Antonio Solís</em> y bailando cumbia, salsa, rumba y hora loca.
+    </p>
+
+    <!-- INFO CARDS (Fecha, Horario, Ubicación, Dress Code) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8 text-left">
+      <div class="retro-box bg-white p-4 rounded-2xl">
+        <div class="text-3xl mb-1">📅</div>
+        <div class="font-retro text-xs uppercase tracking-wider text-gray-500">¿Cuándo?</div>
+        <div class="font-fun font-bold text-base text-hippie-orange">Sábado 17 Octubre 2026</div>
+        <div class="text-xs text-stone-500">¡Cuenta atrás activa!</div>
+      </div>
+
+      <div class="retro-box bg-white p-4 rounded-2xl">
+        <div class="text-3xl mb-1">⏰</div>
+        <div class="font-retro text-xs uppercase tracking-wider text-gray-500">Horario de Fiesta</div>
+        <div class="font-fun font-bold text-base text-purple-600">18:00 a 02:00 AM</div>
+        <div class="text-xs text-stone-500">8 horas de pura alegría</div>
+      </div>
+
+      <div class="retro-box bg-white p-4 rounded-2xl">
+        <div class="text-3xl mb-1">📍</div>
+        <div class="font-retro text-xs uppercase tracking-wider text-gray-500">¿Dónde?</div>
+        <div class="font-fun font-bold text-base text-sky-700 leading-snug">Logroño (Puente de Hierro)</div>
+        <a href="https://maps.google.com/?q=Puente+de+Hierro+Logrono" target="_blank" class="inline-block mt-1 text-[11px] font-fun font-bold text-sky-600 hover:underline">
+          🗺️ Abrir en Google Maps →
+        </a>
+      </div>
+
+      <div class="retro-box bg-white p-4 rounded-2xl">
+        <div class="text-3xl mb-1">🕶️</div>
+        <div class="font-retro text-xs uppercase tracking-wider text-gray-500">Dress Code</div>
+        <div class="font-fun font-bold text-base text-pink-600">Hippie Chic 70s/80s</div>
+        <div class="text-xs text-stone-500">Flores, campanas y color</div>
+      </div>
+    </div>
+
+    <!-- BOTONES DE ACCIÓN RÁPIDA -->
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="#sugerencias" class="retro-btn bg-hippie-pink text-white font-fun font-bold text-base md:text-lg px-6 py-3 rounded-2xl flex items-center gap-2">
+        <span>✍️</span> Proponer una Canción para Ella
+      </a>
+      <a href="#reproductor" class="retro-btn bg-hippie-yellow text-stone-900 font-fun font-bold text-base md:text-lg px-6 py-3 rounded-2xl flex items-center gap-2">
+        <span>🎶</span> Escuchar Música de la Fiesta
+      </a>
+      <button onclick="compartirWhatsApp()" class="retro-btn bg-emerald-500 text-white font-fun font-bold text-base md:text-lg px-5 py-3 rounded-2xl flex items-center gap-2">
+        <span>📱</span> Compartir en WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN SECTION -->
+  <section id="countdown" class="max-w-4xl mx-auto px-4 mb-16 relative z-10">
+    <div class="retro-box bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 p-6 md:p-8 rounded-3xl text-white text-center shadow-xl">
+      <div class="font-retro text-xl md:text-2xl uppercase tracking-wider mb-2 flex items-center justify-center gap-2">
+        <span>⏳</span> Cuenta Regresiva para la Gran Fiesta <span>⏳</span>
+      </div>
+      <p class="font-fun text-sm md:text-base opacity-90 mb-6">
+        El gran momento inicia el Sábado 17 de Octubre de 2026 a las 18:00
+      </p>
+
+      <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-xl mx-auto">
+        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-3 border-2 border-white/40">
+          <div id="days" class="font-retro text-3xl sm:text-5xl md:text-6xl font-bold">00</div>
+          <div class="font-fun text-xs sm:text-sm font-semibold uppercase">Días</div>
+        </div>
+        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-3 border-2 border-white/40">
+          <div id="hours" class="font-retro text-3xl sm:text-5xl md:text-6xl font-bold">00</div>
+          <div class="font-fun text-xs sm:text-sm font-semibold uppercase">Horas</div>
+        </div>
+        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-3 border-2 border-white/40">
+          <div id="minutes" class="font-retro text-3xl sm:text-5xl md:text-6xl font-bold">00</div>
+          <div class="font-fun text-xs sm:text-sm font-semibold uppercase">Minutos</div>
+        </div>
+        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-3 border-2 border-white/40">
+          <div id="seconds" class="font-retro text-3xl sm:text-5xl md:text-6xl font-bold text-yellow-300">00</div>
+          <div class="font-fun text-xs sm:text-sm font-semibold uppercase">Segundos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOCADISCOS RETRO / JUKEBOX INTERACTIVO -->
+  <section id="reproductor" class="max-w-5xl mx-auto px-4 mb-16 relative z-10">
+    <div class="retro-box bg-white rounded-3xl p-6 md:p-8">
+      <div class="text-center mb-6">
+        <span class="inline-block px-3 py-1 rounded-full bg-orange-100 text-orange-700 font-retro text-xs border border-orange-300 mb-2">
+          🎙️ JUKEBOX HIPPIE STEREO 1976
+        </span>
+        <h2 class="font-groovy text-3xl sm:text-5xl text-hippie-brown">
+          El Tocadiscos de los 70 Años
+        </h2>
+        <p class="font-fun text-stone-600 max-w-xl mx-auto">
+          Prueba el sintetizador retro de fiesta o abre el tema directamente en Spotify / YouTube para escucharlo en alta fidelidad.
+        </p>
+      </div>
+
+      <!-- TOCADISCOS CONSOLA -->
+      <div class="bg-[#2D1B10] rounded-2xl p-6 border-4 border-[#1A0E07] text-white shadow-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          
+          <!-- VINILO GIRATORIO -->
+          <div class="md:col-span-5 flex justify-center">
+            <div class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-stone-900 border-8 border-stone-800 shadow-inner flex items-center justify-center p-2">
+              <!-- Surcos de vinilo -->
+              <div id="vinyl-disc" class="w-full h-full rounded-full border-4 border-stone-700/60 flex items-center justify-center relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-stone-800 via-stone-950 to-stone-900">
+                <!-- Centro de vinilo -->
+                <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 border-4 border-stone-900 flex flex-col items-center justify-center text-center p-1">
+                  <span class="text-xl">🌸</span>
+                  <span class="font-retro text-[9px] font-bold text-white leading-tight">70 AÑOS</span>
+                  <span class="font-fun text-[7px] text-yellow-200">LP STEREO</span>
+                </div>
+                <!-- Agujero centro -->
+                <div class="absolute w-4 h-4 rounded-full bg-stone-900 border-2 border-stone-600"></div>
+              </div>
+              
+              <!-- Brazo del tocadiscos -->
+              <div id="tonearm" class="absolute top-2 right-2 w-20 h-28 pointer-events-none transition-transform duration-500 origin-top-right transform -rotate-12">
+                <div class="w-1.5 h-24 bg-gray-400 mx-auto rounded-full shadow-lg"></div>
+                <div class="w-4 h-6 bg-red-600 rounded-sm mx-auto shadow-md"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANTALLA & CONTROLES -->
+          <div class="md:col-span-7 flex flex-col justify-between h-full space-y-4">
+            <!-- Pantalla LCD Retro -->
+            <div class="bg-black/80 rounded-xl p-4 border-2 border-green-500/40 text-green-400 font-mono shadow-inner">
+              <div class="flex justify-between items-center text-xs text-green-500/70 border-b border-green-900 pb-1 mb-2">
+                <span id="player-status">ESTADO: LISTO</span>
+                <span id="player-cat-badge">🇨🇴 COLOMBIA VINTAGE</span>
+              </div>
+              <div id="player-title" class="font-retro text-lg sm:text-xl text-yellow-300 truncate">
+                Cariñito
+              </div>
+              <div id="player-artist" class="text-sm text-green-300">
+                Rodolfo Aicardi y Los Hispanos (1979)
+              </div>
+              <div class="flex justify-between items-center text-xs text-stone-400 mt-2">
+                <span id="player-time">00:00</span>
+                <span id="player-vibe">🔥 Ritmo Cumbia Bailable</span>
+                <span>Stereo 33 RPM</span>
+              </div>
+            </div>
+
+            <!-- BOTONES DE REPRODUCCIÓN -->
+            <div class="flex flex-wrap items-center gap-3">
+              <button id="play-pause-btn" onclick="togglePlayTrack()" class="retro-btn bg-hippie-yellow text-stone-950 font-fun font-bold px-6 py-3 rounded-xl flex items-center gap-2 text-base">
+                <span id="play-icon">▶️</span> <span id="play-text">Tocar Ritmo Retro</span>
+              </button>
+              
+              <button onclick="nextTrack()" class="retro-btn bg-stone-700 hover:bg-stone-600 text-white font-fun font-bold px-4 py-3 rounded-xl flex items-center gap-1">
+                <span>⏭️</span> Siguiente
+              </button>
+
+              <a id="spotify-direct-link" href="https://open.spotify.com/search/Rodolfo%20Aicardi%20Carinito" target="_blank" class="retro-btn bg-emerald-600 text-white font-fun font-bold px-4 py-3 rounded-xl flex items-center gap-1.5 text-sm ml-auto">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.494 17.306c-.215.353-.676.467-1.029.252-2.825-1.726-6.381-2.117-10.57-1.16-.401.092-.801-.161-.893-.562-.092-.401.161-.801.562-.893 4.588-1.047 8.528-.598 11.678 1.334.353.215.467.676.252 1.029zm1.464-3.255c-.27.44-.848.58-1.288.31-3.235-1.988-8.167-2.563-11.993-1.401-.497.151-1.028-.135-1.179-.632-.151-.497.135-1.028.632-1.179 4.372-1.328 9.805-.689 13.518 1.594.44.27.58.848.31 1.288zm.126-3.398C15.21 8.358 8.828 8.144 5.14 9.263c-.604.184-1.246-.164-1.43-.768-.184-.604.164-1.246.768-1.43 4.237-1.286 11.288-1.036 15.65 1.554.544.322.723 1.027.401 1.571-.322.544-1.027.723-1.571.401z"/></svg>
+                <span>Spotify</span>
+              </a>
+
+              <a id="youtube-direct-link" href="https://www.youtube.com/results?search_query=Rodolfo+Aicardi+Carinito" target="_blank" class="retro-btn bg-red-600 text-white font-fun font-bold px-4 py-3 rounded-xl flex items-center gap-1.5 text-sm">
+                <span>▶️</span> YouTube
+              </a>
+            </div>
+
+            <!-- Categorías rápidas para el tocadiscos -->
+            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-stone-800">
+              <span class="text-xs text-stone-400 self-center mr-1">Canales:</span>
+              <button onclick="filterPlayer('solis')" class="text-xs px-2.5 py-1 rounded-lg bg-pink-500/30 text-pink-200 hover:bg-pink-500/50 border border-pink-400 transition font-bold">👑 Marco Antonio Solís</button>
+              <button onclick="filterPlayer('colombia')" class="text-xs px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 hover:bg-amber-500/40 border border-amber-500/40 transition">🇨🇴 Colombia</button>
+              <button onclick="filterPlayer('espana')" class="text-xs px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/40 border border-rose-500/40 transition">🇪🇸 España (25 años)</button>
+              <button onclick="filterPlayer('hippie')" class="text-xs px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/40 border border-purple-500/40 transition">✌️ Disco 70/80</button>
+              <button onclick="filterPlayer('horaloca')" class="text-xs px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/40 border border-emerald-500/40 transition">🥳 Hora Loca</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE LA PLAYLIST OFICIAL CON FILTROS Y BUSCADOR -->
+  <section id="playlist" class="max-w-6xl mx-auto px-4 mb-16 relative z-10">
+    <div class="text-center mb-8">
+      <span class="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-700 font-retro text-xs border-2 border-[#4A2810] mb-2">
+        🎶 SELECCIÓN MUSICAL DE LOS 70 AÑOS
+      </span>
+      <h2 class="font-groovy text-3xl sm:text-5xl text-[#4A2810]">
+        La Gran Playlist de María Inés
+      </h2>
+      <p class="font-fun text-stone-600 max-w-2xl mx-auto">
+        45+ himnos cuidadosamente seleccionados: el rincón especial de Marco Antonio Solís, parrandas colombianas, la movida y rumba española, clásicos disco mundiales y la hora loca.
+      </p>
+    </div>
+
+    <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+    <div class="retro-box bg-white p-4 sm:p-6 rounded-3xl mb-8">
+      <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-4">
+        <!-- Campo de búsqueda -->
+        <div class="w-full md:w-64 relative">
+          <input type="text" id="search-input" oninput="filtrarPlaylist()" placeholder="Buscar canción o artista..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border-2 border-stone-300 font-fun text-sm focus:outline-none focus:border-hippie-orange">
+          <span class="absolute left-3 top-2.5 text-stone-400">🔍</span>
+        </div>
+
+        <!-- Botones de Categorías -->
+        <div class="flex flex-wrap gap-2 w-full md:w-auto justify-center md:justify-end">
+          <button onclick="setCategoriaFiltro('todas')" class="cat-pill active-cat retro-btn px-3 py-1.5 rounded-xl font-fun font-bold text-xs" data-cat="todas">
+            Todas (45+)
+          </button>
+          <button onclick="setCategoriaFiltro('solis')" class="cat-pill retro-btn bg-pink-100 text-pink-900 border-pink-400 px-3 py-1.5 rounded-xl font-fun font-bold text-xs" data-cat="solis">
+            👑 Marco Antonio Solís
+          </button>
+          <button onclick="setCategoriaFiltro('colombia')" class="cat-pill retro-btn bg-amber-100 text-amber-900 px-3 py-1.5 rounded-xl font-fun font-bold text-xs" data-cat="colombia">
+            🇨🇴 Colombia Tropical
+          </button>
+          <button onclick="setCategoriaFiltro('espana')" class="cat-pill retro-btn bg-rose-100 text-rose-900 px-3 py-1.5 rounded-xl font-fun font-bold text-xs" data-cat="espana">
+            🇪🇸 Rumba & España
+          </button>
+          <button onclick="setCategoriaFiltro('hippie')" class="cat-pill retro-btn bg-purple-100 text-purple-900 px-3 py-1.5 rounded-xl font-fun font-bold text-xs" data-cat="hippie">
+            ✌️ 70s/80s Disco
+          </button>
+          <button onclick="setCategoriaFiltro('horaloca')" class="cat-pill retro-btn bg-emerald-100 text-emerald-900 px-3 py-1.5 rounded-xl font-fun font-bold text-xs" data-cat="horaloca">
+            🥳 Hora Loca
+          </button>
+        </div>
+      </div>
+
+      <!-- LISTA DE CANCIONES -->
+      <div id="songs-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[550px] overflow-y-auto pr-1">
+        <!-- Generado dinámicamente con JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- BUZÓN INTERACTIVO: PIDE TU CANCIÓN Y DEDICATORIA -->
+  <section id="sugerencias" class="max-w-4xl mx-auto px-4 mb-16 relative z-10">
+    <div class="retro-box bg-gradient-to-br from-amber-50 via-pink-50 to-purple-50 p-6 md:p-10 rounded-3xl border-4 border-[#4A2810]">
+      <div class="text-center mb-6">
+        <span class="text-4xl animate-bounce-soft inline-block mb-1">💌</span>
+        <h2 class="font-groovy text-3xl sm:text-4xl text-hippie-brown">
+          Pide tu Canción & Deja tu Dedicatoria
+        </h2>
+        <p class="font-fun text-stone-600 max-w-xl mx-auto">
+          ¿Tienes una canción especial que te recuerde a ella, a Colombia, a sus 25 años en España o a la época hippie? ¡Añádela a la lista de la fiesta!
+        </p>
+      </div>
+
+      <!-- FORMULARIO DE SUGERENCIA -->
+      <form id="suggestion-form" onsubmit="agregarSugerencia(event)" class="space-y-4 max-w-2xl mx-auto bg-white p-6 rounded-2xl retro-box">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-retro text-xs text-stone-700 uppercase mb-1">Tu Nombre o Familia *</label>
+            <input type="text" id="sug-name" required placeholder="Ej. Familia Gómez / Juan y Caro" class="w-full px-3 py-2 rounded-xl border-2 border-stone-300 font-fun text-sm focus:outline-none focus:border-hippie-pink">
+          </div>
+          <div>
+            <label class="block font-retro text-xs text-stone-700 uppercase mb-1">Categoría de la canción *</label>
+            <select id="sug-cat" required class="w-full px-3 py-2 rounded-xl border-2 border-stone-300 font-fun text-sm focus:outline-none focus:border-hippie-pink">
+              <option value="solis">👑 Marco Antonio Solís (La Debilidad de María Inés)</option>
+              <option value="colombia">🇨🇴 Sabor Colombiano (Salsa/Cumbia/Vallenato)</option>
+              <option value="espana">🇪🇸 Rumba o Pop Español (25 años aquí)</option>
+              <option value="hippie">✌️ 70s/80s Hippie & Disco</option>
+              <option value="horaloca">🥳 Para la Hora Loca</option>
+              <option value="emotiva">💖 Dedicatoria Emotiva / Cumpleaños</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-retro text-xs text-stone-700 uppercase mb-1">Canción y Artista *</label>
+          <input type="text" id="sug-song" required placeholder="Ej. Cali Pachanguero - Grupo Niche / Dancing Queen - ABBA" class="w-full px-3 py-2 rounded-xl border-2 border-stone-300 font-fun text-sm focus:outline-none focus:border-hippie-pink">
+        </div>
+
+        <div>
+          <label class="block font-retro text-xs text-stone-700 uppercase mb-1">Mensaje o Dedicatoria para la Cumpleañera</label>
+          <textarea id="sug-message" rows="2" placeholder="¡Te queremos un montón! Esta canción nos recuerda cuando..." class="w-full px-3 py-2 rounded-xl border-2 border-stone-300 font-fun text-sm focus:outline-none focus:border-hippie-pink"></textarea>
+        </div>
+
+        <button type="submit" class="w-full retro-btn bg-hippie-pink text-white font-fun font-bold text-base py-3 rounded-xl flex items-center justify-center gap-2">
+          <span>🌸</span> Enviar Dedicatoria y Canción
+        </button>
+      </form>
+
+      <!-- MURO EN VIVO DE DEDICATORIAS DE LOS INVITADOS -->
+      <div class="mt-8">
+        <h3 class="font-retro text-lg text-hippie-brown mb-3 flex items-center gap-2">
+          <span>💖</span> Dedicatorias y Canciones de la Familia
+        </h3>
+        <div id="guest-suggestions-wall" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+          <!-- Renderizado dinámico -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRONOGRAMA MINUTO A MINUTO (18:00 - 02:00) -->
+  <section id="cronograma" class="max-w-5xl mx-auto px-4 mb-16 relative z-10">
+    <div class="text-center mb-8">
+      <span class="inline-block px-3 py-1 rounded-full bg-purple-100 text-purple-700 font-retro text-xs border border-purple-300 mb-2">
+        ⏰ PLAN DE FIESTA
+      </span>
+      <h2 class="font-groovy text-3xl sm:text-5xl text-[#4A2810]">
+        El Horario de la Celebración
+      </h2>
+      <p class="font-fun text-stone-600 max-w-xl mx-auto">
+        El local está reservado de 10:00 a 02:00. Organizamos desde las 12:00 y los invitados llegan a partir de las 18:00.
+      </p>
+    </div>
+
+    <div class="space-y-4 max-w-3xl mx-auto">
+      <!-- 12:00 a 17:30 -->
+      <div class="retro-box bg-white/70 p-4 rounded-2xl flex items-start gap-4 opacity-80">
+        <div class="bg-stone-200 text-stone-800 font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-400 mt-1">
+          12:00 - 17:30
+        </div>
+        <div>
+          <h4 class="font-fun font-bold text-stone-800 text-base">🛠️ Montaje de Anfitriones & Soundcheck</h4>
+          <p class="text-xs text-stone-600">Decoración psicodélica hippie, guirnaldas de flores, montaje del photocall con la furgo hippie, prueba de sonido DJ y catering.</p>
+        </div>
+      </div>
+
+      <!-- 18:00 a 19:30 -->
+      <div class="retro-box bg-amber-50 p-4 rounded-2xl flex items-start gap-4">
+        <div class="bg-amber-400 text-stone-950 font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-800 mt-1">
+          18:00 - 19:30
+        </div>
+        <div>
+          <h4 class="font-fun font-bold text-amber-900 text-base">🌸 Bienvenida Hippie & Entrega de Collares</h4>
+          <p class="text-xs text-stone-700">Llegada oficial de los invitados. Recibimiento con coronas de flores, gafas setenteras redondas y cóctel de bienvenida con baladas 70s y boleros suaves.</p>
+        </div>
+      </div>
+
+      <!-- 19:30 a 21:00 -->
+      <div class="retro-box bg-orange-50 p-4 rounded-2xl flex items-start gap-4">
+        <div class="bg-orange-400 text-stone-950 font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-800 mt-1">
+          19:30 - 21:00
+        </div>
+        <div>
+          <h4 class="font-fun font-bold text-orange-900 text-base">🥟 Tapeo y Cena Bicultural (Colombia & España)</h4>
+          <p class="text-xs text-stone-700">Empanaditas colombianas, arepitas, jamón ibérico, tortilla de patatas y rumba catalana animada de fondo (Peret, Los Chunguitos, Los Manolos).</p>
+        </div>
+      </div>
+
+      <!-- 21:00 a 21:45 -->
+      <div class="retro-box bg-pink-100 p-4 rounded-2xl flex items-start gap-4 border-l-8 border-l-pink-600">
+        <div class="bg-pink-500 text-white font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-800 mt-1">
+          21:00 - 21:45
+        </div>
+        <div>
+          <h4 class="font-fun font-bold text-pink-900 text-base">🎬 Video Emotivo, Palabras, Brindis & Tarta</h4>
+          <p class="text-xs text-stone-700">El momento cumbre del cariño: proyección de fotos de sus 70 años (Colombia y 25 años en España), palabras de sus hijos y nietos, y el "Cumpleaños Feliz" en coro.</p>
+        </div>
+      </div>
+
+      <!-- 21:45 a 22:30 -->
+      <div class="retro-box bg-purple-50 p-4 rounded-2xl flex items-start gap-4">
+        <div class="bg-purple-500 text-white font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-800 mt-1">
+          21:45 - 22:30
+        </div>
+        <div>
+          <h4 class="font-fun font-bold text-purple-900 text-base">🕺 Desfile Hippie & Juego Furor Musical</h4>
+          <p class="text-xs text-stone-700">Concurso de disfraces en la pasarela con música funky y el divertido juego musical "Adivina la canción con 3 notas" (Chicos vs Chicas).</p>
+        </div>
+      </div>
+
+      <!-- 22:30 a 00:30 -->
+      <div class="retro-box bg-emerald-50 p-4 rounded-2xl flex items-start gap-4">
+        <div class="bg-emerald-500 text-white font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-800 mt-1">
+          22:30 - 00:30
+        </div>
+        <div>
+          <h4 class="font-fun font-bold text-emerald-900 text-base">🔥 La Gran Pista de Baile: Salsa, Cumbia & Pop 80s</h4>
+          <p class="text-xs text-stone-700">Pista abierta al 100%: Grupo Niche, Joe Arroyo, Rodolfo Aicardi, Camilo Sesto, Alaska y Boney M poniendo a todos a bailar.</p>
+        </div>
+      </div>
+
+      <!-- 00:30 a 01:30 -->
+      <div class="retro-box bg-gradient-to-r from-yellow-100 via-pink-100 to-purple-100 p-5 rounded-2xl flex items-start gap-4 border-4 border-dashed border-pink-500 animate-pulse-glow">
+        <div class="bg-pink-600 text-white font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-800 mt-1 animate-bounce">
+          00:30 - 01:30
+        </div>
+        <div>
+          <h4 class="font-groovy text-xl text-pink-700">🎉 ¡LA HORA LOCA DISCO-HIPPIE CARNAVAL!</h4>
+          <p class="text-xs font-fun font-semibold text-stone-800">Se apagan las luces, repartimos cotillón psicodélico luminoso, guitarras inflables, sombreros gigantes, silbatos y entramos con el mix carnavalesco: El Meneaito, Sopa de Caracol, YMCA y Carnaval de Barranquilla.</p>
+        </div>
+      </div>
+
+      <!-- 01:30 a 02:00 -->
+      <div class="retro-box bg-white p-4 rounded-2xl flex items-start gap-4">
+        <div class="bg-stone-800 text-white font-retro text-xs px-2.5 py-1.5 rounded-xl border border-stone-800 mt-1">
+          01:30 - 02:00
+        </div>
+        <div>
+          <h4 class="font-fun font-bold text-stone-800 text-base">🌟 Abrazo Colectivo & Cierre Inolvidable</h4>
+          <p class="text-xs text-stone-600">Círculo gigante alrededor de la suegra cantando "Vivir así es morir de amor" y "Amigos para siempre". Fotos finales y despedida triunfal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE ACTIVIDADES Y DRESS CODE -->
+  <section id="actividades" class="max-w-6xl mx-auto px-4 mb-20 relative z-10">
+    <div class="text-center mb-8">
+      <span class="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-700 font-retro text-xs border border-teal-300 mb-2">
+        ✌️ DIVERSIÓN GARANTIZADA
+      </span>
+      <h2 class="font-groovy text-3xl sm:text-5xl text-[#4A2810]">
+        Actividades & Guía Hippie 70s
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Actividad 1 -->
+      <div class="retro-box bg-white p-6 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="text-4xl mb-3">🪩</div>
+          <h3 class="font-retro text-xl text-hippie-brown mb-2">Concurso de Disfraces</h3>
+          <p class="text-stone-600 font-fun text-sm mb-4">
+            Premio "Flor de Oro" al look setentero más auténtico. ¡Anima a todos los invitados a lucir pantalones acampanados, chalecos y gafas redondas!
+          </p>
+        </div>
+        <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-xs font-fun text-amber-900">
+          💡 <strong>Tip:</strong> Habrá atrezzo de repuesto en la entrada para los despistados.
+        </div>
+      </div>
+
+      <!-- Actividad 2 -->
+      <div class="retro-box bg-white p-6 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="text-4xl mb-3">🎵</div>
+          <h3 class="font-retro text-xl text-hippie-brown mb-2">Furor: Colombia vs España</h3>
+          <p class="text-stone-600 font-fun text-sm mb-4">
+            Divertida batalla musical por equipos: adivinar canciones icónicas con solo 3 notas. Cumbia, salsa y rumba frente a frente.
+          </p>
+        </div>
+        <div class="bg-pink-50 p-3 rounded-xl border border-pink-200 text-xs font-fun text-pink-900">
+          💡 <strong>Dinámica:</strong> Muy participativo y garantiza risas para todas las edades.
+        </div>
+      </div>
+
+      <!-- Actividad 3 -->
+      <div class="retro-box bg-white p-6 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="text-4xl mb-3">🌳</div>
+          <h3 class="font-retro text-xl text-hippie-brown mb-2">El Árbol de los 70 Recuerdos</h3>
+          <p class="text-stone-600 font-fun text-sm mb-4">
+            Un rincón con flores psicodélicas y tarjetas vinilo donde cada familia escribirá una memoria con la cumpleañera para armar su libro de oro.
+          </p>
+        </div>
+        <div class="bg-purple-50 p-3 rounded-xl border border-purple-200 text-xs font-fun text-purple-900">
+          💡 <strong>Regalo:</strong> Se lo llevará a casa encuadernado como recuerdo inolvidable.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t-4 border-[#4A2810] bg-[#FFF9E6] py-10 px-4 text-center relative z-10">
+    <div class="max-w-4xl mx-auto space-y-4">
+      <div class="text-4xl animate-bounce-soft">☮️ 🌸 🪩 🇨🇴 🇪🇸</div>
+      <h3 class="font-groovy text-2xl md:text-3xl text-hippie-brown">
+        ¡70 Años Celebrando la Vida y el Amor!
+      </h3>
+      <p class="font-fun text-stone-600 text-sm max-w-md mx-auto">
+        Diseñado con cariño para su 70 cumpleaños • Sábado 17 de Octubre de 2026.
+      </p>
+      <div class="pt-4 flex flex-wrap justify-center gap-3">
+        <button onclick="lanzarConfetiFiesta()" class="retro-btn bg-hippie-yellow px-4 py-2 rounded-xl font-fun font-bold text-sm">
+          🎉 ¡Lluvia de Confeti!
+        </button>
+        <button onclick="compartirWhatsApp()" class="retro-btn bg-emerald-500 text-white px-4 py-2 rounded-xl font-fun font-bold text-sm">
+          📲 Enviar Link por WhatsApp
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // ==========================================
+    // 1. BASE DE DATOS DE CANCIONES OFICIALES (40+ TEMAS)
+    // ==========================================
+    const TRACKS = [
+      // 👑 MARCO ANTONIO SOLÍS & LOS BUKIS (LA GRAN DEBILIDAD DE MARÍA INÉS)
+      { id: 1001, title: "Si no te hubieras ido", artist: "Marco Antonio Solís", cat: "solis", year: 1999, likes: 65, badge: "👑 Su Gran Debilidad" },
+      { id: 1002, title: "Más que tu amigo", artist: "Marco Antonio Solís", cat: "solis", year: 2003, likes: 58, badge: "👑 ¡A Bailar María Inés!" },
+      { id: 1003, title: "Tu Cárcel", artist: "Los Bukis / M. A. Solís", cat: "solis", year: 1987, likes: 62, badge: "👑 Clásico Inmortal" },
+      { id: 1004, title: "Mi eterno amor secreto", artist: "Marco Antonio Solís", cat: "solis", year: 1999, likes: 45, badge: "👑 Balada de Oro" },
+      { id: 1005, title: "¿A dónde vamos a parar?", artist: "Marco Antonio Solís", cat: "solis", year: 2010, likes: 41, badge: "👑 Sentimiento Puro" },
+      { id: 1006, title: "O me voy o te vas", artist: "Marco Antonio Solís", cat: "solis", year: 2001, likes: 39, badge: "👑 Cumbia Romántica" },
+
+      // COLOMBIA TROPICAL & SALSA
+      { id: 1, title: "Cariñito", artist: "Rodolfo Aicardi y Los Hispanos", cat: "colombia", year: 1979, likes: 24, badge: "🇨🇴 Cumbia Clásica" },
+      { id: 2, title: "Boquita de Caramelo", artist: "Rodolfo Aicardi", cat: "colombia", year: 1981, likes: 19, badge: "🇨🇴 Cumbia" },
+      { id: 3, title: "El Preso", artist: "Fruko y sus Tesos", cat: "colombia", year: 1975, likes: 31, badge: "🇨🇴 Salsa Pesada" },
+      { id: 4, title: "Cali Pachanguero", artist: "Grupo Niche", cat: "colombia", year: 1984, likes: 45, badge: "🇨🇴 Salsa de Cali" },
+      { id: 5, title: "La Rebelión (No le pegue a la negra)", artist: "Joe Arroyo", cat: "colombia", year: 1986, likes: 38, badge: "🇨🇴 Salsa Tropical" },
+      { id: 6, title: "El Ausente", artist: "Pastor López", cat: "colombia", year: 1977, likes: 22, badge: "🇨🇴 Parranda" },
+      { id: 7, title: "Oiga Mire Vea", artist: "Guayacán Orquesta", cat: "colombia", year: 1991, likes: 17, badge: "🇨🇴 Salsa" },
+      { id: 8, title: "La Creciente", artist: "Binomio de Oro", cat: "colombia", year: 1979, likes: 27, badge: "🇨🇴 Vallenato de Oro" },
+      { id: 9, title: "La Gota Fría", artist: "Carlos Vives", cat: "colombia", year: 1993, likes: 29, badge: "🇨🇴 Vallenato Pop" },
+      { id: 10, title: "Que nadie sepa mi sufrir", artist: "La Sonora Dinamita", cat: "colombia", year: 1981, likes: 21, badge: "🇨🇴 Cumbia" },
+      { id: 11, title: "Colegiala", artist: "Rodolfo Aicardi", cat: "colombia", year: 1980, likes: 18, badge: "🇨🇴 Tropical" },
+      { id: 12, title: "Tu Cumpleaños", artist: "Diomedes Díaz", cat: "colombia", year: 1987, likes: 35, badge: "🇨🇴 Himno Cumpleaños" },
+
+      // ESPAÑA (25 AÑOS DE VIDA EN ESPAÑA & LA MOVIDA)
+      { id: 13, title: "Vivir así es morir de amor", artist: "Camilo Sesto", cat: "espana", year: 1978, likes: 48, badge: "🇪🇸 Himno Guateque" },
+      { id: 14, title: "Borriquito", artist: "Peret", cat: "espana", year: 1971, likes: 26, badge: "🇪🇸 Rumba Catalana" },
+      { id: 15, title: "Bamboleo", artist: "Gipsy Kings", cat: "espana", year: 1987, likes: 33, badge: "🇪🇸 Rumba Fiesta" },
+      { id: 16, title: "A quién le importa", artist: "Alaska y Dinarama", cat: "espana", year: 1986, likes: 41, badge: "🇪🇸 La Movida 80s" },
+      { id: 17, title: "All My Loving (Rumba)", artist: "Los Manolos", cat: "espana", year: 1992, likes: 25, badge: "🇪🇸 Rumba" },
+      { id: 18, title: "Devuélveme a mi chica", artist: "Hombres G", cat: "espana", year: 1985, likes: 30, badge: "🇪🇸 Pop 80s" },
+      { id: 19, title: "Dame Veneno", artist: "Los Chunguitos", cat: "espana", year: 1977, likes: 20, badge: "🇪🇸 Rumba Flamenca" },
+      { id: 20, title: "Hoy no me puedo levantar", artist: "Mecano", cat: "espana", year: 1981, likes: 28, badge: "🇪🇸 Pop 80s" },
+      { id: 21, title: "Mi gran noche", artist: "Raphael", cat: "espana", year: 1968, likes: 37, badge: "🇪🇸 Clásico Español" },
+      { id: 22, title: "Un beso y una flor", artist: "Nino Bravo", cat: "espana", year: 1972, likes: 39, badge: "🇪🇸 Balada Inmortal" },
+      { id: 23, title: "Eva María", artist: "Fórmula V", cat: "espana", year: 1973, likes: 16, badge: "🇪🇸 Verano 70s" },
+      { id: 24, title: "Ni más ni menos", artist: "Los Chichos", cat: "espana", year: 1974, likes: 23, badge: "🇪🇸 Rumba" },
+
+      // HIPPIE & DISCO 70s/80s INTERNACIONAL
+      { id: 25, title: "Dancing Queen", artist: "ABBA", cat: "hippie", year: 1976, likes: 52, badge: "✌️ Disco Queen" },
+      { id: 26, title: "Stayin' Alive", artist: "Bee Gees", cat: "hippie", year: 1977, likes: 44, badge: "✌️ Disco Funk" },
+      { id: 27, title: "Rasputin", artist: "Boney M", cat: "hippie", year: 1978, likes: 36, badge: "✌️ Euro Disco" },
+      { id: 28, title: "September", artist: "Earth, Wind & Fire", cat: "hippie", year: 1978, likes: 47, badge: "✌️ Soul / Groove" },
+      { id: 29, title: "Y.M.C.A.", artist: "Village People", cat: "hippie", year: 1978, likes: 35, badge: "✌️ Disco Fiesta" },
+      { id: 30, title: "Hot Stuff", artist: "Donna Summer", cat: "hippie", year: 1979, likes: 28, badge: "✌️ Disco Rock" },
+      { id: 31, title: "Daddy Cool", artist: "Boney M", cat: "hippie", year: 1976, likes: 25, badge: "✌️ Euro Disco" },
+      { id: 32, title: "Celebration", artist: "Kool & The Gang", cat: "hippie", year: 1980, likes: 32, badge: "✌️ Funk 80s" },
+      { id: 33, title: "Oye Cómo Va", artist: "Santana", cat: "hippie", year: 1970, likes: 29, badge: "✌️ Latin Rock" },
+      { id: 34, title: "Proud Mary", artist: "Creedence Clearwater Revival", cat: "hippie", year: 1969, likes: 22, badge: "✌️ Woodstock Rock" },
+
+      // LA HORA LOCA MIX
+      { id: 35, title: "El Meneaito", artist: "El General / Natusha", cat: "horaloca", year: 1991, likes: 40, badge: "🥳 Coreografía" },
+      { id: 36, title: "Sopa de Caracol", artist: "Banda Blanca", cat: "horaloca", year: 1991, likes: 34, badge: "🥳 Garífuna Mix" },
+      { id: 37, title: "La Pollera Colorá (Parranda)", artist: "Orquesta / Carnaval", cat: "horaloca", year: 1975, likes: 30, badge: "🥳 Carnaval Barranquilla" },
+      { id: 38, title: "Mayonesa", artist: "Chocolate", cat: "horaloca", year: 2001, likes: 27, badge: "🥳 Baile Grupal" },
+      { id: 39, title: "Aserejé", artist: "Las Ketchup", cat: "horaloca", year: 2002, likes: 31, badge: "🥳 Hit España" },
+      { id: 40, title: "Checarnaval (Mosaico)", artist: "Checo Acosta", cat: "horaloca", year: 1994, likes: 36, badge: "🥳 Carnaval Puro" },
+      { id: 41, title: "Macarena", artist: "Los del Río", cat: "horaloca", year: 1993, likes: 25, badge: "🥳 Mundial" },
+      { id: 42, title: "Bomba", artist: "King África", cat: "horaloca", year: 2000, likes: 28, badge: "🥳 Desmadre" }
+    ];
+
+    // ==========================================
+    // 2. SUGERENCIAS INICIALES DE LA FAMILIA
+    // ==========================================
+    const DEFAULT_SUGGESTIONS = [
+      {
+        id: 100,
+        name: "Toda la Familia en Logroño",
+        cat: "solis",
+        song: "Si no te hubieras ido - Marco Antonio Solís",
+        message: "¡Mami Inés, esta canción es tu himno de oro! Te la vamos a cantar con el alma en tus 70 años ❤️",
+        time: "Hace 1 hora",
+        likes: 28
+      },
+      {
+        id: 101,
+        name: "Carlos y Familia",
+        cat: "colombia",
+        song: "Cali Pachanguero - Grupo Niche",
+        message: "¡Para que bailemos como en las fiestas de Colombia! Te queremos 70 veces más cada día, María Inés.",
+        time: "Hace unas horas",
+        likes: 19
+      },
+      {
+        id: 102,
+        name: "María (Tu hija)",
+        cat: "espana",
+        song: "Vivir así es morir de amor - Camilo Sesto",
+        message: "Mami, 25 años en España cantando esto a todo pulmón en el coche juntas. ¡Eres la reina de la fiesta!",
+        time: "Hace 1 día",
+        likes: 22
+      },
+      {
+        id: 103,
+        name: "Los Nietos",
+        cat: "solis",
+        song: "Más que tu amigo - Marco Antonio Solís",
+        message: "¡Abuelita María Inés, prepárate que con esta te sacamos al centro de la pista a bailar!",
+        time: "Hace 2 días",
+        likes: 31
+      }
+    ];
+
+    // Cargar sugerencias de localStorage o por defecto
+    let guestSuggestions = JSON.parse(localStorage.getItem("fiesta70_suggestions")) || DEFAULT_SUGGESTIONS;
+    let currentFilterCat = 'todas';
+    let currentPlayingTrackIndex = 0;
+    let isPlayingAudio = false;
+    let audioCtx = null;
+    let synthTimer = null;
+
+    // ==========================================
+    // 3. COUNTDOWN AL SÁBADO 17 DE OCTUBRE 2026, 18:00
+    // ==========================================
+    function updateCountdown() {
+      // Fecha destino: 17 de Octubre de 2026 a las 18:00:00 (hora local de España)
+      const targetDate = new Date('2026-10-17T18:00:00+02:00').getTime();
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById('days').innerText = "00";
+        document.getElementById('hours').innerText = "00";
+        document.getElementById('minutes').innerText = "00";
+        document.getElementById('seconds').innerText = "00";
+        return;
+      }
+
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = String(d).padStart(2, '0');
+      document.getElementById('hours').innerText = String(h).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(s).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // ==========================================
+    // 4. RENDER DE PLAYLIST Y FILTROS
+    // ==========================================
+    function renderPlaylist(tracksToRender) {
+      const container = document.getElementById('songs-container');
+      container.innerHTML = '';
+
+      if (tracksToRender.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-2 text-center py-8 text-stone-500 font-fun">
+            <span>🔍</span> No encontramos canciones con ese criterio. ¡Pero puedes proponerla abajo!
+          </div>
+        `;
+        return;
+      }
+
+      tracksToRender.forEach(track => {
+        const item = document.createElement('div');
+        item.className = "p-3 rounded-2xl border-2 border-stone-200 bg-stone-50 hover:bg-orange-50/50 transition flex items-center justify-between gap-3";
+        
+        const catBadgeColor = 
+          track.cat === 'solis' ? 'bg-pink-100 text-pink-900 border-pink-400 font-bold' :
+          track.cat === 'colombia' ? 'bg-amber-100 text-amber-900 border-amber-300' :
+          track.cat === 'espana' ? 'bg-rose-100 text-rose-900 border-rose-300' :
+          track.cat === 'hippie' ? 'bg-purple-100 text-purple-900 border-purple-300' :
+          'bg-emerald-100 text-emerald-900 border-emerald-300';
+
+        item.innerHTML = `
+          <div class="flex items-center gap-3 overflow-hidden">
+            <button onclick="loadTrackInPlayer(${track.id})" title="Cargar en Tocadiscos" class="w-10 h-10 rounded-full bg-stone-800 text-white flex items-center justify-center font-bold text-xs shrink-0 hover:scale-105 transition">
+              ▶
+            </button>
+            <div class="truncate">
+              <div class="font-fun font-bold text-sm text-stone-800 truncate">${track.title}</div>
+              <div class="text-xs text-stone-500 truncate">${track.artist} (${track.year})</div>
+              <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-md border ${catBadgeColor} mt-0.5">
+                ${track.badge}
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <!-- Botón Like -->
+            <button onclick="toggleLikeTrack(${track.id})" class="text-xs font-fun font-bold px-2 py-1 rounded-lg border border-stone-300 hover:bg-pink-100 flex items-center gap-1 transition">
+              <span class="text-pink-500">❤️</span>
+              <span id="track-likes-${track.id}">${track.likes}</span>
+            </button>
+            <!-- Spotify direct -->
+            <a href="https://open.spotify.com/search/${encodeURIComponent(track.title + ' ' + track.artist)}" target="_blank" title="Abrir en Spotify" class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs hover:bg-emerald-200 transition">
+              🎧
+            </a>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function setCategoriaFiltro(cat) {
+      currentFilterCat = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.classList.add('bg-hippie-orange', 'text-white');
+          btn.classList.remove('bg-amber-100', 'bg-rose-100', 'bg-purple-100', 'bg-pink-100');
+        } else {
+          btn.classList.remove('bg-hippie-orange', 'text-white');
+        }
+      });
+      filtrarPlaylist();
+    }
+
+    function filtrarPlaylist() {
+      const term = document.getElementById('search-input').value.toLowerCase().trim();
+      let filtered = TRACKS;
+
+      if (currentFilterCat !== 'todas') {
+        filtered = filtered.filter(t => t.cat === currentFilterCat);
+      }
+
+      if (term) {
+        filtered = filtered.filter(t => 
+          t.title.toLowerCase().includes(term) || 
+          t.artist.toLowerCase().includes(term)
+        );
+      }
+
+      renderPlaylist(filtered);
+    }
+
+    function toggleLikeTrack(id) {
+      const track = TRACKS.find(t => t.id === id);
+      if (track) {
+        track.likes++;
+        const el = document.getElementById(`track-likes-${id}`);
+        if (el) el.innerText = track.likes;
+        lanzarMiniConfeti();
+      }
+    }
+
+    // ==========================================
+    // 5. TOCADISCOS RETRO & WEB AUDIO GROOVE
+    // ==========================================
+    function loadTrackInPlayer(id) {
+      const idx = TRACKS.findIndex(t => t.id === id);
+      if (idx !== -1) {
+        currentPlayingTrackIndex = idx;
+        const track = TRACKS[idx];
+        document.getElementById('player-title').innerText = track.title;
+        document.getElementById('player-artist').innerText = `${track.artist} (${track.year})`;
+        document.getElementById('player-cat-badge').innerText = track.badge;
+        document.getElementById('spotify-direct-link').href = `https://open.spotify.com/search/${encodeURIComponent(track.title + ' ' + track.artist)}`;
+        document.getElementById('youtube-direct-link').href = `https://www.youtube.com/results?search_query=${encodeURIComponent(track.title + ' ' + track.artist)}`;
+        
+        // Auto iniciar reproducción del groove simulado
+        startRetroGroove();
+      }
+    }
+
+    function togglePlayTrack() {
+      if (isPlayingAudio) {
+        stopRetroGroove();
+      } else {
+        startRetroGroove();
+      }
+    }
+
+    function nextTrack() {
+      currentPlayingTrackIndex = (currentPlayingTrackIndex + 1) % TRACKS.length;
+      loadTrackInPlayer(TRACKS[currentPlayingTrackIndex].id);
+    }
+
+    function filterPlayer(cat) {
+      const found = TRACKS.find(t => t.cat === cat);
+      if (found) loadTrackInPlayer(found.id);
+    }
+
+    // Web Audio Synthesizer para ritmo disco/cumbia 70s
+    function startRetroGroove() {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+      } catch (e) {
+        console.log("Audio no soportado:", e);
+      }
+
+      isPlayingAudio = true;
+      document.getElementById('vinyl-disc').classList.add('animate-spin-slow');
+      document.getElementById('tonearm').classList.remove('-rotate-12');
+      document.getElementById('tonearm').classList.add('rotate-6');
+      document.getElementById('player-status').innerText = "REPRODUCIENDO EN VIVO 🎶";
+      document.getElementById('play-icon').innerText = "⏸️";
+      document.getElementById('play-text').innerText = "Pausar Ritmo";
+
+      // Bucle rítmico funky setentero sintetizado
+      let step = 0;
+      const notes = [130.81, 164.81, 196.00, 220.00, 261.63]; // Escala pentatónica C-E-G-A-C
+      
+      clearInterval(synthTimer);
+      synthTimer = setInterval(() => {
+        if (!isPlayingAudio || !audioCtx) return;
+        try {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          // Alternar bombo y bajo funky
+          if (step % 2 === 0) {
+            // Bombo disco
+            osc.frequency.setValueAtTime(110, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(35, audioCtx.currentTime + 0.15);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+          } else {
+            // Bajo funky setentero
+            const note = notes[step % notes.length];
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(note, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+          }
+
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.2);
+          step = (step + 1) % 16;
+        } catch(e) {}
+      }, 260);
+    }
+
+    function stopRetroGroove() {
+      isPlayingAudio = false;
+      clearInterval(synthTimer);
+      document.getElementById('vinyl-disc').classList.remove('animate-spin-slow');
+      document.getElementById('tonearm').classList.remove('rotate-6');
+      document.getElementById('tonearm').classList.add('-rotate-12');
+      document.getElementById('player-status').innerText = "EN PAUSA ⏸️";
+      document.getElementById('play-icon').innerText = "▶️";
+      document.getElementById('play-text').innerText = "Tocar Ritmo Retro";
+    }
+
+    // ==========================================
+    // 6. MURO DE DEDICATORIAS Y SUGERENCIAS
+    // ==========================================
+    function renderSuggestions() {
+      const container = document.getElementById('guest-suggestions-wall');
+      container.innerHTML = '';
+
+      guestSuggestions.forEach((sug, index) => {
+        const card = document.createElement('div');
+        card.className = "bg-white p-3.5 rounded-2xl border-2 border-stone-200 shadow-sm flex items-start justify-between gap-3";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-fun font-bold text-sm text-stone-900">${sug.name}</span>
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-stone-100 text-stone-600 border border-stone-200">
+                ${sug.cat === 'solis' ? '👑 Marco Antonio Solís' : sug.cat === 'colombia' ? '🇨🇴 Colombia' : sug.cat === 'espana' ? '🇪🇸 España' : sug.cat === 'hippie' ? '✌️ Hippie' : sug.cat === 'horaloca' ? '🥳 Hora Loca' : '💖 Dedicatoria'}
+              </span>
+              <span class="text-[10px] text-stone-400">${sug.time || 'Reciente'}</span>
+            </div>
+            <div class="font-retro text-xs text-hippie-orange mt-1">🎵 ${sug.song}</div>
+            ${sug.message ? `<p class="font-fun text-xs text-stone-600 mt-1 italic">"${sug.message}"</p>` : ''}
+          </div>
+          <button onclick="likeSuggestion(${index})" class="text-xs font-fun font-bold px-2.5 py-1 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200 flex items-center gap-1 shrink-0 transition">
+            <span>❤️</span> <span>${sug.likes || 1}</span>
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function agregarSugerencia(e) {
+      e.preventDefault();
+      const name = document.getElementById('sug-name').value.trim();
+      const cat = document.getElementById('sug-cat').value;
+      const song = document.getElementById('sug-song').value.trim();
+      const message = document.getElementById('sug-message').value.trim();
+
+      if (!name || !song) return;
+
+      const nuevaSugerencia = {
+        id: Date.now(),
+        name: name,
+        cat: cat,
+        song: song,
+        message: message,
+        time: "Justo ahora",
+        likes: 1
+      };
+
+      guestSuggestions.unshift(nuevaSugerencia);
+      localStorage.setItem("fiesta70_suggestions", JSON.stringify(guestSuggestions));
+      renderSuggestions();
+      
+      // Limpiar formulario y celebrar
+      document.getElementById('suggestion-form').reset();
+      lanzarConfetiFiesta();
+      alert(`¡Gracias ${name}! Tu dedicatoria y sugerencia para los 70 años han quedado guardadas.`);
+    }
+
+    function likeSuggestion(index) {
+      guestSuggestions[index].likes = (guestSuggestions[index].likes || 0) + 1;
+      localStorage.setItem("fiesta70_suggestions", JSON.stringify(guestSuggestions));
+      renderSuggestions();
+      lanzarMiniConfeti();
+    }
+
+    // ==========================================
+    // 7. EFECTOS ESPECIALES (CONFETI & DISCO MODE)
+    // ==========================================
+    function lanzarConfetiFiesta() {
+      if (typeof confetti === 'function') {
+        // Disparo múltiple psicodélico
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#FF6B35', '#FDB813', '#FF1493', '#7C3AED', '#10B981']
+        });
+        setTimeout(() => {
+          confetti({
+            particleCount: 60,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: ['#FF1493', '#FDB813']
+          });
+          confetti({
+            particleCount: 60,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: ['#7C3AED', '#10B981']
+          });
+        }, 250);
+      }
+    }
+
+    function lanzarMiniConfeti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 25,
+          spread: 45,
+          origin: { y: 0.7 }
+        });
+      }
+    }
+
+    let discoModeActive = false;
+    let discoInterval = null;
+
+    function toggleDiscoMode() {
+      discoModeActive = !discoModeActive;
+      const body = document.body;
+      const btn = document.getElementById('disco-mode-btn');
+
+      if (discoModeActive) {
+        btn.classList.add('bg-yellow-400', 'text-stone-900');
+        btn.classList.remove('bg-hippie-pink', 'text-white');
+        btn.innerHTML = "<span>🕺</span> <span>¡Parar Disco!</span>";
+        lanzarConfetiFiesta();
+
+        const discoColors = [
+          'linear-gradient(135deg, #FF6B35 0%, #FF1493 50%, #7C3AED 100%)',
+          'linear-gradient(135deg, #7C3AED 0%, #10B981 50%, #FDB813 100%)',
+          'linear-gradient(135deg, #FF1493 0%, #FDB813 50%, #FF6B35 100%)',
+          'linear-gradient(135deg, #10B981 0%, #06B6D4 50%, #7C3AED 100%)'
+        ];
+        let colorIdx = 0;
+        discoInterval = setInterval(() => {
+          body.style.background = discoColors[colorIdx % discoColors.length];
+          colorIdx++;
+        }, 800);
+      } else {
+        clearInterval(discoInterval);
+        body.style.background = "linear-gradient(135deg, #FFF9E6 0%, #FFE8CC 50%, #FFD6E8 100%)";
+        btn.classList.remove('bg-yellow-400', 'text-stone-900');
+        btn.classList.add('bg-hippie-pink', 'text-white');
+        btn.innerHTML = "<span>🪩</span> <span class='hidden sm:inline'>Modo Disco</span>";
+      }
+    }
+
+    function compartirWhatsApp() {
+      const url = window.location.href;
+      const texto = `¡Hola familia y amigos! 🌸✌️\nYa está lista la web oficial para los 70 Años de María Inés Arteaga (Sábado 17 de Octubre de 2026 en Logroño).\n\nEntra aquí para ver el horario, escuchar sus canciones favoritas de Marco Antonio Solís, la música de Colombia 🇨🇴 y España 🇪🇸, y dejarle tu dedicatoria:\n${url}`;
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`, '_blank');
+    }
+
+    // Inicializar renders al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      renderPlaylist(TRACKS);
+      renderSuggestions();
+      loadTrackInPlayer(1001); // Iniciar con 'Si no te hubieras ido' de Marco Antonio Solís
+    });
+  </script>
+</body>
+</html>
