@@ -8,6 +8,11 @@
   <meta property="og:title" content="¡María Inés cumple 70! 🌸 Fiesta Hippie & Disco">
   <meta property="og:description" content="Sábado 17 de octubre · 18:00 · Friends & Family, C/ San Gregorio 1, Logroño. Toda la info de la fiesta aquí.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gsantamaria88.github.io/cumple70-maria-ines/">
+  <meta property="og:image" content="https://gsantamaria88.github.io/cumple70-maria-ines/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#F26B21">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
 
@@ -525,6 +530,8 @@
           </ul>
           <div class="row-btns">
             <a class="btn" id="maps-btn" href="#" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>
+            <a class="btn btn-cream" id="gcal-btn" href="#" target="_blank" rel="noopener">📅 Añadir a Google Calendar</a>
+            <button class="btn btn-cream" type="button" id="ics-btn">📅 Calendario iPhone / Outlook</button>
           </div>
         </div>
         <div class="map-frame">
@@ -690,7 +697,7 @@
       <div class="card" style="max-width:720px;margin:0 auto;text-align:center">
         <div style="font-size:2.6rem;line-height:1">💌</div>
         <h3 style="margin:8px 0">¿Una canción o unas palabras para María Inés?</h3>
-        <p style="margin:0">Pídele tu canción al DJ durante la fiesta y escríbele un mensaje en la mesa de recuerdos: se los guardaremos todos para ella. 🌸</p>
+        <p style="margin:0">Pídele tu canción al DJ (¡Guillermo!) durante la fiesta y escríbele un mensaje en la mesa de recuerdos: se los guardaremos todos para ella. 🌸</p>
       </div>
     </div>
   </section>
@@ -745,6 +752,7 @@
 
   <div class="toast" id="toast" role="status"></div>
 
+  <script src="canciones.js"></script>
   <script>
     // =====================================================================
     // AJUSTES: rellena esto y la web se adapta sola.
@@ -835,6 +843,30 @@
       $('place-address').textContent = 'C/ San Gregorio, 1 · 26001 Logroño (La Rioja), junto al Puente de Hierro, a orillas del Ebro.';
     }
 
+    // ---------------- Calendario ----------------
+    function pintarCalendario() {
+      const titulo = '🌸 Cumple 70 de María Inés · Fiesta Hippie & Disco';
+      const lugar = `${CONFIG.lugarNombre}, ${CONFIG.lugarDireccion}`;
+      const detalle = 'Fiesta Hippie & Disco de los 70 y 80. ¡Ven con tu look setentero! Info: ' + location.href.split('#')[0];
+      const utc = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+      $('gcal-btn').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        `&text=${encodeURIComponent(titulo)}&dates=${utc(INICIO)}/${utc(FIN)}` +
+        `&location=${encodeURIComponent(lugar)}&details=${encodeURIComponent(detalle)}`;
+      $('ics-btn').addEventListener('click', () => {
+        const esc = (t) => t.replace(/([,;\\])/g, '\\$1');
+        const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//cumple70//ES', 'BEGIN:VEVENT',
+          'UID:cumple70-maria-ines-20261017@github.io', `DTSTAMP:${utc(new Date())}`,
+          `DTSTART:${utc(INICIO)}`, `DTEND:${utc(FIN)}`, `SUMMARY:${esc(titulo)}`,
+          `LOCATION:${esc(lugar)}`, `DESCRIPTION:${esc(detalle)}`,
+          'BEGIN:VALARM', 'TRIGGER:-PT3H', 'ACTION:DISPLAY', 'DESCRIPTION:¡Hoy es el cumple de María Inés!', 'END:VALARM',
+          'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+        a.download = 'cumple-maria-ines-70.ics';
+        document.body.appendChild(a); a.click(); a.remove();
+      });
+    }
+
     // ---------------- Fotos ----------------
     function pintarFotos() {
       if (!CONFIG.fotos.length) return;
@@ -856,114 +888,24 @@
     }
 
     // ---------------- Música ----------------
-    const CATS = {
-      solis:     '👑 Marco Antonio Solís',
-      cumbia:    '🇨🇴 Cumbia',
-      salsa:     '🇨🇴 Salsa',
-      vallenato: '🇨🇴 Vallenato',
-      espana:    '🇪🇸 Rumba y pop español',
-      merengue:  '🎺 Merengue',
-      disco:     '🪩 Disco 70s/80s',
-      horaloca:  '🥳 Hora Loca',
-    };
-
-    const CANCIONES = [
-      { t: 'Si no te hubieras ido', a: 'Marco Antonio Solís', c: 'solis', n: 'Su favorita' },
-      { t: 'Tu cárcel', a: 'Los Bukis', c: 'solis', n: 'Para cantar a coro' },
-      { t: 'Más que tu amigo', a: 'Marco Antonio Solís', c: 'solis' },
-      { t: 'Mi eterno amor secreto', a: 'Marco Antonio Solís', c: 'solis' },
-      { t: '¿A dónde vamos a parar?', a: 'Marco Antonio Solís', c: 'solis' },
-      { t: 'O me voy o te vas', a: 'Marco Antonio Solís', c: 'solis' },
-
-      { t: 'La pollera colorá', a: 'Wilson Choperena', c: 'cumbia' },
-      { t: 'Cariñito', a: 'Rodolfo Aicardi', c: 'cumbia' },
-      { t: 'Colegiala', a: 'Rodolfo Aicardi', c: 'cumbia' },
-      { t: 'Tabaco y ron', a: 'Rodolfo Aicardi', c: 'cumbia' },
-      { t: 'El ausente', a: 'Pastor López', c: 'cumbia' },
-      { t: 'Golpe con golpe', a: 'Pastor López', c: 'cumbia' },
-      { t: 'Que nadie sepa mi sufrir', a: 'La Sonora Dinamita', c: 'cumbia' },
-      { t: 'Mil horas', a: 'La Sonora Dinamita', c: 'cumbia' },
-
-      { t: 'Cali pachanguero', a: 'Grupo Niche', c: 'salsa', n: 'Himno de Cali' },
-      { t: 'Una aventura', a: 'Grupo Niche', c: 'salsa' },
-      { t: 'Gotas de lluvia', a: 'Grupo Niche', c: 'salsa' },
-      { t: 'La rebelión', a: 'Joe Arroyo', c: 'salsa' },
-      { t: 'En Barranquilla me quedo', a: 'Joe Arroyo', c: 'salsa' },
-      { t: 'El preso', a: 'Fruko y sus Tesos', c: 'salsa' },
-      { t: 'Oiga, mire, vea', a: 'Guayacán Orquesta', c: 'salsa' },
-
-      { t: 'Tu cumpleaños', a: 'Diomedes Díaz', c: 'vallenato', n: '¡La de su cumple!' },
-      { t: 'Los caminos de la vida', a: 'Los Diablitos', c: 'vallenato' },
-      { t: 'La gota fría', a: 'Carlos Vives', c: 'vallenato' },
-      { t: 'Fruta fresca', a: 'Carlos Vives', c: 'vallenato' },
-      { t: 'La creciente', a: 'Binomio de Oro', c: 'vallenato' },
-      { t: 'Olvídala', a: 'Binomio de Oro', c: 'vallenato' },
-
-      { t: 'Vivir así es morir de amor', a: 'Camilo Sesto', c: 'espana', n: 'Imprescindible' },
-      { t: 'Un beso y una flor', a: 'Nino Bravo', c: 'espana' },
-      { t: 'Mi gran noche', a: 'Raphael', c: 'espana' },
-      { t: 'Eva María', a: 'Fórmula V', c: 'espana' },
-      { t: 'Borriquito', a: 'Peret', c: 'espana' },
-      { t: 'Bamboleo', a: 'Gipsy Kings', c: 'espana' },
-      { t: 'Dame veneno', a: 'Los Chunguitos', c: 'espana' },
-      { t: 'All my loving', a: 'Los Manolos', c: 'espana' },
-      { t: 'Solo se vive una vez', a: 'Azúcar Moreno', c: 'espana' },
-      { t: 'A quién le importa', a: 'Alaska y Dinarama', c: 'espana' },
-      { t: 'Hoy no me puedo levantar', a: 'Mecano', c: 'espana' },
-      { t: 'Devuélveme a mi chica', a: 'Hombres G', c: 'espana' },
-
-      { t: 'El baile del perrito', a: 'Wilfrido Vargas', c: 'merengue', n: '¡Para Coco! 🐩' },
-      { t: 'La bilirrubina', a: 'Juan Luis Guerra', c: 'merengue' },
-      { t: 'El africano', a: 'Wilfrido Vargas', c: 'merengue' },
-      { t: 'La ventanita', a: 'Sergio Vargas', c: 'merengue' },
-      { t: 'El rompecintura', a: 'Los Hermanos Rosario', c: 'merengue' },
-      { t: 'Pégame tu vicio', a: 'Eddy Herrera', c: 'merengue' },
-
-      { t: 'Dancing Queen', a: 'ABBA', c: 'disco' },
-      { t: 'Stayin\' Alive', a: 'Bee Gees', c: 'disco' },
-      { t: 'September', a: 'Earth, Wind & Fire', c: 'disco' },
-      { t: 'I Will Survive', a: 'Gloria Gaynor', c: 'disco' },
-      { t: 'Y.M.C.A.', a: 'Village People', c: 'disco' },
-      { t: 'Rasputin', a: 'Boney M.', c: 'disco' },
-      { t: 'Daddy Cool', a: 'Boney M.', c: 'disco' },
-      { t: 'Celebration', a: 'Kool & The Gang', c: 'disco' },
-      { t: 'Hot Stuff', a: 'Donna Summer', c: 'disco' },
-      { t: 'Yes Sir, I Can Boogie', a: 'Baccara', c: 'disco' },
-      { t: 'Oye cómo va', a: 'Santana', c: 'disco' },
-
-      { t: 'El meneaíto', a: 'Natusha', c: 'horaloca' },
-      { t: 'Sopa de caracol', a: 'Banda Blanca', c: 'horaloca' },
-      { t: 'Mayonesa', a: 'Chocolate', c: 'horaloca' },
-      { t: 'Aserejé', a: 'Las Ketchup', c: 'horaloca' },
-      { t: 'Macarena', a: 'Los del Río', c: 'horaloca' },
-      { t: 'Bomba', a: 'King África', c: 'horaloca' },
-      { t: 'El venao', a: 'Los Cantantes', c: 'horaloca' },
-      { t: 'Follow the Leader', a: 'Soca Boys', c: 'horaloca' },
-      { t: 'Danza kuduro', a: 'Don Omar y Lucenzo', c: 'horaloca' },
-      { t: 'Checarnaval', a: 'Checo Acosta', c: 'horaloca' },
-    ];
-
-    const A_CORO = [
-      ['Si no te hubieras ido', 'Marco Antonio Solís'],
-      ['Tu cárcel', 'Los Bukis'],
-      ['Tu cumpleaños', 'Diomedes Díaz'],
-      ['Vivir así es morir de amor', 'Camilo Sesto'],
-      ['Cali pachanguero', 'Grupo Niche'],
-      ['Los caminos de la vida', 'Los Diablitos'],
-      ['Un beso y una flor', 'Nino Bravo'],
-      ['Dancing Queen', 'ABBA'],
-    ];
+    // Las canciones están en canciones.js (compartidas con la guía del DJ).
+    const CATS = ESTILOS;
+    const ORDEN = Object.keys(ESTILOS);
+    const FAV = (s) => s.t === 'Si no te hubieras ido' ? 0 : 1;
+    const LISTA = CANCIONES.filter((s) => s.a !== 'Tradicional')
+      .sort((x, y) => ORDEN.indexOf(x.c) - ORDEN.indexOf(y.c) || FAV(x) - FAV(y));
+    const A_CORO = CANCIONES.filter((s) => s.coro && s.a !== 'Tradicional').map((s) => [s.t, s.a]);
 
     const yt = (q) => `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
     const sp = (q) => `https://open.spotify.com/search/${encodeURIComponent(q)}`;
 
     let catActiva = 'todas';
     let verTodas = false;
-    let cancionActiva = CANCIONES[0];
+    let cancionActiva = LISTA[0];
 
     function pintarChips() {
-      const chips = [['todas', `Todas (${CANCIONES.length})`]].concat(
-        Object.entries(CATS).map(([k, v]) => [k, `${v} (${CANCIONES.filter((s) => s.c === k).length})`])
+      const chips = [['todas', `Todas (${LISTA.length})`]].concat(
+        Object.entries(CATS).map(([k, v]) => [k, `${v} (${LISTA.filter((s) => s.c === k).length})`])
       );
       $('chips').innerHTML = chips.map(([k, v]) =>
         `<button type="button" class="chip" data-cat="${k}" aria-pressed="${k === catActiva}">${v}</button>`).join('');
@@ -973,12 +915,12 @@
 
     function pintarCanciones() {
       const q = sinAcentos($('song-search').value.trim());
-      const lista = CANCIONES.filter((s) =>
+      const lista = LISTA.filter((s) =>
         (catActiva === 'todas' || s.c === catActiva) &&
         (!q || sinAcentos(s.t + ' ' + s.a).includes(q)));
       const ul = $('songs');
       if (!lista.length) {
-        ul.innerHTML = '<li class="empty">No está en la lista… ¡pídesela al DJ en la fiesta! 🎧</li>';
+        ul.innerHTML = '<li class="empty">No está en la lista… ¡pídesela al DJ Guillermo en la fiesta! 🎧</li>';
         return;
       }
       const total = lista.length;
@@ -1253,11 +1195,12 @@
     // ---------------- Arranque ----------------
     pintarPrograma();
     pintarLugar();
+    pintarCalendario();
     pintarFotos();
     pintarChips();
     pintarCanciones();
     pintarCoro();
-    ponerCancion(CANCIONES[0], false);
+    ponerCancion(LISTA[0], false);
     iniciarPolaroid();
     pintarPregunta();
     cuentaAtras();

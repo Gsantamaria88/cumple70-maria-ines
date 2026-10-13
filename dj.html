@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Guía del DJ · Cumple 70 María Inés</title>
+  <meta name="theme-color" content="#2B1A10">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Righteous&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #1E130C;
+      --panel: #2B1A10;
+      --panel-2: #3A2416;
+      --line: #5A3A26;
+      --text: #FFF3DC;
+      --muted: #CDB79E;
+      --orange: #F26B21;
+      --mustard: #F2A922;
+      --pink: #E8457C;
+      --green: #8DC63F;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 70px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Nunito', system-ui, sans-serif; font-size: 17px; line-height: 1.45; overflow-x: clip; padding-bottom: 40px; }
+    button, input, textarea { font: inherit; color: inherit; }
+    a { color: inherit; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 14px; }
+
+    header { position: sticky; top: 0; z-index: 20; background: rgba(30,19,12,.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 2px solid var(--line); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 58px; }
+    .logo { font-family: 'Titan One', cursive; font-size: 1.25rem; color: var(--mustard); white-space: nowrap; }
+    .clock { font-family: 'Righteous', sans-serif; font-size: 1.3rem; color: var(--text); }
+
+    .now { margin: 16px 0; padding: 16px; border-radius: 18px; background: linear-gradient(120deg, var(--orange), var(--pink)); color: #fff; }
+    .now .lbl { font-family: 'Righteous', sans-serif; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; opacity: .9; }
+    .now .big { font-family: 'Titan One', cursive; font-size: 1.6rem; line-height: 1.15; }
+    .now p { margin: 6px 0 0; }
+
+    .tools { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+    .search { flex: 1 1 220px; min-height: 46px; padding: 8px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--panel); }
+    .toggle { display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--panel); cursor: pointer; font-weight: 800; }
+    .toggle input { width: 20px; height: 20px; accent-color: var(--mustard); }
+
+    details.block { background: var(--panel); border: 2px solid var(--line); border-radius: 18px; margin-bottom: 12px; overflow: hidden; }
+    details.block[open] { border-color: var(--mustard); }
+    details.block.current { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(232,69,124,.35); }
+    summary { list-style: none; cursor: pointer; padding: 14px 16px; display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    .b-time { font-family: 'Righteous', sans-serif; color: var(--mustard); font-size: .95rem; }
+    .b-title { font-weight: 800; font-size: 1.2rem; }
+    .b-count { grid-row: 1 / span 2; grid-column: 2; font-family: 'Righteous', sans-serif; font-size: .9rem; background: var(--panel-2); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+    .b-count.done { background: var(--green); color: #12200a; }
+    .b-body { padding: 0 16px 16px; }
+    .b-goal { color: var(--muted); margin: 0 0 8px; }
+    .b-tips { margin: 0 0 12px; padding: 10px 12px 10px 30px; background: var(--panel-2); border-radius: 12px; font-size: .95rem; }
+    .b-tips li { margin-bottom: 4px; }
+    .b-tips li:last-child { margin-bottom: 0; }
+
+    .songs { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .song { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); }
+    .song input { width: 24px; height: 24px; accent-color: var(--green); }
+    .song.played { opacity: .45; }
+    .song.played .s-title { text-decoration: line-through; }
+    .s-title { font-weight: 800; line-height: 1.2; }
+    .s-meta { font-size: .88rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; margin-top: 2px; }
+    .dots { letter-spacing: 1px; color: var(--orange); font-size: .8rem; }
+    .tag { font-size: .78rem; font-weight: 800; padding: 0 7px; border-radius: 6px; background: var(--panel-2); color: var(--text); }
+    .tag.dj { background: var(--mustard); color: #2B1A10; }
+    .yt { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #FF3B30; color: #fff; text-decoration: none; font-size: .95rem; }
+    .hide-played .song.played { display: none; }
+    .empty { color: var(--muted); padding: 6px 2px; }
+
+    .card { background: var(--panel); border: 2px solid var(--line); border-radius: 18px; padding: 16px; margin-top: 18px; }
+    .card h2 { font-family: 'Titan One', cursive; font-weight: 400; color: var(--mustard); font-size: 1.4rem; margin: 0 0 8px; }
+    .card p, .card li { color: var(--muted); }
+    .card ul { margin: 0; padding-left: 1.2em; }
+    .card li { margin-bottom: 6px; }
+    .card li b { color: var(--text); }
+    .game { display: grid; gap: 14px; }
+    @media (min-width: 640px) { .game { grid-template-columns: 1fr 1fr; } }
+    .game h3 { margin: 0 0 6px; font-family: 'Righteous', sans-serif; font-weight: 400; }
+    .game ol { margin: 0; padding-left: 1.4em; }
+    .game li { color: var(--text); margin-bottom: 4px; }
+    .game li a { text-decoration: none; }
+    .game li small { color: var(--muted); }
+    textarea { width: 100%; min-height: 140px; padding: 10px 12px; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); resize: vertical; }
+    .btn { min-height: 44px; padding: 8px 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--panel-2); font-weight: 800; cursor: pointer; }
+    .footer-note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="logo">🎧 DJ Guillermo</div>
+      <div class="clock" id="clock">--:--</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="now" id="now"></div>
+
+    <div class="tools">
+      <label class="toggle"><input type="checkbox" id="hide-played"> Ocultar las que ya sonaron</label>
+      <input class="search" id="search" type="search" placeholder="Buscar canción o artista…" autocomplete="off" aria-label="Buscar canción">
+    </div>
+
+    <div id="blocks"></div>
+
+    <section class="card" id="juego">
+      <h2>🎵 Juego: Adivina la canción</h2>
+      <p><b>Colombia 🇨🇴 contra España 🇪🇸.</b> Pon 3-5 segundos del principio y para. El primero que la cante gana el punto para su equipo. Alterna una de cada lista.</p>
+      <div class="game">
+        <div><h3>🇨🇴 Colombia</h3><ol id="game-co"></ol></div>
+        <div><h3>🇪🇸 España</h3><ol id="game-es"></ol></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🔧 Antes de la fiesta</h2>
+      <ul>
+        <li><b>Descarga las canciones</b> (Spotify Premium: listas "Disponible sin conexión"; o MP3). No te fíes del wifi o la cobertura del local.</li>
+        <li><b>Prueba el sonido allí</b> durante el montaje: volumen, cable o Bluetooth, y el micrófono para el homenaje.</li>
+        <li><b>Cable de repuesto</b> y el móvil/portátil <b>al 100 %</b> con su cargador enchufado.</li>
+        <li><b>Modo "No molestar"</b>: que no suene un WhatsApp por los altavoces en mitad del brindis.</li>
+        <li><b>Fundido entre canciones</b> (Spotify → Ajustes → Reproducción → Fundido: 4-6 s) y <b>normalizar volumen</b> activado.</li>
+        <li>Ten a mano <b>"Cumpleaños feliz"</b> y una <b>sirena / cuenta atrás</b> para arrancar la Hora Loca.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>📝 Peticiones de la noche</h2>
+      <p>Apunta aquí lo que te pidan. Se guarda en este móvil.</p>
+      <textarea id="requests" placeholder="Ej.: Tía Rosa → Pastor López, 'El ausente'"></textarea>
+    </section>
+
+    <p class="footer-note">
+      <button class="btn" type="button" id="reset">↺ Desmarcar todas las canciones</button><br><br>
+      Esta página no está enlazada en la web de los invitados.
+    </p>
+  </main>
+
+  <script src="canciones.js"></script>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const yt = (s) => `https://www.youtube.com/results?search_query=${encodeURIComponent(s.t + ' ' + s.a)}`;
+
+    // ---- Guardado en el móvil (si el navegador lo permite) ----
+    function leer(clave, porDefecto) {
+      try { const v = localStorage.getItem(clave); return v === null ? porDefecto : JSON.parse(v); } catch (e) { return porDefecto; }
+    }
+    function guardar(clave, valor) {
+      try { localStorage.setItem(clave, JSON.stringify(valor)); } catch (e) { /* sin almacenamiento */ }
+    }
+    const clave = (s) => s.t + '|' + s.a;
+    let sonadas = new Set(leer('dj70-sonadas', []));
+
+    // ---- Horario ----
+    function fecha(hhmm) {
+      const h = +hhmm.split(':')[0];
+      return new Date(`2026-10-${h < 12 ? '18' : '17'}T${hhmm}:00+02:00`);
+    }
+    function bloqueActual() {
+      const ahora = new Date();
+      return BLOQUES.find((b) => ahora >= fecha(b.ini) && ahora < fecha(b.fin));
+    }
+
+    function pintarAhora() {
+      const ahora = new Date();
+      $('clock').textContent = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
+      const b = bloqueActual();
+      const inicio = fecha(BLOQUES[0].ini), fin = fecha(BLOQUES[BLOQUES.length - 1].fin);
+      let html;
+      if (b) {
+        const sig = BLOQUES[BLOQUES.indexOf(b) + 1];
+        html = `<div class="lbl">Ahora toca · energía ${b.energia}</div><div class="big">${b.titulo}</div><p>${b.objetivo}</p>` +
+          (sig ? `<p><b>Siguiente a las ${sig.ini}:</b> ${sig.titulo}</p>` : '');
+      } else if (ahora < inicio) {
+        const dias = Math.floor((inicio - ahora) / 86400000);
+        const cuando = dias < 1 ? '¡Es hoy! 🎧' : `Faltan ${dias} día${dias === 1 ? '' : 's'} 🎧`;
+        html = `<div class="lbl">Sábado 17 de octubre · 18:00</div><div class="big">${cuando}</div><p>${CANCIONES.length} canciones en 8 bloques. El día de la fiesta, esta tarjeta te dirá qué toca en cada momento.</p>`;
+      } else if (ahora >= fin) {
+        html = `<div class="lbl">Fiesta terminada</div><div class="big">¡Gran trabajo, DJ! 🙌</div><p>Sonaron ${sonadas.size} canciones.</p>`;
+      } else {
+        html = `<div class="lbl">Entre bloques</div><div class="big">🎶</div>`;
+      }
+      $('now').innerHTML = html;
+      document.querySelectorAll('details.block').forEach((d) => d.classList.toggle('current', !!b && d.dataset.id === b.id));
+    }
+
+    // ---- Bloques y canciones ----
+    function pintarBloques() {
+      const actual = bloqueActual();
+      $('blocks').innerHTML = BLOQUES.map((b, i) => {
+        const abierto = actual ? actual.id === b.id : i === 0;
+        return `<details class="block" data-id="${b.id}"${abierto ? ' open' : ''}>
+          <summary>
+            <span class="b-time">${b.ini} – ${b.fin} · energía ${b.energia}</span>
+            <span class="b-count" id="count-${b.id}"></span>
+            <span class="b-title">${b.titulo}</span>
+          </summary>
+          <div class="b-body">
+            <p class="b-goal">${b.objetivo}</p>
+            <ul class="b-tips">${b.consejos.map((c) => `<li>${c}</li>`).join('')}</ul>
+            <ul class="songs" id="songs-${b.id}"></ul>
+          </div>
+        </details>`;
+      }).join('');
+      pintarCanciones();
+    }
+
+    function sinAcentos(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+
+    function pintarCanciones() {
+      const q = sinAcentos($('search').value.trim());
+      BLOQUES.forEach((b) => {
+        const todas = CANCIONES.filter((s) => s.b === b.id);
+        const lista = todas.filter((s) => !q || sinAcentos(s.t + ' ' + s.a).includes(q));
+        const ul = $('songs-' + b.id);
+        ul.innerHTML = lista.length ? lista.map((s) => {
+          const i = CANCIONES.indexOf(s);
+          const hecha = sonadas.has(clave(s));
+          return `<li class="song${hecha ? ' played' : ''}">
+            <input type="checkbox" data-i="${i}"${hecha ? ' checked' : ''} aria-label="Marcar ${s.t} como sonada">
+            <div>
+              <div class="s-title">${s.t}</div>
+              <div class="s-meta">${s.a}
+                <span class="dots" title="Energía ${s.e} de 5">${'●'.repeat(s.e)}${'○'.repeat(5 - s.e)}</span>
+                ${s.coro ? '<span class="tag">🎤 coro</span>' : ''}
+                ${s.dj ? `<span class="tag dj">${s.dj}</span>` : ''}
+                ${s.n ? `<span class="tag">${s.n}</span>` : ''}
+              </div>
+            </div>
+            <a class="yt" href="${yt(s)}" target="_blank" rel="noopener" aria-label="Buscar ${s.t} en YouTube">▶</a>
+          </li>`;
+        }).join('') : `<li class="empty">Nada con "${$('search').value}" en este bloque.</li>`;
+        const n = todas.filter((s) => sonadas.has(clave(s))).length;
+        const c = $('count-' + b.id);
+        c.textContent = `${n}/${todas.length}`;
+        c.classList.toggle('done', n === todas.length);
+        if (q) ul.closest('details').open = lista.length > 0;
+      });
+    }
+
+    function pintarJuego() {
+      ['co', 'es'].forEach((k) => {
+        $('game-' + k).innerHTML = CANCIONES.filter((s) => s.j === k)
+          .map((s) => `<li><a href="${yt(s)}" target="_blank" rel="noopener">${s.t}</a> <small>· ${s.a}</small></li>`).join('');
+      });
+    }
+
+    // ---- Eventos ----
+    $('blocks').addEventListener('change', (e) => {
+      const cb = e.target.closest('input[type=checkbox]');
+      if (!cb) return;
+      const s = CANCIONES[cb.dataset.i];
+      if (cb.checked) sonadas.add(clave(s)); else sonadas.delete(clave(s));
+      guardar('dj70-sonadas', [...sonadas]);
+      pintarCanciones();
+    });
+    $('search').addEventListener('input', pintarCanciones);
+    $('hide-played').checked = leer('dj70-ocultar', false);
+    document.body.classList.toggle('hide-played', $('hide-played').checked);
+    $('hide-played').addEventListener('change', (e) => {
+      document.body.classList.toggle('hide-played', e.target.checked);
+      guardar('dj70-ocultar', e.target.checked);
+    });
+    $('requests').value = leer('dj70-peticiones', '');
+    $('requests').addEventListener('input', (e) => guardar('dj70-peticiones', e.target.value));
+    $('reset').addEventListener('click', () => {
+      if (!confirm('¿Desmarcar todas las canciones?')) return;
+      sonadas = new Set();
+      guardar('dj70-sonadas', []);
+      pintarCanciones();
+    });
+
+    pintarBloques();
+    pintarJuego();
+    pintarAhora();
+    setInterval(pintarAhora, 30000);
+  </script>
+</body>
+</html>
