@@ -6,7 +6,7 @@
   <title>María Inés cumple 70 · Fiesta Hippie & Disco</title>
   <meta name="description" content="Sábado 17 de octubre de 2026 · 18:00 a 02:00 · Logroño, junto al Puente de Hierro. Horario, lugar, cómo venir vestido, música y mensajes para María Inés.">
   <meta property="og:title" content="¡María Inés cumple 70! 🌸 Fiesta Hippie & Disco">
-  <meta property="og:description" content="Sábado 17 de octubre · 18:00 · Logroño (Puente de Hierro). Toda la info de la fiesta aquí.">
+  <meta property="og:description" content="Sábado 17 de octubre · 18:00 · Friends & Family, C/ San Gregorio 1, Logroño. Toda la info de la fiesta aquí.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#F26B21">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
@@ -435,7 +435,6 @@
         <a href="#musica">Música</a>
         <a href="#polaroid">Polaroid</a>
         <a href="#trivia">Trivia</a>
-        <a href="#escribenos">Escríbenos</a>
       </nav>
       <button class="btn btn-sm" type="button" onclick="celebrar()">🎉 <span>¡Celebrar!</span></button>
     </div>
@@ -475,7 +474,7 @@
           </div>
           <div>
             <div class="label">Dónde</div>
-            <div class="value" id="ticket-place">Logroño<br>Puente de Hierro</div>
+            <div class="value" id="ticket-place">Friends & Family<br>C/ San Gregorio, 1</div>
           </div>
         </div>
         <div class="countdown" aria-live="polite">
@@ -489,7 +488,7 @@
           <div class="cd-msg" id="cd-msg" hidden></div>
         </div>
         <div class="hero-cta">
-          <a class="btn btn-pink" href="#escribenos">💌 Confirmar / dejar mensaje</a>
+          <a class="btn btn-pink" href="#programa">⏰ Ver el programa</a>
           <a class="btn btn-cream" href="#lugar">📍 Cómo llegar</a>
         </div>
       </div>
@@ -685,47 +684,14 @@
     </div>
   </section>
 
-  <!-- ===================== ESCRÍBENOS ===================== -->
-  <section class="section" id="escribenos">
+  <!-- ===================== CANCIONES Y MENSAJES ===================== -->
+  <section class="section" id="mensajes">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">💌 Buzón</span>
-        <h2>Confirma, pide tu canción y déjale un mensaje</h2>
-        <p id="write-intro">Rellena lo que quieras y pulsa el botón: se abrirá WhatsApp con el mensaje ya escrito. Los mensajes para María Inés se los guardaremos como recuerdo.</p>
+      <div class="card" style="max-width:720px;margin:0 auto;text-align:center">
+        <div style="font-size:2.6rem;line-height:1">💌</div>
+        <h3 style="margin:8px 0">¿Una canción o unas palabras para María Inés?</h3>
+        <p style="margin:0">Pídele tu canción al DJ durante la fiesta y escríbele un mensaje en la mesa de recuerdos: se los guardaremos todos para ella. 🌸</p>
       </div>
-      <form class="card write" id="write-form" novalidate>
-        <div class="grid2">
-          <div class="field">
-            <label for="w-name">Tu nombre *</label>
-            <input id="w-name" type="text" required autocomplete="name" placeholder="Ej.: Juan y Carolina">
-          </div>
-          <div class="field">
-            <label for="w-rsvp">¿Vienes?</label>
-            <select id="w-rsvp">
-              <option value="">— Ya lo había confirmado —</option>
-              <option value="1">¡Sí! Voy yo</option>
-              <option value="2">¡Sí! Vamos 2</option>
-              <option value="3">¡Sí! Vamos 3</option>
-              <option value="4">¡Sí! Vamos 4</option>
-              <option value="5">¡Sí! Vamos 5 o más</option>
-              <option value="no">No puedo ir, pero la felicito</option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label for="w-song">Una canción que no puede faltar</label>
-          <input id="w-song" type="text" placeholder="Ej.: Tu cárcel – Los Bukis">
-        </div>
-        <div class="field">
-          <label for="w-msg">Tu mensaje para María Inés</label>
-          <textarea id="w-msg" placeholder="Un recuerdo, una anécdota, un deseo…"></textarea>
-        </div>
-        <button class="btn btn-green" type="submit" style="width:100%">
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
-          Enviar por WhatsApp
-        </button>
-        <div class="sent-note" id="sent-note">¡Gracias! Si WhatsApp no se ha abierto, comprueba que lo tienes instalado. 🌸</div>
-      </form>
     </div>
   </section>
   </main>
@@ -745,7 +711,7 @@
     <a href="#lugar"><span>📍</span>Lugar</a>
     <a href="#musica"><span>🎶</span>Música</a>
     <a href="#polaroid"><span>📸</span>Polaroid</a>
-    <a href="#escribenos"><span>💌</span>Escribir</a>
+    <a href="#trivia"><span>🧠</span>Trivia</a>
   </nav>
 
   <!-- Coco, la mascota -->
@@ -784,14 +750,9 @@
     // AJUSTES: rellena esto y la web se adapta sola.
     // =====================================================================
     const CONFIG = {
-      // Teléfono que recibirá confirmaciones, canciones y mensajes por WhatsApp.
-      // Con prefijo de país, sin "+" ni espacios. Ej.: "34600111222".
-      // Si se deja vacío, WhatsApp deja que el invitado elija a quién enviarlo.
-      whatsapp: "",
-
       // Nombre del local y dirección (lo que se busca en Google Maps).
-      lugarNombre: "Junto al Puente de Hierro",
-      lugarDireccion: "Puente de Hierro, Logroño",
+      lugarNombre: "Friends & Family · Puente de Hierro",
+      lugarDireccion: "Calle San Gregorio 1, 26001 Logroño",
 
       // Fotos de María Inés (opcional). Copia las fotos a la carpeta "fotos"
       // (al lado de este archivo) y añádelas así:
@@ -809,7 +770,7 @@
     const PROGRAMA = [
       { ini: '18:00', fin: '19:30', icon: '🌸', c: 'var(--mustard)', titulo: 'Bienvenida hippie', texto: 'Llegada, collares de flores, gafas setenteras y fotos en el photocall.' },
       { ini: '19:30', fin: '21:00', icon: '🥟', c: 'var(--orange)', titulo: 'Picoteo Colombia & España', texto: 'Empanadas y arepitas junto a tortilla y jamón, con rumba y vallenato de fondo.' },
-      { ini: '21:00', fin: '21:45', icon: '🎂', c: 'var(--pink)', titulo: 'Homenaje, brindis y tarta', texto: 'El momento más especial de la noche… con alguna sorpresa. ¡No te lo pierdas!', star: true },
+      { ini: '21:00', fin: '21:45', icon: '🎂', c: 'var(--pink)', titulo: 'Homenaje, brindis y tarta', texto: 'El momento más especial de la noche: unas palabras para María Inés, brindis y a soplar las velas. ¡No te lo pierdas!', star: true },
       { ini: '21:45', fin: '22:30', icon: '🕺', c: 'var(--purple)', titulo: 'Pasarela hippie y juegos', texto: 'Concurso de disfraces y “Adivina la canción”: Colombia contra España.' },
       { ini: '22:30', fin: '00:30', icon: '💃', c: 'var(--teal)', titulo: '¡A la pista!', texto: 'Salsa, cumbia, merengue, rumba, pop de los 80… y mucho Marco Antonio Solís.' },
       { ini: '00:30', fin: '01:30', icon: '🥳', c: 'var(--pink)', titulo: '¡La Hora Loca!', texto: 'Luces, cotillón, silbatos y el mix más loco de la noche.', star: true },
@@ -871,9 +832,7 @@
       $('map-iframe').src = `https://maps.google.com/maps?q=${q}&z=16&output=embed`;
       $('maps-btn').href = `https://www.google.com/maps/search/?api=1&query=${q}`;
       $('place-name').textContent = CONFIG.lugarNombre;
-      if (CONFIG.lugarDireccion !== 'Puente de Hierro, Logroño') {
-        $('place-address').textContent = CONFIG.lugarDireccion;
-      }
+      $('place-address').textContent = 'C/ San Gregorio, 1 · 26001 Logroño (La Rioja), junto al Puente de Hierro, a orillas del Ebro.';
     }
 
     // ---------------- Fotos ----------------
@@ -1019,7 +978,7 @@
         (!q || sinAcentos(s.t + ' ' + s.a).includes(q)));
       const ul = $('songs');
       if (!lista.length) {
-        ul.innerHTML = '<li class="empty">No está en la lista… ¡pídela en el buzón de abajo! 💌</li>';
+        ul.innerHTML = '<li class="empty">No está en la lista… ¡pídesela al DJ en la fiesta! 🎧</li>';
         return;
       }
       const total = lista.length;
@@ -1215,33 +1174,6 @@
       setTimeout(() => { pq++; pintarPregunta(); }, 1400);
     }
 
-    // ---------------- Buzón por WhatsApp ----------------
-    function enlaceWhatsApp(texto) {
-      const num = CONFIG.whatsapp.replace(/\D/g, '');
-      return `https://wa.me/${num}?text=${encodeURIComponent(texto)}`;
-    }
-
-    function enviarBuzon(e) {
-      e.preventDefault();
-      const nombre = $('w-name').value.trim();
-      if (!nombre) { $('w-name').focus(); aviso('Escribe tu nombre, por favor 🙂'); return; }
-      const rsvp = $('w-rsvp').value;
-      const cancion = $('w-song').value.trim();
-      const msg = $('w-msg').value.trim();
-      if (!rsvp && !cancion && !msg) { aviso('Confirma, pide una canción o escribe un mensaje 🙂'); return; }
-
-      const lineas = [`🌸 *Cumple 70 de María Inés* 🌸`, `De: ${nombre}`];
-      if (rsvp === 'no') lineas.push('❌ No podré ir, ¡pero la felicito con todo el cariño!');
-      else if (rsvp === '1') lineas.push('✅ ¡Confirmo que voy!');
-      else if (rsvp) lineas.push(`✅ ¡Confirmo! Vamos ${rsvp === '5' ? '5 o más' : rsvp} personas.`);
-      if (cancion) lineas.push(`🎶 Canción que no puede faltar: ${cancion}`);
-      if (msg) lineas.push(`💌 Mensaje para María Inés: ${msg}`);
-
-      window.open(enlaceWhatsApp(lineas.join('\n')), '_blank', 'noopener');
-      $('sent-note').style.display = 'block';
-      celebrar();
-    }
-
     // ---------------- Coco ----------------
     const FRASES_COCO = [
       '¡Guau! ¡Felices 70, María Inés! 🌸',
@@ -1310,7 +1242,7 @@
 
     function compartir() {
       const url = location.href.split('#')[0];
-      const texto = '🌸 ¡María Inés cumple 70! Fiesta Hippie & Disco el sábado 17 de octubre a las 18:00 en Logroño (Puente de Hierro). Aquí tienes toda la info:';
+      const texto = '🌸 ¡María Inés cumple 70! Fiesta Hippie & Disco el sábado 17 de octubre a las 18:00 en Friends & Family (C/ San Gregorio 1, Logroño, junto al Puente de Hierro). Aquí tienes toda la info:';
       if (navigator.share) {
         navigator.share({ title: 'María Inés cumple 70', text: texto, url }).catch(() => {});
       } else {
@@ -1333,12 +1265,6 @@
     setInterval(cuentaAtras, 1000);
     setInterval(marcarBloqueActual, 30000);
 
-    if (CONFIG.whatsapp) {
-      $('write-intro').textContent = 'Rellena lo que quieras y pulsa el botón: se abrirá WhatsApp con el mensaje ya escrito para la familia. Los mensajes para María Inés se los guardaremos como recuerdo.';
-    } else {
-      $('write-intro').textContent = 'Rellena lo que quieras y pulsa el botón: se abrirá WhatsApp con el mensaje ya escrito para que se lo envíes a quien te invitó. Los mensajes para María Inés se los guardaremos como recuerdo.';
-    }
-
     $('chips').addEventListener('click', (e) => {
       const b = e.target.closest('.chip');
       if (!b) return;
@@ -1352,7 +1278,6 @@
       const b = e.target.closest('.song');
       if (b) ponerCancion(CANCIONES[b.dataset.i], true);
     });
-    $('write-form').addEventListener('submit', enviarBuzon);
     $('coco-btn').addEventListener('click', tocarCoco);
     setTimeout(() => {
       $('coco-bubble').classList.add('show');
