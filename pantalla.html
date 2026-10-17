@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pantalla · Cumple 70 María Inés</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Righteous&family=Monoton&family=Permanent+Marker&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    /* =====================================================================
+       PANTALLA PARA EL PROYECTOR (16:9). Va pasando sola entre las fotos,
+       las cartas, el marcador del quiz y los QR para participar.
+       Todo se mide en vh para que se vea igual en cualquier proyector.
+       ===================================================================== */
+    :root {
+      --cream: #FFF3DF; --paper: #FFFBF3; --ink: #3A2215; --ink-soft: #6B4A36;
+      --orange: #E5671A; --mustard: #F0A81F; --pink: #D9407A; --olive: #6E9A2A; --teal: #1E8C80; --purple: #7C4DB0;
+      --display: 'Caprasimo', cursive; --hand: 'Permanent Marker', cursive;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; }
+    body {
+      font-family: 'Nunito', system-ui, sans-serif; color: var(--ink);
+      background:
+        radial-gradient(70vw 60vh at 85% -10%, rgba(240, 168, 31, .28), transparent 60%),
+        radial-gradient(60vw 60vh at -10% 110%, rgba(110, 154, 42, .16), transparent 60%),
+        radial-gradient(60vw 60vh at 110% 100%, rgba(217, 64, 122, .14), transparent 60%),
+        var(--cream);
+      display: grid; grid-template-rows: auto 1fr auto;
+    }
+    body.sin-raton { cursor: none; }
+
+    header { display: flex; align-items: center; justify-content: space-between; gap: 2vh; padding: 2.2vh 3.5vw 1vh; }
+    .marca { font-family: var(--display); font-size: 5vh; line-height: 1; color: var(--orange); white-space: nowrap; }
+    .marca span { color: var(--pink); }
+    .ahora { font-family: 'Righteous', sans-serif; font-size: 2.6vh; background: var(--ink); color: var(--cream); padding: 1vh 2.2vh; border-radius: 99px; white-space: nowrap; }
+    .ahora b { color: var(--mustard); font-weight: 400; }
+    .reloj { font-family: 'Righteous', sans-serif; font-size: 4vh; font-variant-numeric: tabular-nums; }
+
+    main { position: relative; min-height: 0; }
+    .escena { position: absolute; inset: 0; display: grid; place-items: center; padding: 1vh 3.5vw 2vh; opacity: 0; transform: translateY(2vh) scale(.985); filter: blur(6px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out), filter .8s var(--ease-out); pointer-events: none; }
+    .escena.activa { opacity: 1; transform: none; filter: none; }
+    h2 { font-family: var(--display); font-weight: 400; margin: 0; font-size: 7vh; line-height: 1.05; text-align: center; color: var(--ink); text-shadow: .35vh .35vh 0 var(--orange), .7vh .7vh 0 var(--pink), 1.05vh 1.05vh 0 rgba(124, 77, 176, .9); }
+
+    /* Fotos: una Polaroid grande + tira de las últimas */
+    .fotos { display: grid; grid-template-columns: auto 1fr; gap: 5vw; align-items: center; width: 100%; height: 100%; }
+    .polaroid { background: #FBF8F0; padding: 2.2vh 2.2vh 3vh; box-shadow: 0 3vh 6vh -2.5vh rgba(90, 45, 15, .55); transform: rotate(-2.5deg); width: min(62vh, 44vw); }
+    .polaroid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: #2B2420; }
+    .polaroid img.revela { animation: revelar 3.4s ease-out both; }
+    @keyframes revelar { from { filter: brightness(.25) sepia(1) saturate(.4) blur(4px); } 40% { filter: brightness(.7) sepia(.7) saturate(.6) blur(1px); } to { filter: sepia(.1) saturate(1.1); } }
+    .polaroid figcaption { font-family: var(--hand); color: #24305E; font-size: 3.6vh; line-height: 1.2; margin-top: 2vh; text-align: center; }
+    .polaroid figcaption b { display: block; color: #B83A1B; font-weight: 400; }
+    .lado { display: flex; flex-direction: column; gap: 3vh; align-items: flex-start; }
+    .lado h2 { text-align: left; }
+    .nueva { font-family: 'Righteous', sans-serif; font-size: 3vh; background: var(--pink); color: #fff; padding: .8vh 2vh; border-radius: 99px; display: none; }
+    .nueva.si { display: inline-block; animation: latido 1.2s ease-in-out infinite; }
+    @keyframes latido { 50% { transform: scale(1.06); } }
+    .tira { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vh; width: 100%; }
+    .tira img { width: 100%; aspect-ratio: 1; object-fit: cover; background: #fff; border: 1vh solid #FBF8F0; box-shadow: 0 1.4vh 2.6vh -1.4vh rgba(90, 45, 15, .6); }
+    .contador { font-size: 3vh; font-weight: 800; color: var(--ink-soft); }
+
+    /* Carta por avión */
+    .carta { width: min(130vh, 80vw); padding: 2vh; background-image: repeating-linear-gradient(135deg, #C8312B 0 3vh, #FBF6EA 3vh 4.6vh, #1F4E9C 4.6vh 7.6vh, #FBF6EA 7.6vh 9.2vh); box-shadow: 0 3vh 6vh -2.5vh rgba(90, 45, 15, .55); transform: rotate(-1deg); }
+    .carta-in { background: #FFF8E6; padding: 5vh 6vh 4vh; position: relative; }
+    .carta .sello { position: absolute; right: 4vh; top: 3vh; font-family: 'Righteous', sans-serif; font-size: 2vh; color: #1F4E9C; border: .4vh solid #1F4E9C; border-radius: .6vh; padding: .6vh 1.2vh; transform: rotate(7deg); text-align: center; line-height: 1.2; }
+    .carta p { font-family: var(--hand); color: #24305E; font-size: clamp(3vh, 5.2vh, 6vh); line-height: 1.35; margin: 0 14vh 3vh 0; white-space: pre-line; }
+    .carta b { font-family: 'Righteous', sans-serif; font-weight: 400; color: #B83A1B; font-size: 4vh; }
+    .escena-carta { align-content: center; gap: 5vh; }
+
+    /* Marcador */
+    .marcador { width: min(120vh, 80vw); display: grid; gap: 1.6vh; margin-top: 4vh; padding: 0; list-style: none; }
+    .marcador li { display: flex; align-items: center; gap: 3vh; background: #fff; border-radius: 2vh; padding: 1.6vh 3vh; font-weight: 800; font-size: 4vh; box-shadow: 0 1.4vh 3vh -1.6vh rgba(90, 45, 15, .5); }
+    .marcador li:first-child { background: linear-gradient(120deg, #FFE3A3, #FFD0DE); font-size: 5vh; }
+    .marcador .pos { width: 2em; text-align: center; }
+    .marcador .who { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .marcador .pts { font-family: 'Righteous', sans-serif; color: var(--orange); font-variant-numeric: tabular-nums; }
+    .marcador small { color: var(--ink-soft); font-size: .7em; }
+    .escena-marcador { align-content: center; }
+
+    /* Participa: los 3 QR */
+    .qrs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4vw; margin-top: 4vh; width: 100%; max-width: 150vh; }
+    .qr { text-align: center; }
+    .qr .caja { background: #fff; border: .8vh solid var(--c); border-radius: 3vh; padding: 2vh; box-shadow: 0 2vh 4vh -2vh rgba(90, 45, 15, .5); }
+    .qr svg { display: block; width: 100%; height: auto; }
+    .qr h3 { font-family: var(--display); font-weight: 400; font-size: 4.2vh; color: var(--c); margin: 2.4vh 0 .6vh; line-height: 1.1; }
+    .qr p { margin: 0; font-size: 2.6vh; font-weight: 800; color: var(--ink-soft); }
+    .escena-qr { align-content: center; }
+
+    /* Cinta de abajo */
+    .cinta { overflow: hidden; background: var(--mustard); }
+    .cinta-pista { display: flex; width: max-content; animation: cinta 40s linear infinite; }
+    .cinta span { font-family: var(--display); font-size: 3.4vh; padding: 1.2vh 0; white-space: nowrap; color: #2A1405; }
+    .cinta i { font-style: normal; color: var(--pink); padding: 0 .6em; }
+    @keyframes cinta { to { transform: translateX(-50%); } }
+
+    .ayuda { position: fixed; right: 2vh; bottom: 8vh; font-size: 1.8vh; background: rgba(58, 34, 21, .85); color: var(--cream); padding: 1vh 1.6vh; border-radius: 1vh; transition: opacity .6s; }
+    body.sin-raton .ayuda { opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: opacity .3s !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="marca">María Inés <span>70</span></div>
+    <div class="ahora" id="ahora"></div>
+    <div class="reloj" id="reloj"></div>
+  </header>
+
+  <main>
+    <section class="escena escena-fotos" id="e-fotos">
+      <div class="fotos">
+        <figure class="polaroid" style="margin:0"><img id="foto-grande" alt=""><figcaption id="foto-pie"></figcaption></figure>
+        <div class="lado">
+          <span class="nueva" id="nueva">✨ ¡Foto nueva!</span>
+          <h2>Las Polaroid<br>de la fiesta</h2>
+          <div class="contador" id="contador"></div>
+          <div class="tira" id="tira"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="escena escena-carta" id="e-carta">
+      <h2>Cartas para María Inés</h2>
+      <div class="carta"><div class="carta-in"><span class="sello">CORREO<br>AÉREO</span><p id="carta-texto"></p><b id="carta-firma"></b></div></div>
+    </section>
+
+    <section class="escena escena-marcador" id="e-marcador">
+      <h2>🏆 Un, dos, tres… ¡el marcador!</h2>
+      <ol class="marcador" id="marcador"></ol>
+    </section>
+
+    <section class="escena escena-qr" id="e-qr">
+      <h2>¡Participa desde tu móvil!</h2>
+      <div class="qrs">
+        <div class="qr" style="--c:var(--pink)"><div class="caja"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h35v35H0z"/><path stroke="#3E2414" d="M1 1.5h7m2 0h2m2 0h1m2 0h1m1 0h2m3 0h1m2 0h7M1 2.5h1m5 0h1m6 0h3m1 0h2m2 0h1m2 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h2m2 0h2m2 0h1m4 0h2m3 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h3m4 0h3m2 0h2m2 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h3m3 0h2m2 0h7M1 9.5h1m1 0h5m2 0h2m1 0h4m1 0h1m1 0h2m1 0h1m3 0h5M3 10.5h3m2 0h1m2 0h3m5 0h2m1 0h1m1 0h1m2 0h2m1 0h4M3 11.5h1m1 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m3 0h1m2 0h2m2 0h1m1 0h2M8 12.5h2m3 0h1m1 0h1m3 0h1m2 0h3m1 0h2m1 0h5M5 13.5h1m1 0h2m1 0h2m4 0h1m1 0h1m1 0h1m3 0h1m4 0h2M3 14.5h2m1 0h1m1 0h3m1 0h6m1 0h2m3 0h1m1 0h3m1 0h4M1 15.5h2m3 0h10m2 0h1m2 0h3m2 0h2m2 0h3M1 16.5h1m1 0h2m3 0h2m1 0h1m3 0h1m1 0h1m2 0h1m1 0h2m1 0h3m2 0h2M3 17.5h5m2 0h2m3 0h1m2 0h1m2 0h1m1 0h1m1 0h2m1 0h2m3 0h1M1 18.5h2m2 0h2m1 0h2m2 0h1m1 0h2m1 0h4m3 0h1m2 0h2m1 0h2m1 0h1M1 19.5h2m1 0h2m1 0h1m4 0h2m2 0h3m2 0h3m4 0h2m1 0h2M2 20.5h2m1 0h1m3 0h2m1 0h2m2 0h2m4 0h2m1 0h1m2 0h6M3 21.5h1m3 0h5m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h2M1 22.5h2m1 0h3m1 0h1m3 0h2m1 0h2m1 0h1m1 0h3m1 0h1m2 0h1m2 0h1m2 0h1M1 23.5h1m1 0h1m3 0h1m4 0h2m1 0h3m1 0h1m1 0h2m3 0h1m1 0h1m1 0h3M1 24.5h1m4 0h1m2 0h1m1 0h1m1 0h1m7 0h3m2 0h2m1 0h3m1 0h1M1 25.5h1m1 0h2m2 0h12m4 0h8m2 0h1M9 26.5h5m3 0h1m2 0h2m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1M1 27.5h7m2 0h2m1 0h1m1 0h2m4 0h2m1 0h2m1 0h1m1 0h1m1 0h1M1 28.5h1m5 0h1m1 0h1m1 0h1m4 0h1m2 0h1m2 0h4m3 0h5M1 29.5h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h2m1 0h1m2 0h1m1 0h6m1 0h2M1 30.5h1m1 0h3m1 0h1m1 0h2m1 0h2m3 0h1m1 0h4m1 0h1m1 0h1m2 0h1m1 0h3M1 31.5h1m1 0h3m1 0h1m1 0h4m3 0h2m7 0h4m2 0h1M1 32.5h1m5 0h1m2 0h1m1 0h4m1 0h1m1 0h4m3 0h2m1 0h3M1 33.5h7m1 0h4m1 0h2m2 0h1m1 0h1m2 0h4m1 0h1m3 0h1"/></svg></div><h3>📸 Sube tus Polaroid</h3><p>Salen aquí en la pantalla</p></div>
+        <div class="qr" style="--c:var(--orange)"><div class="caja"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h35v35H0z"/><path stroke="#3E2414" d="M1 1.5h7m4 0h1m4 0h1m1 0h2m3 0h1m2 0h7M1 2.5h1m5 0h1m2 0h1m5 0h1m1 0h2m2 0h1m2 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h2m3 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h4m5 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h5m1 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h1m8 0h1m2 0h2m2 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h3m3 0h1m1 0h1m1 0h7M1 9.5h1m1 0h5m5 0h3m2 0h1m1 0h2m1 0h1m3 0h5M4 10.5h3m1 0h2m1 0h1m1 0h2m4 0h2m1 0h1m1 0h1m2 0h2m1 0h4M1 11.5h1m3 0h3m2 0h1m1 0h5m5 0h1m2 0h2m2 0h1m1 0h2M2 12.5h1m1 0h2m2 0h1m5 0h1m4 0h1m2 0h3m1 0h2m1 0h5M2 13.5h1m1 0h4m2 0h2m1 0h1m1 0h2m1 0h1m1 0h1m3 0h1m4 0h2M2 14.5h1m2 0h1m5 0h1m1 0h1m2 0h1m3 0h1m3 0h1m1 0h3m1 0h4M2 15.5h7m1 0h1m5 0h3m2 0h3m2 0h2m2 0h3M2 16.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h2m3 0h1m1 0h2m1 0h3m2 0h2M1 17.5h3m3 0h2m2 0h2m3 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h2m3 0h1M1 18.5h2m1 0h2m3 0h1m4 0h1m2 0h1m1 0h2m3 0h1m2 0h2m1 0h2m1 0h1M2 19.5h2m2 0h5m3 0h6m1 0h3m4 0h2m1 0h2M4 20.5h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h6M1 21.5h2m3 0h3m1 0h2m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h2M1 22.5h1m1 0h1m2 0h1m1 0h1m3 0h2m3 0h6m1 0h1m2 0h1m2 0h1m2 0h1M1 23.5h1m1 0h1m2 0h3m2 0h2m2 0h3m1 0h1m1 0h2m3 0h1m1 0h1m1 0h3M1 24.5h1m1 0h1m1 0h2m1 0h1m2 0h2m1 0h1m1 0h1m4 0h3m2 0h2m1 0h5M1 25.5h1m3 0h1m1 0h1m3 0h1m2 0h2m1 0h2m4 0h8m2 0h1M9 26.5h1m2 0h1m1 0h2m1 0h2m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1M1 27.5h7m2 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h2m1 0h1m1 0h1m1 0h1M1 28.5h1m5 0h1m1 0h2m3 0h3m5 0h4m3 0h5M1 29.5h1m1 0h3m1 0h1m1 0h1m3 0h3m2 0h1m1 0h1m2 0h1m1 0h6m1 0h2M1 30.5h1m1 0h3m1 0h1m1 0h1m2 0h3m2 0h1m2 0h3m1 0h1m1 0h1m2 0h1m1 0h3M1 31.5h1m1 0h3m1 0h1m1 0h1m5 0h2m8 0h4m2 0h1M1 32.5h1m5 0h1m3 0h1m1 0h2m2 0h1m1 0h4m3 0h2m1 0h3M1 33.5h7m1 0h4m3 0h1m1 0h1m1 0h1m2 0h4m1 0h1m3 0h1"/></svg></div><h3>🧠 Juega al quiz</h3><p>¿Cuánto conoces a María Inés?</p></div>
+        <div class="qr" style="--c:var(--purple)"><div class="caja"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h35v35H0z"/><path stroke="#3E2414" d="M1 1.5h7m1 0h2m6 0h1m1 0h2m3 0h1m2 0h7M1 2.5h1m5 0h1m1 0h1m1 0h1m1 0h3m5 0h1m2 0h1m2 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m2 0h1m3 0h3m2 0h2m4 0h1m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h5m3 0h2m1 0h1m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h3m1 0h4m2 0h2m3 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m6 0h1m3 0h4m1 0h1m3 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h3m1 0h1m3 0h2m1 0h1m2 0h1M1 9.5h1m1 0h2m1 0h3m4 0h1m1 0h1m1 0h3m1 0h2m2 0h1m1 0h1m2 0h1m1 0h2M1 10.5h2m1 0h3m1 0h1m2 0h1m1 0h2m3 0h3m1 0h1m1 0h1m2 0h2m1 0h4M1 11.5h1m1 0h2m2 0h1m2 0h1m3 0h1m3 0h2m1 0h1m2 0h1m1 0h5m1 0h2M2 12.5h2m4 0h3m1 0h2m2 0h2m1 0h2m3 0h2m1 0h2m1 0h1m2 0h1M3 13.5h1m1 0h4m2 0h3m1 0h2m1 0h1m1 0h1m3 0h1m4 0h2M8 14.5h1m3 0h1m2 0h4m1 0h3m2 0h2m5 0h1M1 15.5h1m1 0h1m1 0h3m2 0h2m3 0h1m1 0h5m3 0h1m1 0h4M2 16.5h2m1 0h2m2 0h1m3 0h1m1 0h1m4 0h1m1 0h2m1 0h3m2 0h2M4 17.5h1m2 0h1m4 0h2m2 0h1m2 0h1m2 0h3m1 0h2m1 0h3M4 18.5h3m1 0h4m4 0h1m5 0h6m1 0h2m1 0h2M3 19.5h2m1 0h5m1 0h6m3 0h3m4 0h2m1 0h2M5 20.5h1m2 0h2m1 0h2m4 0h3m1 0h1m1 0h2m2 0h1m1 0h1m2 0h1M2 21.5h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m2 0h6m3 0h1m3 0h2m1 0h1M1 22.5h1m2 0h2m4 0h4m3 0h6m1 0h1m2 0h1m2 0h1m2 0h1M4 23.5h1m2 0h1m2 0h2m2 0h1m2 0h2m5 0h4m4 0h2M2 24.5h3m1 0h1m2 0h3m3 0h1m1 0h1m1 0h3m3 0h1m1 0h2m1 0h1M1 25.5h1m3 0h1m1 0h1m2 0h1m1 0h2m2 0h3m4 0h8m1 0h2M9 26.5h3m1 0h2m1 0h2m1 0h2m1 0h4m3 0h2M1 27.5h7m1 0h1m3 0h3m1 0h5m1 0h3m1 0h1m1 0h1m2 0h1M1 28.5h1m5 0h1m1 0h5m1 0h2m2 0h1m2 0h4m3 0h5M1 29.5h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h1m2 0h11m1 0h2M1 30.5h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1m1 0h1m1 0h3m2 0h1m4 0h1M1 31.5h1m1 0h3m1 0h1m1 0h2m1 0h1m3 0h2m7 0h4m2 0h1M1 32.5h1m5 0h1m3 0h3m1 0h2m1 0h1m1 0h1m3 0h3m1 0h2m3 0h1M1 33.5h7m1 0h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h1m4 0h1m1 0h1"/></svg></div><h3>✉️ Escríbele una carta</h3><p>Se las guardamos todas</p></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cinta" aria-hidden="true"><div class="cinta-pista" id="cinta"></div></div>
+  <div class="ayuda">Pulsa la pantalla o la tecla F para verla completa · ← → para cambiar</div>
+
+  <script>
+    // Misma dirección del almacén que en index.html (CONFIG.servidor).
+    const SERVIDOR = 'https://script.google.com/macros/s/AKfycbydFcDnbyE6GBvFxRKFRGvfyZvKb8r0RoqY-TnS4QA3AHF-i15DMmR02pPAtsxVYjm3pw/exec';
+    const SEGUNDOS_POR_ESCENA = 12;
+
+    const PROGRAMA = [
+      ['18:00', '19:30', '🌸 Bienvenida hippie'], ['19:30', '21:00', '🥟 Picoteo'], ['21:00', '21:45', '🎂 Homenaje, brindis y tarta'],
+      ['21:45', '22:30', '🕺 Pasarela y juegos'], ['22:30', '00:30', '💃 ¡A la pista!'], ['00:30', '01:30', '🥳 ¡La Hora Loca!'], ['01:30', '02:00', '🤗 Abrazo final'],
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const esc = (t) => String(t == null ? '' : t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+    const fotoUrl = (id, w) => `https://lh3.googleusercontent.com/d/${encodeURIComponent(id)}=w${w}`;
+    const respaldo = (id, w) => `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w${w}`;
+
+    let DATOS = { fotos: [], mensajes: [], ranking: [] };
+    let conocidas = null;           // ids de fotos ya vistas (para detectar las nuevas)
+    let pendientes = [];            // fotos nuevas que hay que enseñar ya
+    let iFoto = 0, iCarta = 0, iEscena = -1, timer = null;
+
+    // ---------------- Cabecera: hora y "ahora toca" ----------------
+    function hora(hhmm) {
+      const [h, m] = hhmm.split(':').map(Number);
+      return new Date(`2026-10-${h < 12 ? '18' : '17'}T${hhmm}:00+02:00`);
+    }
+    function cabecera() {
+      const ahora = new Date();
+      $('reloj').textContent = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
+      const b = PROGRAMA.find(([i, f]) => ahora >= hora(i) && ahora < hora(f));
+      $('ahora').innerHTML = b ? `Ahora: <b>${b[2]}</b>` : '17·10·2026 · Hippie &amp; Disco';
+    }
+
+    // ---------------- Datos ----------------
+    async function cargar() {
+      try {
+        const r = await fetch(SERVIDOR + '?t=' + Date.now());
+        const j = await r.json();
+        if (!j.ok) return;
+        DATOS = j;
+        const ids = j.fotos.map((f) => f.id);
+        if (conocidas) pendientes = pendientes.concat(j.fotos.filter((f) => !conocidas.has(f.id)));
+        conocidas = new Set(ids);
+        if (pendientes.length) mostrar(0); // una foto nueva se enseña al momento
+      } catch (e) { /* sin conexión: se reintenta */ }
+    }
+
+    // ---------------- Escenas ----------------
+    const ESCENAS = ['e-fotos', 'e-carta', 'e-marcador', 'e-qr'];
+    function disponible(i) {
+      if (i === 0) return DATOS.fotos.length > 0;
+      if (i === 1) return DATOS.mensajes.length > 0;
+      if (i === 2) return DATOS.ranking.length > 0;
+      return true;
+    }
+
+    function pintarFotos() {
+      const fotos = DATOS.fotos;
+      let f, esNueva = false;
+      if (pendientes.length) { f = pendientes.shift(); esNueva = true; }
+      else { f = fotos[iFoto % fotos.length]; iFoto++; }
+      const img = $('foto-grande');
+      img.classList.remove('revela'); void img.offsetWidth;
+      img.onerror = () => { img.onerror = null; img.src = respaldo(f.id, 1200); };
+      img.src = fotoUrl(f.id, 1200);
+      img.alt = 'Foto de ' + f.n;
+      if (esNueva) img.classList.add('revela');
+      $('foto-pie').innerHTML = `<b>${esc(f.n)}</b>${esc(f.c)}`;
+      $('nueva').classList.toggle('si', esNueva);
+      $('contador').textContent = fotos.length === 1 ? '1 foto en el álbum' : `${fotos.length} fotos en el álbum`;
+      $('tira').innerHTML = fotos.filter((x) => x.id !== f.id).slice(0, 4)
+        .map((x) => `<img src="${fotoUrl(x.id, 400)}" alt="" onerror="this.onerror=null;this.src='${respaldo(x.id, 400)}'">`).join('');
+    }
+
+    function pintarCarta() {
+      const m = DATOS.mensajes[iCarta % DATOS.mensajes.length];
+      iCarta++;
+      $('carta-texto').textContent = m.m;
+      $('carta-texto').style.fontSize = m.m.length > 260 ? '3.4vh' : m.m.length > 140 ? '4.2vh' : '';
+      $('carta-firma').textContent = '— ' + m.n;
+    }
+
+    function pintarMarcador() {
+      const med = ['🥇', '🥈', '🥉'];
+      $('marcador').innerHTML = DATOS.ranking.slice(0, 6).map((x, i) => `<li><span class="pos">${med[i] || i + 1}</span>
+        <span class="who">${esc(x.n)}</span><span class="pts">${x.a}/${x.t} <small>· ${x.s}s</small></span></li>`).join('');
+    }
+
+    function mostrar(i) {
+      iEscena = i;
+      if (i === 0) pintarFotos();
+      if (i === 1) pintarCarta();
+      if (i === 2) pintarMarcador();
+      ESCENAS.forEach((id, k) => $(id).classList.toggle('activa', k === i));
+      clearTimeout(timer);
+      timer = setTimeout(siguiente, (pendientes.length ? 9 : SEGUNDOS_POR_ESCENA) * 1000);
+    }
+
+    // Orden del carrusel: las fotos salen más a menudo (entre cada otra escena).
+    const ORDEN = [0, 1, 0, 2, 0, 3];
+    let iOrden = -1;
+    function siguiente(paso = 1) {
+      if (pendientes.length) return mostrar(0);
+      for (let n = 0; n < ORDEN.length; n++) {
+        iOrden = (iOrden + paso + ORDEN.length) % ORDEN.length;
+        if (disponible(ORDEN[iOrden]) && ORDEN[iOrden] !== iEscena) return mostrar(ORDEN[iOrden]);
+      }
+      mostrar(3);
+    }
+
+    // ---------------- Pantalla completa y ratón ----------------
+    function completa() { if (!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(() => {}); }
+    document.addEventListener('click', completa);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'f' || e.key === 'F') completa();
+      if (e.key === 'ArrowRight') siguiente(1);
+      if (e.key === 'ArrowLeft') siguiente(-1);
+    });
+    let quietoRaton = null;
+    document.addEventListener('mousemove', () => {
+      document.body.classList.remove('sin-raton');
+      clearTimeout(quietoRaton);
+      quietoRaton = setTimeout(() => document.body.classList.add('sin-raton'), 3000);
+    });
+
+    // ---------------- Arranque ----------------
+    const palabras = ['PAZ', 'AMOR', 'SALSA', 'DISCO', 'VALLENATO', 'RUMBA', 'CUMBIA', '70 AÑOS', 'FLOWER POWER', '¡A BAILAR!', 'FELIZ CUMPLE, MARÍA INÉS'];
+    const tira = '<span><i>✿</i>' + palabras.map((w) => w + '<i>✿</i>').join('') + '</span>';
+    $('cinta').innerHTML = tira + tira;
+    cabecera();
+    setInterval(cabecera, 15000);
+    setTimeout(() => document.body.classList.add('sin-raton'), 4000);
+    cargar().then(() => mostrar(DATOS.fotos.length ? 0 : 3));
+    setInterval(cargar, 20000);
+  </script>
+</body>
+</html>
