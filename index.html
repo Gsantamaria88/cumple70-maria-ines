@@ -365,10 +365,6 @@
     .sing a > span:nth-child(2) { flex: 1; min-width: 0; }
     .sing .go { margin-left: auto; font-weight: 800; color: var(--pink); white-space: nowrap; font-size: .9rem; }
 
-    /* ---------- Polaroid ---------- */
-    .polaroid-box { display: grid; gap: 22px; align-items: center; }
-    @media (min-width: 820px) { .polaroid-box { grid-template-columns: 1fr 1fr; } }
-    #polaroid-canvas { width: 100%; max-width: 380px; height: auto; margin: 0 auto; display: block; border: 2px solid var(--brown); box-shadow: 6px 6px 0 var(--brown); transform: rotate(-2deg); background: #fff; }
     .field { margin-bottom: 14px; }
     .field label { display: block; font-weight: 800; margin-bottom: 6px; }
     .field input, .field select, .field textarea {
@@ -725,37 +721,6 @@
     </div>
   </section>
 
-  <!-- ===================== POLAROID ===================== -->
-  <section class="section" id="polaroid">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">📸 Hazte tu recuerdo</span>
-        <h2>Tu polaroid de los 70</h2>
-        <p>Elige una foto (¡mejor con tu look hippie!), escribe una frase y guárdala o compártela.</p>
-      </div>
-      <div class="polaroid-box">
-        <canvas id="polaroid-canvas" width="1080" height="1300" aria-label="Vista previa de la polaroid"></canvas>
-        <div class="card">
-          <div class="field">
-            <span style="display:block;font-weight:800;margin-bottom:6px">1. Tu foto</span>
-            <label class="btn btn-cream file-btn">📷 Elegir foto
-              <input type="file" id="polaroid-file" accept="image/*">
-            </label>
-            <div class="hint">La foto no sale de tu móvil: no se sube a ningún sitio.</div>
-          </div>
-          <div class="field">
-            <label for="polaroid-text">2. Tu frase</label>
-            <input type="text" id="polaroid-text" maxlength="34" value="¡Feliz 70, María Inés!">
-          </div>
-          <div class="row-btns">
-            <button class="btn btn-pink" type="button" id="polaroid-share" hidden>📤 Compartir</button>
-            <button class="btn" type="button" id="polaroid-save">⬇️ Guardar imagen</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   </main>
 
   <footer>
@@ -853,7 +818,7 @@
       // Dirección del almacén de Google (fotos, quiz y mensajes de los invitados).
       // Se consigue al instalar herramientas/servidor-google.gs (ver GUIA_ALMACEN.md).
       // Vacío = las secciones avisan de que aún no están abiertas.
-      servidor: '',
+      servidor: 'https://script.google.com/macros/s/AKfycbydFcDnbyE6GBvFxRKFRGvfyZvKb8r0RoqY-TnS4QA3AHF-i15DMmR02pPAtsxVYjm3pw/exec',
     };
 
     // Inicio y fin de la fiesta (hora de España, horario de verano +02:00).
@@ -1048,114 +1013,6 @@
           <span><b>${t}</b><small>${a}</small></span>
           <span class="go">Letra ›</span>
         </a>`).join('');
-    }
-
-    // ---------------- Polaroid ----------------
-    const canvas = $('polaroid-canvas');
-    const ctx = canvas.getContext('2d');
-    let fotoPolaroid = null;
-
-    function dibujarFondoGroovy(x, y, w, h) {
-      ctx.fillStyle = '#FFF3DC';
-      ctx.fillRect(x, y, w, h);
-      const cols = ['#6E8B2E', '#F2A922', '#F26B21', '#E8457C', '#F9C6D3', '#FFF3DC'];
-      const cx = x + w / 2, cy = y + h;
-      cols.forEach((c, i) => {
-        ctx.beginPath();
-        ctx.arc(cx, cy, w * (0.78 - i * 0.1), Math.PI, 0);
-        ctx.fillStyle = c;
-        ctx.fill();
-      });
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'alphabetic';
-      ctx.font = '420px "Titan One"';
-      const sombras = ['#3E2414', '#6B3FA0', '#E8457C', '#F26B21'];
-      sombras.forEach((c, i) => {
-        ctx.fillStyle = c;
-        const off = (4 - i) * 12;
-        ctx.fillText('70', cx + off, y + h * 0.72 + off);
-      });
-      ctx.fillStyle = '#F2A922';
-      ctx.fillText('70', cx, y + h * 0.72);
-      ctx.font = '110px serif';
-      ctx.fillText('🐩🌸', cx, y + h * 0.95);
-      ctx.font = '70px serif';
-      ctx.fillText('✌️', x + 80, y + 110);
-      ctx.fillText('🪩', x + w - 80, y + 110);
-    }
-
-    function dibujarPolaroid() {
-      const W = canvas.width, H = canvas.height, M = 64, P = W - M * 2;
-      ctx.fillStyle = '#FFFDF6';
-      ctx.fillRect(0, 0, W, H);
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(M, M, P, P);
-      ctx.clip();
-      if (fotoPolaroid) {
-        const r = Math.max(P / fotoPolaroid.width, P / fotoPolaroid.height);
-        const w = fotoPolaroid.width * r, h = fotoPolaroid.height * r;
-        ctx.drawImage(fotoPolaroid, M + (P - w) / 2, M + (P - h) / 2, w, h);
-      } else {
-        dibujarFondoGroovy(M, M, P, P);
-      }
-      ctx.restore();
-      ctx.strokeStyle = 'rgba(62,36,20,.25)';
-      ctx.lineWidth = 3;
-      ctx.strokeRect(M, M, P, P);
-
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#3E2414';
-      let size = 72;
-      const frase = $('polaroid-text').value.trim() || '¡Feliz 70, María Inés!';
-      do { ctx.font = `${size}px "Titan One"`; size -= 4; } while (ctx.measureText(frase).width > P && size > 30);
-      ctx.fillText(frase, W / 2, M + P + 110);
-      ctx.font = '34px Righteous';
-      ctx.fillStyle = '#F26B21';
-      ctx.fillText('MARÍA INÉS · 70 AÑOS · LOGROÑO 17·10·2026', W / 2, M + P + 170);
-    }
-
-    function polaroidBlob() {
-      return new Promise((res) => canvas.toBlob(res, 'image/jpeg', 0.92));
-    }
-
-    async function guardarPolaroid() {
-      const blob = await polaroidBlob();
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'polaroid-maria-ines-70.jpg';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-      aviso('¡Polaroid guardada! 📸');
-    }
-
-    async function compartirPolaroid() {
-      const blob = await polaroidBlob();
-      const file = new File([blob], 'polaroid-maria-ines-70.jpg', { type: 'image/jpeg' });
-      try { await navigator.share({ files: [file], title: '¡Los 70 de María Inés!' }); } catch (e) { /* cancelado */ }
-    }
-
-    function iniciarPolaroid() {
-      $('polaroid-file').addEventListener('change', (e) => {
-        const f = e.target.files && e.target.files[0];
-        if (!f) return;
-        const img = new Image();
-        img.onload = () => { fotoPolaroid = img; dibujarPolaroid(); };
-        img.src = URL.createObjectURL(f);
-      });
-      $('polaroid-text').addEventListener('input', dibujarPolaroid);
-      $('polaroid-save').addEventListener('click', guardarPolaroid);
-      try {
-        const prueba = new File([new Blob(['x'], { type: 'image/jpeg' })], 'x.jpg', { type: 'image/jpeg' });
-        if (navigator.canShare && navigator.canShare({ files: [prueba] })) {
-          $('polaroid-share').hidden = false;
-          $('polaroid-share').addEventListener('click', compartirPolaroid);
-        }
-      } catch (e) { /* sin soporte */ }
-      dibujarPolaroid();
-      Promise.all([document.fonts.load('72px "Titan One"'), document.fonts.load('34px Righteous')]).then(dibujarPolaroid, dibujarPolaroid);
     }
 
     // ---------------- Almacén (fotos, quiz y mensajes) ----------------
@@ -1446,7 +1303,6 @@
       mensajes: ['Escríbele algo bonito a María Inés 💌', '¡Ella leerá todos los mensajes! 🥹'],
       musica: ['¡Que suene Marco Antonio Solís! 👑', 'Pide el Baile del Perrito, ¡es por mí! 🐾'],
       historia: ['¡70 años de alegría! 💖'],
-      polaroid: ['Hazte una polaroid setentera 📸'],
     };
     const coco = { x: 0, dir: -1, meta: 0, parado: 0, ultimo: 0, seccion: 'inicio', dichas: {}, timer: null };
 
@@ -1601,7 +1457,6 @@
     pintarCanciones();
     pintarCoro();
     ponerCancion(LISTA[0], false);
-    iniciarPolaroid();
     iniciarNombres();
     iniciarAlbum();
     iniciarMensajes();
