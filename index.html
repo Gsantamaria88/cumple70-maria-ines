@@ -1582,14 +1582,71 @@
     // Coco pasea por la parte de abajo de la pantalla y, de vez en cuando, dice algo
     // según la sección que se esté viendo (o lo que toque en la fiesta).
     const COCO_DICE = {
-      inicio: ['¡Guau! ¡Felices 70, María Inés! 🌸', 'Soy Coco, el caniche más hippie de Logroño ✌️'],
-      programa: ['A las 21:00, brindis y tarta 🎂 ¡No te lo pierdas!', 'De 00:30 a 01:30… ¡Hora Loca! 🥳'],
-      lugar: ['Estamos junto al Puente de Hierro 📍', 'Si vas a beber, ¡vuelve en taxi! 🚕'],
-      fotos: ['¡Sube una foto conmigo! 📸', 'Las fotos se guardan para María Inés 💖'],
-      trivia: ['¿Te atreves con el quiz? 🧠', 'Pista: ¡yo también cuento como hijo! 🐩'],
-      mensajes: ['Escríbele algo bonito a María Inés 💌', '¡Ella leerá todos los mensajes! 🥹'],
-      musica: ['¡Que suene Marco Antonio Solís! 👑', 'Pide el Baile del Perrito, ¡es por mí! 🐾'],
-      historia: ['¡Súbete a la Chevrolet de Víctor! 🛻', '¡70 años de viaje! 💖'],
+      inicio: [
+        '¡Guau! ¡Felices 70, María Inés! 🌸', 'Soy Coco, el caniche más hippie de Logroño ✌️',
+        'Tócame otra vez, que me encanta 🐩', 'Estas gafas disco me las presta el DJ 😎',
+        'Blanco, peludo y con estilo. Así soy yo ✨', '70 años y más guapa que nunca. Lo digo yo 🐾',
+        'Paz, amor… ¡y croquetas para el perro! ☮️', 'Guau en colombiano: ¡qué fiesta tan bacana! 🇨🇴',
+        'Guau en español: ¡menuda fiestaza! 🇪🇸', 'No me sigas, que me pongo nervioso 🙈',
+        'Yo no muerdo… salvo la tarta 🎂', '¿Has visto mi peinado? Cero laca, todo natural 💁',
+        'Hoy no me bañan: ¡hoy se baila! 🕺', 'Si me rascas detrás de la oreja, te cuento un secreto 🤫',
+        'Hippie de corazón, disco de cadera 🪩', 'Con estos rizos, ¿quién necesita peluquería? 🌀',
+      ],
+      historia: [
+        '¡Súbete a la Chevrolet de Víctor! 🛻', '¡70 años de viaje! 💖',
+        'De Colombia a España sin perder el sabor 🇨🇴🇪🇸', 'Yo me pido ir delante, con la ventanilla bajada 🐶',
+        'Una camioneta roja: ¡la limusina de los 50! 🚗', '25 años en España y el corazón, tricolor 💛💙❤️',
+        '¿Gasolina? No, este viaje va con amor ⛽💗', 'Pon el intermitente, que viene una década nueva 🔄',
+        'Ojo con los baches de la historia 😅', 'Yo llegué tarde a la historia, pero llegué al corazón 🐩',
+      ],
+      programa: [
+        'A las 21:00, brindis y tarta 🎂 ¡No te lo pierdas!', 'De 00:30 a 01:30… ¡Hora Loca! 🥳',
+        'A las 21:45, pasarela hippie. Yo ya voy vestido 💃', 'Colombia contra España: yo voy con las dos 🇨🇴🇪🇸',
+        'Picoteo a las 19:30. Me sentaré debajo de tu silla 🥟', 'Hasta las 2:00. ¡Hoy no hay paseo corto! 🌙',
+        'Apúntate la hora de la tarta… yo ya lo hice 🎂', 'El abrazo final es a la 1:30. ¡Yo me cuelo! 🤗',
+        'Dos horas de pista: estira antes, que no somos jóvenes 🧘',
+      ],
+      lugar: [
+        'Estamos junto al Puente de Hierro 📍', 'Si vas a beber, ¡vuelve en taxi! 🚕',
+        'C/ San Gregorio 1. Lo he olido todo: es aquí 👃', 'Logroño, capital del vino… y del cumple 🍷',
+        'Si te pierdes, sigue la música 🎶', 'El Ebro está al lado. ¡Nada de bañarse! 🌊',
+        'Friends & Family: y el perro, ¿qué? 🐩',
+      ],
+      fotos: [
+        '¡Sube una foto conmigo! 📸', 'Las fotos se guardan para María Inés 💖',
+        'Mi lado bueno es el izquierdo 😉', '¡Di "chorizo"! 📷', 'Sin filtro, que el pelo ya lo traigo de serie ✨',
+        'Si sales con los ojos cerrados… ¡sube otra! 😂', 'Una foto con la cumpleañera vale por mil 💐',
+        'Fotos movidas también valen: es que bailabas 🕺', 'Pídeme una pose: sé hacer "sentado" 🐶',
+      ],
+      trivia: [
+        '¿Te atreves con el quiz? 🧠', 'Pista: ¡yo también cuento como hijo! 🐩',
+        'No mires el móvil del de al lado 👀', '¿Quién conoce mejor a María Inés? ¡Demuéstralo! 🏆',
+        'Si fallas, nadie se entera… bueno, el ranking sí 😬', 'Yo sacaría 10. Pero no tengo dedos 🐾',
+        'Piensa rápido: ¡el tiempo cuenta! ⏱️', 'El que gane me rasca la barriga 🏅',
+      ],
+      mensajes: [
+        'Escríbele algo bonito a María Inés 💌', '¡Ella leerá todos los mensajes! 🥹',
+        'Vale escribir con faltas, que ella lo entiende igual ✍️', 'Un "te quiero" nunca sobra 💗',
+        'Si la haces llorar de emoción, ganas 🥲', '¿Un recuerdo? ¿Un chiste? ¡Todo vale! 💭',
+        'Yo le escribiría "guau", pero me lo han prohibido 🙊', 'Corto o largo, ¡pero con cariño! 💐',
+      ],
+      musica: [
+        '¡Que suene Marco Antonio Solís! 👑', 'Pide el Baile del Perrito, ¡es por mí! 🐾',
+        'Si no bailas salsa, al menos mueve la cola 💃', 'El DJ es Guillermo. ¡Pídele lo que quieras! 🎧',
+        'Yo bailo cumbia a cuatro patas 🐕', 'Si suena "Si no te hubieras ido"… ¡pañuelos! 🥹',
+        'Merengue, vallenato, rumba… ¡yo con todo! 🪇', '¿Disco o salsa? ¿Por qué elegir? 🪩',
+        'Cuidado con pisarme cuando suene la salsa 😅', '¡Que no pare la rocola! 🎶',
+      ],
+    };
+    // Frases según la hora de la fiesta (por la hora de inicio de cada momento del PROGRAMA).
+    const COCO_HORA = {
+      '18:00': ['¡Bienvenido! ¿Ya tienes tu collar de flores? 🌸', '¡Al photocall, que estás guapísimo! 📸'],
+      '19:30': ['Huele a picoteo… ¿me das algo? 🥺', 'Lo que se caiga al suelo es mío 🥟'],
+      '21:00': ['¡Brindis y tarta! ¡Todos a mirar! 🥂', '70 velas… ¡que alguien traiga un extintor! 🔥'],
+      '21:45': ['¡Pasarela hippie! Yo desfilo el primero 💅', '¡Colombia contra España! ¿Tú de quién eres? 🇨🇴🇪🇸'],
+      '22:30': ['¡Todos a la pista! Los sentados, también 💃', 'Si te duelen los pies, hoy no cuenta 🦶'],
+      '00:30': ['¡HORA LOCA! ¡Que alguien me dé un silbato! 🥳', '¡Me he puesto el gorro de cotillón! 🎉'],
+      '01:30': ['¡Al círculo! ¡Abrazo para María Inés! 🤗', 'No llores… bueno, un poquito sí 🥹'],
     };
     const coco = { x: 0, v: 0, llego: false, dir: -1, meta: 0, vmax: 50, parado: 0, ultimo: 0, conducta: '', seccion: 'inicio', dichas: {}, timer: null };
 
@@ -1607,10 +1664,16 @@
     function fraseCoco() {
       const ahora = new Date();
       const bloque = PROGRAMA.find((p) => ahora >= horaADate(p.ini) && ahora < horaADate(p.fin));
-      const lista = (COCO_DICE[coco.seccion] || COCO_DICE.inicio).slice();
-      if (bloque) lista.push(`Ahora toca: ${bloque.titulo} ${bloque.icon}`);
-      const n = coco.dichas[coco.seccion] = (coco.dichas[coco.seccion] || 0) + 1;
-      return lista[(n - 1) % lista.length];
+      // Cada sección baraja sus frases y las va diciendo sin repetir hasta acabarlas.
+      const clave = coco.seccion + (bloque ? bloque.ini : '');
+      let mazo = coco.dichas[clave];
+      if (!mazo || !mazo.length) {
+        mazo = (COCO_DICE[coco.seccion] || COCO_DICE.inicio).concat(bloque ? COCO_HORA[bloque.ini] || [] : []);
+        if (bloque) mazo.push(`Ahora toca: ${bloque.titulo} ${bloque.icon}`);
+        for (let i = mazo.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [mazo[i], mazo[j]] = [mazo[j], mazo[i]]; }
+        coco.dichas[clave] = mazo;
+      }
+      return mazo.pop();
     }
 
     function colocarBocadillo() {
