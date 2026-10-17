@@ -1638,6 +1638,20 @@
         'Cuidado con pisarme cuando suene la salsa 😅', '¡Que no pare la rocola! 🎶',
       ],
     };
+    // Frases que pueden salir en cualquier sección, mezcladas con las suyas.
+    const COCO_SIEMPRE = [
+      '¡Feliz cumple, María Inés! 🎂', 'Voy a dar una vueltecita… 🐾', 'Paseo, olfateo, paseo… ¡qué vida! 👃',
+      '¿Alguien ha visto mi hueso? 🦴', 'Este suelo brilla más que mi bola disco 🪩', 'Ando despacio: es el estilo hippie ✌️',
+      'Uy, ¡un olor a croqueta! ¿Será por aquí? 🥟', 'Me he puesto mis mejores rizos para hoy 🌀',
+      'Los 70 se celebran a lo grande 🎉', 'Shhh… estoy patrullando la fiesta 🚓', '¿Me habéis visto correr? ¡Soy un rayo! ⚡',
+      'Hoy me salto la siesta. ¡Hay fiesta! 😴❌', 'Si me paro, es para que me hagas una foto 📸',
+      'Colombia y España en un solo corazón 🇨🇴🇪🇸', 'Arepas y tortilla: ¡mi menú ideal! 😋', 'Un caniche blanco nunca pasa de moda 🐩',
+      'Me han dicho que hay tarta. Me quedo cerca 🎂', 'Bailo mejor que tú. No te enfades 💃', '¿Quién ha subido el volumen? ¡Me encanta! 🔊',
+      'Las gafas no me las quito ni para dormir 😎', 'Ojo, que paso. ¡Abran cancha! 🐶', 'Más vale un abrazo que mil ladridos 🤗',
+      'Esta noche no hay toque de queda 🌙', 'Flower power… ¡y poodle power! 🌼', 'Si ves a María Inés, dale un beso de mi parte 😘',
+      'Mi pelo es así de natural, no preguntes 💁', 'Un brindis por la reina de la noche 🥂👑', 'Ni frío ni sueño: ¡hoy toca bailar! 🔥',
+      '¿Me rascas la barriga? Prometo no ladrar 🙃', 'Logroño nunca había visto tanta alegría 🎊',
+    ];
     // Frases según la hora de la fiesta (por la hora de inicio de cada momento del PROGRAMA).
     const COCO_HORA = {
       '18:00': ['¡Bienvenido! ¿Ya tienes tu collar de flores? 🌸', '¡Al photocall, que estás guapísimo! 📸'],
@@ -1668,7 +1682,7 @@
       const clave = coco.seccion + (bloque ? bloque.ini : '');
       let mazo = coco.dichas[clave];
       if (!mazo || !mazo.length) {
-        mazo = (COCO_DICE[coco.seccion] || COCO_DICE.inicio).concat(bloque ? COCO_HORA[bloque.ini] || [] : []);
+        mazo = (COCO_DICE[coco.seccion] || COCO_DICE.inicio).concat(COCO_SIEMPRE, bloque ? COCO_HORA[bloque.ini] || [] : []);
         if (bloque) mazo.push(`Ahora toca: ${bloque.titulo} ${bloque.icon}`);
         for (let i = mazo.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [mazo[i], mazo[j]] = [mazo[j], mazo[i]]; }
         coco.dichas[clave] = mazo;
@@ -1783,12 +1797,12 @@
       }
       requestAnimationFrame(paso);
 
-      // Habla solo cada ~20 segundos.
+      // Habla solo, una frase detrás de otra (cada una se ve 5 s y descansa 2 s).
       setTimeout(() => cocoDice(fraseCoco()), 1800);
       setInterval(() => {
-        if (document.hidden || el.classList.contains('oculto') || Date.now() - coco.ultimo < 15000) return;
+        if (document.hidden || el.classList.contains('oculto') || Date.now() - coco.ultimo < 7000) return;
         cocoDice(fraseCoco());
-      }, 5000);
+      }, 1000);
     }
 
     let audioCtx = null;
