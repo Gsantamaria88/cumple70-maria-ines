@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>María Inés cumple 70 · Fiesta Hippie & Disco</title>
-  <meta name="description" content="Sábado 17 de octubre de 2026 · 18:00 a 02:00 · Logroño, junto al Puente de Hierro. Horario, lugar, cómo venir vestido, música y mensajes para María Inés.">
+  <meta name="description" content="Sábado 17 de octubre de 2026 · 18:00 a 02:00 · Logroño, junto al Puente de Hierro. Horario, lugar, fotos, quiz, mensajes y música para María Inés.">
   <meta property="og:title" content="¡María Inés cumple 70! 🌸 Fiesta Hippie & Disco">
   <meta property="og:description" content="Sábado 17 de octubre · 18:00 · Friends & Family, C/ San Gregorio 1, Logroño. Toda la info de la fiesta aquí.">
   <meta property="og:type" content="website">
@@ -38,6 +38,7 @@
       --radius: 22px;
       --shadow: 6px 6px 0 var(--brown);
       --nav-h: 64px;
+      --narrow: 760px;
     }
 
     * { box-sizing: border-box; }
@@ -77,8 +78,10 @@
       background: var(--paper);
       margin-bottom: 10px;
     }
-    .section { padding: 56px 0 8px; }
-    .section-head { text-align: center; margin-bottom: 26px; }
+    .section { padding: 64px 0 24px; }
+    .section.band { background: var(--paper); border-block: 3px dashed rgba(62,36,20,.25); margin-top: 48px; padding-bottom: 56px; }
+    .section.band + .section.band { margin-top: 0; border-top: 0; }
+    .section-head { text-align: center; margin-bottom: 30px; }
     .section-head p { max-width: 620px; margin: 10px auto 0; color: var(--brown-soft); }
 
     .card {
@@ -203,7 +206,7 @@
     .hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding: 18px 16px 20px; background: var(--paper); }
 
     /* ---------- Programa ---------- */
-    .timeline { list-style: none; margin: 0 auto; padding: 0; max-width: 760px; position: relative; }
+    .timeline { list-style: none; margin: 0 auto; padding: 0; max-width: var(--narrow); position: relative; }
     .timeline::before { content: ''; position: absolute; left: 33px; top: 10px; bottom: 10px; width: 4px; background: repeating-linear-gradient(var(--brown) 0 10px, transparent 10px 18px); }
     .tl-item { position: relative; display: grid; grid-template-columns: 70px 1fr; gap: 14px; margin-bottom: 16px; }
     .tl-dot {
@@ -233,18 +236,47 @@
     .map-frame { border: 3px solid var(--brown); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; min-height: 300px; background: #e8dcc4; }
     .map-frame iframe { width: 100%; height: 100%; min-height: 300px; border: 0; display: block; }
 
-    /* ---------- Vestuario ---------- */
-    .grid3 { display: grid; gap: 18px; }
-    @media (min-width: 760px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
-    .dress .emoji { font-size: 2.6rem; line-height: 1; margin-bottom: 8px; }
-    .dress ul { margin: 8px 0 0; padding-left: 1.15em; }
-    .dress li { margin-bottom: 4px; }
-    .palette { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-    .palette span { width: 46px; height: 46px; border-radius: 50%; border: 3px solid var(--brown); }
+    /* ---------- Fotos de los invitados ---------- */
+    .up-box { max-width: var(--narrow); margin: 0 auto 30px; }
+    .up-box .grid2, .msg-form .grid2 { display: grid; gap: 0 16px; }
+    @media (min-width: 640px) { .up-box .grid2, .msg-form .grid2 { grid-template-columns: 1fr 1fr; } }
+    .up-preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .up-preview img { width: 64px; height: 64px; object-fit: cover; border: 2px solid var(--brown); border-radius: 10px; }
+    .estado { min-height: 1.5em; margin: 10px 0 0; font-weight: 800; }
+    .estado.ok { color: var(--olive); }
+    .estado.ko { color: #B42318; }
+    .wall { columns: 2 150px; column-gap: 14px; }
+    @media (min-width: 760px) { .wall { columns: 4 200px; column-gap: 18px; } }
+    .wall figure {
+      break-inside: avoid; margin: 0 0 16px; display: block;
+      background: #fff; padding: 8px 8px 10px; border: 2px solid var(--brown); box-shadow: 3px 3px 0 var(--brown);
+      transform: rotate(var(--r, -1deg));
+    }
+    .wall figure a { display: block; }
+    .wall img { width: 100%; height: auto; background: #eee; min-height: 120px; }
+    .wall figcaption { font-size: .92rem; line-height: 1.3; margin-top: 8px; }
+    .wall figcaption b { display: block; font-family: 'Righteous', sans-serif; font-weight: 400; color: var(--orange); }
+    .wall-empty { text-align: center; color: var(--brown-soft); padding: 18px; border: 3px dashed rgba(62,36,20,.3); border-radius: var(--radius); }
+    .live-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 0 0 18px; font-weight: 800; color: var(--brown-soft); font-size: .95rem; }
+    .live-dot { width: 10px; height: 10px; border-radius: 50%; background: #2BB673; box-shadow: 0 0 0 4px rgba(43,182,115,.25); }
+
+    /* ---------- Mensajes ---------- */
+    .msg-form { max-width: var(--narrow); margin: 0 auto 30px; }
+    .msgs { columns: 1; column-gap: 18px; }
+    @media (min-width: 700px) { .msgs { columns: 2; } }
+    @media (min-width: 1000px) { .msgs { columns: 3; } }
+    .msg {
+      break-inside: avoid; margin: 0 0 16px;
+      background: var(--c, #FFF7C9); border: 2px solid var(--brown); border-radius: 6px 18px 6px 18px;
+      box-shadow: 3px 3px 0 var(--brown); padding: 14px 16px; transform: rotate(var(--r, -.6deg));
+    }
+    .msg p { margin: 0 0 8px; white-space: pre-line; }
+    .msg b { font-family: 'Righteous', sans-serif; font-weight: 400; color: var(--pink); }
 
     /* ---------- Historia ---------- */
     .story { display: grid; gap: 16px; }
-    @media (min-width: 760px) { .story { grid-template-columns: repeat(4, 1fr); } }
+    @media (min-width: 640px) { .story { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1000px) { .story { grid-template-columns: repeat(4, 1fr); } }
     .story .card { padding: 18px; }
     .year { display: inline-block; font-family: 'Righteous', sans-serif; background: var(--c, var(--mustard)); border: 2px solid var(--brown); border-radius: 10px; padding: 2px 10px; margin-bottom: 8px; }
     .story p { font-size: 1rem; margin: 6px 0 0; }
@@ -349,7 +381,17 @@
     .row-btns { display: flex; flex-wrap: wrap; gap: 10px; }
 
     /* ---------- Trivia ---------- */
-    .quiz { max-width: 640px; margin: 0 auto; }
+    .quiz-grid { display: grid; gap: 22px; align-items: start; max-width: 1000px; margin: 0 auto; }
+    @media (min-width: 860px) { .quiz-grid { grid-template-columns: 1.35fr 1fr; } }
+    .quiz-start .field { max-width: 360px; margin: 14px auto; text-align: left; }
+    .ranking h3 { margin-bottom: 10px; }
+    .ranking ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .ranking li { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 2px solid var(--brown); border-radius: 14px; background: #fff; font-weight: 800; }
+    .ranking li:first-child { background: linear-gradient(120deg, #FFE7A3, #FFD0DE); }
+    .ranking .pos { width: 2em; text-align: center; font-size: 1.2rem; }
+    .ranking .who { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ranking .pts { font-family: 'Righteous', sans-serif; color: var(--orange); white-space: nowrap; }
+    .ranking small { color: var(--brown-soft); font-weight: 600; }
     .quiz-progress { height: 12px; border: 2px solid var(--brown); border-radius: 999px; overflow: hidden; background: #fff; margin-bottom: 16px; }
     .quiz-progress div { height: 100%; width: 0; background: linear-gradient(90deg, var(--orange), var(--pink)); transition: width .3s; }
     .quiz-q { font-weight: 800; font-size: 1.25rem; margin-bottom: 14px; }
@@ -363,12 +405,6 @@
     .quiz-end { text-align: center; }
     .quiz-end .score { font-family: 'Titan One', cursive; font-size: 4rem; color: var(--orange); line-height: 1; }
 
-    /* ---------- Escríbenos ---------- */
-    .write { max-width: 720px; margin: 0 auto; }
-    .write .grid2 { display: grid; gap: 0 16px; }
-    @media (min-width: 640px) { .write .grid2 { grid-template-columns: 1fr 1fr; } }
-    .sent-note { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: #DDF3D0; border: 2px solid var(--olive); font-weight: 600; }
-
     /* ---------- Pie ---------- */
     footer { margin-top: 64px; background: var(--brown); color: var(--cream); text-align: center; padding: 40px 16px 48px; }
     footer .big { font-family: 'Titan One', cursive; font-size: clamp(1.8rem, 7vw, 2.8rem); color: var(--mustard); }
@@ -381,35 +417,50 @@
       height: calc(var(--nav-h) + env(safe-area-inset-bottom));
       padding-bottom: env(safe-area-inset-bottom);
       background: var(--paper); border-top: 3px solid var(--brown);
-      display: grid; grid-template-columns: repeat(5, 1fr);
+      display: grid; grid-template-columns: repeat(6, 1fr);
     }
-    .bottomnav a { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; font-size: .78rem; font-weight: 800; gap: 1px; }
+    .bottomnav a { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; font-size: .72rem; font-weight: 800; gap: 1px; }
     .bottomnav a span { font-size: 1.35rem; line-height: 1; }
     @media (min-width: 900px) { .bottomnav { display: none; } }
 
     /* ---------- Coco ---------- */
     .coco {
-      position: fixed; right: 12px; z-index: 70;
-      bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 12px);
-      display: flex; flex-direction: column; align-items: flex-end;
+      --coco-w: 96px;
+      position: fixed; left: 0; z-index: 70;
+      bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 2px);
+      width: var(--coco-w); pointer-events: none;
+      transition: opacity .3s;
+      will-change: transform;
     }
-    @media (min-width: 900px) { .coco { bottom: 20px; right: 20px; } }
-    .coco-btn {
-      width: 74px; height: 74px; border-radius: 50%;
-      background: var(--paper); border: 3px solid var(--brown); box-shadow: 3px 3px 0 var(--brown);
-      padding: 6px; cursor: pointer;
-    }
-    .coco-btn svg { width: 100%; height: 100%; }
-    .coco-btn.hop { animation: hop .5s ease; }
-    @keyframes hop { 30% { transform: translateY(-14px) rotate(-8deg); } 60% { transform: translateY(0) rotate(4deg); } }
+    @media (min-width: 900px) { .coco { --coco-w: 124px; bottom: 6px; } }
+    .coco.oculto { opacity: 0; }
+    .coco-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; -webkit-tap-highlight-color: transparent; }
+    .coco-btn svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 3px 0 rgba(62,36,20,.18)); }
+    .coco-btn.hop svg { animation: hop .55s ease; }
+    @keyframes hop { 35% { transform: translateY(-22px) rotate(-6deg); } 70% { transform: translateY(0) rotate(2deg); } }
+    .coco-flip { transform-box: fill-box; transform-origin: center; transition: transform .25s; }
+    .coco.izq .coco-flip { transform: scaleX(-1); }
+    .coco .pata, .coco .cola, .coco .cabeza, .coco .cuerpo { transform-box: fill-box; }
+    .coco .pata { transform-origin: 50% 0; }
+    .coco .cola { transform-origin: 50% 100%; animation: menea .45s ease-in-out infinite alternate; }
+    .coco .cabeza { transform-origin: 20% 80%; }
+    .coco.andando .pata-a { animation: paso .36s ease-in-out infinite alternate; }
+    .coco.andando .pata-b { animation: paso .36s ease-in-out infinite alternate-reverse; }
+    .coco.andando .cuerpo { animation: bota .18s ease-in-out infinite alternate; }
+    .coco.andando .cola { animation-duration: .25s; }
+    .coco.mira .cabeza { animation: ladea 1.6s ease-in-out; }
+    @keyframes paso { from { transform: rotate(-16deg); } to { transform: rotate(16deg); } }
+    @keyframes bota { to { transform: translateY(-1.5px); } }
+    @keyframes menea { from { transform: rotate(-14deg); } to { transform: rotate(16deg); } }
+    @keyframes ladea { 30%, 70% { transform: rotate(-9deg); } }
     .coco-bubble {
-      max-width: 220px; margin-bottom: 10px;
+      position: fixed; z-index: 71; left: 8px; width: max-content; max-width: min(240px, calc(100vw - 16px));
+      bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 96px);
       background: #fff; border: 3px solid var(--brown); border-radius: 16px; box-shadow: 3px 3px 0 var(--brown);
       padding: 8px 12px; font-weight: 800; font-size: .95rem; line-height: 1.3;
-      opacity: 0; transform: translateY(8px); transition: .25s; pointer-events: none;
-      position: relative;
+      opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; pointer-events: none;
     }
-    .coco-bubble::after { content: ''; position: absolute; right: 24px; bottom: -11px; border: 9px solid transparent; border-top-color: var(--brown); border-bottom: 0; }
+    @media (min-width: 900px) { .coco-bubble { bottom: 118px; } }
     .coco-bubble.show { opacity: 1; transform: none; }
 
     .toast {
@@ -436,10 +487,10 @@
       <nav class="topnav" aria-label="Secciones">
         <a href="#programa">Programa</a>
         <a href="#lugar">Lugar</a>
-        <a href="#vestuario">Cómo vestirse</a>
+        <a href="#fotos">Fotos</a>
+        <a href="#trivia">Quiz</a>
+        <a href="#mensajes">Mensajes</a>
         <a href="#musica">Música</a>
-        <a href="#polaroid">Polaroid</a>
-        <a href="#trivia">Trivia</a>
       </nav>
       <button class="btn btn-sm" type="button" onclick="celebrar()">🎉 <span>¡Celebrar!</span></button>
     </div>
@@ -493,7 +544,8 @@
           <div class="cd-msg" id="cd-msg" hidden></div>
         </div>
         <div class="hero-cta">
-          <a class="btn btn-pink" href="#programa">⏰ Ver el programa</a>
+          <a class="btn btn-pink" href="#fotos">📸 Sube tu foto</a>
+          <a class="btn" href="#trivia">🧠 Juega al quiz</a>
           <a class="btn btn-cream" href="#lugar">📍 Cómo llegar</a>
         </div>
       </div>
@@ -526,7 +578,7 @@
           <ul>
             <li><b>Sábado 17 de octubre</b>, desde las <b>18:00</b>.</li>
             <li>La fiesta termina a las <b>02:00</b>: si vas a beber, piensa en cómo vuelves 🚕.</li>
-            <li>Habrá picoteo colombiano y español: <b>¡ven con hambre!</b></li>
+            <li>Habrá <b>picoteo</b> para todos 🥟</li>
           </ul>
           <div class="row-btns">
             <a class="btn" id="maps-btn" href="#" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>
@@ -541,72 +593,79 @@
     </div>
   </section>
 
-  <!-- ===================== VESTUARIO ===================== -->
-  <section class="section" id="vestuario">
+  <!-- ===================== FOTOS DE LOS INVITADOS ===================== -->
+  <section class="section band" id="fotos">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">🕶️ Dress code</span>
-        <h2>¿Cómo vengo vestido?</h2>
-        <p>Temática <b>Hippie & Disco de los 70 y 80</b>. No hace falta disfrazarse de arriba abajo: con un detalle ya estás dentro. ¡Habrá premio al mejor look!</p>
+        <span class="eyebrow">📸 El álbum de la fiesta</span>
+        <h2>Sube tus fotos</h2>
+        <p>Haz fotos, súbelas con un comentario y aparecerán aquí para todos. Al final de la noche María Inés tendrá el álbum completo. 💖</p>
       </div>
-      <div class="grid3 dress">
-        <div class="card">
-          <div class="emoji">💃</div>
-          <h3>Ideas para ellas</h3>
-          <ul>
-            <li>Vestido largo floreado o túnica</li>
-            <li>Pantalón de campana</li>
-            <li>Cinta o corona de flores en el pelo</li>
-            <li>Brillos, lentejuelas y plataformas (modo disco)</li>
-          </ul>
+      <form class="card up-box" id="foto-form" autocomplete="on">
+        <div class="field">
+          <label class="btn btn-pink file-btn">📷 Elegir o hacer fotos
+            <input type="file" id="foto-file" accept="image/*" multiple>
+          </label>
+          <div class="up-preview" id="foto-preview"></div>
         </div>
-        <div class="card">
-          <div class="emoji">🕺</div>
-          <h3>Ideas para ellos</h3>
-          <ul>
-            <li>Camisa estampada de cuello grande</li>
-            <li>Chaleco de flecos o de ante</li>
-            <li>Pantalón de campana</li>
-            <li>Pañuelo en la frente o peluca afro</li>
-          </ul>
+        <div class="grid2">
+          <div class="field">
+            <label for="foto-nombre">Tu nombre</label>
+            <input type="text" id="foto-nombre" class="tu-nombre" maxlength="40" placeholder="Ej.: Amparo" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="foto-comentario">Comentario (opcional)</label>
+            <input type="text" id="foto-comentario" maxlength="200" placeholder="¡Qué noche!">
+          </div>
         </div>
-        <div class="card">
-          <div class="emoji">🌼</div>
-          <h3>El toque mínimo</h3>
-          <ul>
-            <li>Gafas de sol redondas</li>
-            <li>Una flor en la solapa o el pelo</li>
-            <li>Collar con el símbolo de la paz ☮️</li>
-            <li>Cualquier prenda de colores vivos</li>
-          </ul>
-        </div>
+        <button class="btn" type="submit" id="foto-enviar">⬆️ Subir al álbum</button>
+        <p class="estado" id="foto-estado" role="status"></p>
+      </form>
+      <div class="live-row" id="foto-live" hidden><span class="live-dot" aria-hidden="true"></span><span id="foto-cuenta"></span></div>
+      <div class="wall" id="foto-wall"></div>
+    </div>
+  </section>
+
+  <!-- ===================== QUIZ ===================== -->
+  <section class="section" id="trivia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">🧠 Concurso</span>
+        <h2>¿Cuánto conoces a María Inés?</h2>
+        <p>Diez preguntas rápidas. Acierta las máximas, lo más rápido posible… ¡y gana el ranking de la noche! 🏆</p>
       </div>
-      <div class="palette" aria-label="Colores recomendados: naranja, mostaza, rosa, verde oliva, morado y marrón">
-        <span style="background:var(--orange)"></span>
-        <span style="background:var(--mustard)"></span>
-        <span style="background:var(--pink)"></span>
-        <span style="background:var(--olive)"></span>
-        <span style="background:var(--purple)"></span>
-        <span style="background:var(--brown)"></span>
+      <div class="quiz-grid">
+        <div class="card quiz" id="quiz"></div>
+        <div class="card ranking" id="ranking-box">
+          <h3>🏆 Ranking</h3>
+          <ol id="ranking"></ol>
+          <p class="hint" style="margin:12px 0 0;color:var(--brown-soft);font-size:.9rem">Cuenta la primera partida de cada móvil. Si empatáis, gana el más rápido.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== HISTORIA ===================== -->
-  <section class="section" id="historia">
+  <!-- ===================== MENSAJES ===================== -->
+  <section class="section band" id="mensajes">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">💖 Su historia</span>
-        <h2>70 años de vida</h2>
-        <p>De Colombia a Logroño, siete décadas repartiendo alegría.</p>
+        <span class="eyebrow">💌 Para María Inés</span>
+        <h2>Déjale un mensaje</h2>
+        <p>Unas palabras, un recuerdo, un deseo… Se quedarán aquí guardadas para ella. Y si quieres una canción, ¡pídesela al DJ Guillermo! 🎧</p>
       </div>
-      <div class="story">
-        <div class="card"><span class="year" style="--c:var(--mustard)">1956</span><h3>Nace en Colombia 🇨🇴</h3><p>Llega al mundo María Inés, en octubre. La alegría le venía de serie.</p></div>
-        <div class="card"><span class="year" style="--c:var(--rose)">70s y 80s</span><h3>Su juventud ✌️</h3><p>Pantalones de campana, cumbia, salsa… y las primeras canciones de Los Bukis.</p></div>
-        <div class="card"><span class="year" style="--c:#BFD9F2">2001</span><h3>Rumbo a España 🇪🇸</h3><p>Empieza una nueva vida. 25 años de familia, amigos y rumba.</p></div>
-        <div class="card"><span class="year" style="--c:var(--pink);color:#fff">17·10·2026</span><h3>¡Los 70! 🎉</h3><p>Toda su gente reunida en Logroño… y Coco, claro 🐩.</p></div>
-      </div>
-      <div class="gallery" id="gallery" hidden></div>
+      <form class="card msg-form" id="msg-form">
+        <div class="field">
+          <label for="msg-nombre">Tu nombre</label>
+          <input type="text" id="msg-nombre" class="tu-nombre" maxlength="40" placeholder="Ej.: Amparo" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="msg-texto">Tu mensaje</label>
+          <textarea id="msg-texto" maxlength="600" placeholder="¡Feliz cumpleaños, María Inés!…"></textarea>
+        </div>
+        <button class="btn btn-pink" type="submit" id="msg-enviar">💌 Enviar mensaje</button>
+        <p class="estado" id="msg-estado" role="status"></p>
+      </form>
+      <div class="msgs" id="msgs"></div>
     </div>
   </section>
 
@@ -648,6 +707,24 @@
     </div>
   </section>
 
+  <!-- ===================== HISTORIA ===================== -->
+  <section class="section band" id="historia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">💖 Su historia</span>
+        <h2>70 años de vida</h2>
+        <p>De Colombia a Logroño, siete décadas repartiendo alegría.</p>
+      </div>
+      <div class="story">
+        <div class="card"><span class="year" style="--c:var(--mustard)">1956</span><h3>Nace en Colombia 🇨🇴</h3><p>Llega al mundo María Inés, en octubre. La alegría le venía de serie.</p></div>
+        <div class="card"><span class="year" style="--c:var(--rose)">70s y 80s</span><h3>Su juventud ✌️</h3><p>Pantalones de campana, cumbia, salsa… y las primeras canciones de Los Bukis.</p></div>
+        <div class="card"><span class="year" style="--c:#BFD9F2">2001</span><h3>Rumbo a España 🇪🇸</h3><p>Empieza una nueva vida. 25 años de familia, amigos y rumba.</p></div>
+        <div class="card"><span class="year" style="--c:var(--pink);color:#fff">17·10·2026</span><h3>¡Los 70! 🎉</h3><p>Toda su gente reunida en Logroño… y Coco, claro 🐩.</p></div>
+      </div>
+      <div class="gallery" id="gallery" hidden></div>
+    </div>
+  </section>
+
   <!-- ===================== POLAROID ===================== -->
   <section class="section" id="polaroid">
     <div class="wrap">
@@ -679,28 +756,6 @@
     </div>
   </section>
 
-  <!-- ===================== TRIVIA ===================== -->
-  <section class="section" id="trivia">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">🧠 Juego</span>
-        <h2>¿Cuánto conoces a María Inés?</h2>
-        <p>Siete preguntas rápidas. ¿Eres de la familia de verdad?</p>
-      </div>
-      <div class="card quiz" id="quiz"></div>
-    </div>
-  </section>
-
-  <!-- ===================== CANCIONES Y MENSAJES ===================== -->
-  <section class="section" id="mensajes">
-    <div class="wrap">
-      <div class="card" style="max-width:720px;margin:0 auto;text-align:center">
-        <div style="font-size:2.6rem;line-height:1">💌</div>
-        <h3 style="margin:8px 0">¿Una canción o unas palabras para María Inés?</h3>
-        <p style="margin:0">Pídele tu canción al DJ (¡Guillermo!) durante la fiesta y escríbele un mensaje en la mesa de recuerdos: se los guardaremos todos para ella. 🌸</p>
-      </div>
-    </div>
-  </section>
   </main>
 
   <footer>
@@ -716,36 +771,64 @@
   <nav class="bottomnav" aria-label="Accesos rápidos">
     <a href="#programa"><span>⏰</span>Programa</a>
     <a href="#lugar"><span>📍</span>Lugar</a>
+    <a href="#fotos"><span>📸</span>Fotos</a>
+    <a href="#trivia"><span>🧠</span>Quiz</a>
+    <a href="#mensajes"><span>💌</span>Mensajes</a>
     <a href="#musica"><span>🎶</span>Música</a>
-    <a href="#polaroid"><span>📸</span>Polaroid</a>
-    <a href="#trivia"><span>🧠</span>Trivia</a>
   </nav>
 
-  <!-- Coco, la mascota -->
-  <div class="coco">
-    <div class="coco-bubble" id="coco-bubble" role="status">¡Guau! ¡Tócame! 🐾</div>
-    <button class="coco-btn" id="coco-btn" type="button" aria-label="Coco, el perrito de María Inés">
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M12 40 Q8 32 10 26 Q14 26 14 34 Z" fill="#F5F5F0" stroke="#3E2414" stroke-width="1.5"/>
-        <circle cx="9" cy="24" r="5" fill="#fff" stroke="#3E2414" stroke-width="1.5"/>
-        <rect x="18" y="44" width="6" height="12" rx="3" fill="#EAE5DC" stroke="#3E2414" stroke-width="1.5"/>
-        <rect x="36" y="44" width="6" height="12" rx="3" fill="#EAE5DC" stroke="#3E2414" stroke-width="1.5"/>
-        <circle cx="21" cy="54" r="3.5" fill="#fff" stroke="#3E2414" stroke-width="1.5"/>
-        <circle cx="39" cy="54" r="3.5" fill="#fff" stroke="#3E2414" stroke-width="1.5"/>
-        <ellipse cx="28" cy="40" rx="14" ry="10" fill="#fff" stroke="#3E2414" stroke-width="1.5"/>
-        <circle cx="36" cy="35" r="9" fill="#fff" stroke="#3E2414" stroke-width="1.5"/>
-        <rect x="37" y="27" width="9" height="3" rx="1.5" fill="#E8457C"/>
-        <circle cx="41" cy="29" r="2.5" fill="#F2A922"/>
-        <circle cx="42" cy="21" r="10" fill="#fff" stroke="#3E2414" stroke-width="1.5"/>
-        <circle cx="41" cy="11" r="7" fill="#fff" stroke="#3E2414" stroke-width="1.5"/>
-        <path d="M33 18 C30 20 30 28 34 32 C37 32 37 24 36 19 Z" fill="#F5EFE6" stroke="#3E2414" stroke-width="1.5"/>
-        <circle cx="45" cy="20" r="3.5" fill="#F26B21" stroke="#3E2414" stroke-width="1"/>
-        <circle cx="51" cy="20" r="3.5" fill="#E8457C" stroke="#3E2414" stroke-width="1"/>
-        <line x1="48" y1="20" x2="49" y2="20" stroke="#3E2414" stroke-width="1.5"/>
-        <ellipse cx="52" cy="24" rx="4.5" ry="3.5" fill="#fff" stroke="#3E2414" stroke-width="1.2"/>
-        <circle cx="55" cy="23" r="1.5" fill="#1A1A1A"/>
-        <path d="M53 26 Q54 29 52 30" stroke="#E8457C" stroke-width="2" stroke-linecap="round" fill="none"/>
-        <text x="31" y="10" font-size="9">🌸</text>
+  <!-- Coco, la mascota: un caniche blanco que se pasea por la página -->
+  <div class="coco-bubble" id="coco-bubble" aria-live="polite"></div>
+  <div class="coco" id="coco">
+    <button class="coco-btn" id="coco-btn" type="button" aria-label="Coco, el caniche de María Inés">
+      <svg viewBox="0 0 140 104" aria-hidden="true">
+        <defs>
+          <filter id="rizo" x="-25%" y="-25%" width="150%" height="150%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.42" numOctaves="2" seed="7" result="ruido"/>
+            <feDisplacementMap in="SourceGraphic" in2="ruido" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <radialGradient id="pelo" cx="40%" cy="30%" r="75%">
+            <stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#F7F3EC"/><stop offset="1" stop-color="#E4DACB"/>
+          </radialGradient>
+          <radialGradient id="pelo-sombra" cx="40%" cy="30%" r="75%">
+            <stop offset="0" stop-color="#EFE8DC"/><stop offset="1" stop-color="#D3C6B2"/>
+          </radialGradient>
+        </defs>
+        <g class="coco-flip">
+          <!-- patas de atrás (la del fondo, más oscura) -->
+          <g class="pata pata-b"><rect x="44" y="64" width="6" height="26" rx="3" fill="#E6DED1" stroke="#A8957E" stroke-width="1.2"/><ellipse cx="47" cy="91" rx="6.5" ry="5.5" fill="url(#pelo-sombra)" stroke="#A8957E" stroke-width="1.2" filter="url(#rizo)"/></g>
+          <g class="pata pata-b"><rect x="80" y="64" width="6" height="26" rx="3" fill="#E6DED1" stroke="#A8957E" stroke-width="1.2"/><ellipse cx="83" cy="91" rx="6.5" ry="5.5" fill="url(#pelo-sombra)" stroke="#A8957E" stroke-width="1.2" filter="url(#rizo)"/></g>
+          <g class="cuerpo">
+            <!-- cola con pompón -->
+            <g class="cola"><path d="M38 56 Q31 46 30 34" fill="none" stroke="#EDE6DA" stroke-width="5" stroke-linecap="round"/><circle cx="29" cy="29" r="9" fill="url(#pelo)" stroke="#A8957E" stroke-width="1.4" filter="url(#rizo)"/></g>
+            <!-- cuerpo y pecho rizados -->
+            <ellipse cx="60" cy="58" rx="26" ry="15" fill="url(#pelo)" stroke="#A8957E" stroke-width="1.4" filter="url(#rizo)"/>
+            <circle cx="84" cy="54" r="15" fill="url(#pelo)" stroke="#A8957E" stroke-width="1.4" filter="url(#rizo)"/>
+            <!-- collar hippie -->
+            <path d="M84 41 Q91 47 97 43" fill="none" stroke="#E8457C" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="92" cy="47.5" r="3" fill="#F2A922" stroke="#3E2414" stroke-width=".8"/>
+            <!-- cabeza -->
+            <g class="cabeza">
+              <ellipse cx="92" cy="40" rx="7" ry="12" fill="url(#pelo-sombra)" stroke="#A8957E" stroke-width="1.3" filter="url(#rizo)"/>
+              <circle cx="99" cy="32" r="11" fill="url(#pelo)" stroke="#A8957E" stroke-width="1.4" filter="url(#rizo)"/>
+              <circle cx="97" cy="18" r="11" fill="url(#pelo)" stroke="#A8957E" stroke-width="1.4" filter="url(#rizo)"/>
+              <path d="M104 31 Q114 29 122 32 Q125 35 121 38 Q112 40 104 38 Z" fill="#F8F3EB" stroke="#A8957E" stroke-width="1.2"/>
+              <ellipse cx="122.5" cy="33" rx="3" ry="2.5" fill="#2A1A12"/>
+              <path d="M112 38.5 Q115 41 118 38.8" fill="none" stroke="#7A5C47" stroke-width="1" stroke-linecap="round"/>
+              <ellipse cx="104" cy="29" rx="2.1" ry="2.4" fill="#2A1A12"/>
+              <circle cx="104.7" cy="28.2" r=".7" fill="#fff"/>
+              <path d="M101 25.5 Q104 24 107 25.8" fill="none" stroke="#A8957E" stroke-width="1" stroke-linecap="round"/>
+              <!-- flor en el moño -->
+              <g transform="translate(92 9)">
+                <circle cx="0" cy="-4" r="3.2" fill="#E8457C"/><circle cx="3.8" cy="-1.2" r="3.2" fill="#E8457C"/><circle cx="2.4" cy="3.2" r="3.2" fill="#E8457C"/><circle cx="-2.4" cy="3.2" r="3.2" fill="#E8457C"/><circle cx="-3.8" cy="-1.2" r="3.2" fill="#E8457C"/>
+                <circle r="2.4" fill="#F2A922"/>
+              </g>
+            </g>
+          </g>
+          <!-- patas de delante -->
+          <g class="pata pata-a"><rect x="50" y="64" width="6.5" height="26" rx="3" fill="#F3EDE3" stroke="#A8957E" stroke-width="1.2"/><ellipse cx="53" cy="91" rx="7" ry="6" fill="url(#pelo)" stroke="#A8957E" stroke-width="1.3" filter="url(#rizo)"/></g>
+          <g class="pata pata-a"><rect x="86" y="64" width="6.5" height="26" rx="3" fill="#F3EDE3" stroke="#A8957E" stroke-width="1.2"/><ellipse cx="89" cy="91" rx="7" ry="6" fill="url(#pelo)" stroke="#A8957E" stroke-width="1.3" filter="url(#rizo)"/></g>
+        </g>
       </svg>
     </button>
   </div>
@@ -766,6 +849,11 @@
       // (al lado de este archivo) y añádelas así:
       //   { src: "fotos/1975.jpg", pie: "Bogotá, 1975" },
       fotos: [],
+
+      // Dirección del almacén de Google (fotos, quiz y mensajes de los invitados).
+      // Se consigue al instalar herramientas/servidor-google.gs (ver GUIA_ALMACEN.md).
+      // Vacío = las secciones avisan de que aún no están abiertas.
+      servidor: '',
     };
 
     // Inicio y fin de la fiesta (hora de España, horario de verano +02:00).
@@ -777,7 +865,7 @@
     // ---------------- Programa ----------------
     const PROGRAMA = [
       { ini: '18:00', fin: '19:30', icon: '🌸', c: 'var(--mustard)', titulo: 'Bienvenida hippie', texto: 'Llegada, collares de flores, gafas setenteras y fotos en el photocall.' },
-      { ini: '19:30', fin: '21:00', icon: '🥟', c: 'var(--orange)', titulo: 'Picoteo Colombia & España', texto: 'Empanadas y arepitas junto a tortilla y jamón, con rumba y vallenato de fondo.' },
+      { ini: '19:30', fin: '21:00', icon: '🥟', c: 'var(--orange)', titulo: 'Picoteo', texto: 'Algo rico para picar mientras charlamos, con rumba y vallenato de fondo.' },
       { ini: '21:00', fin: '21:45', icon: '🎂', c: 'var(--pink)', titulo: 'Homenaje, brindis y tarta', texto: 'El momento más especial de la noche: unas palabras para María Inés, brindis y a soplar las velas. ¡No te lo pierdas!', star: true },
       { ini: '21:45', fin: '22:30', icon: '🕺', c: 'var(--purple)', titulo: 'Pasarela hippie y juegos', texto: 'Concurso de disfraces y “Adivina la canción”: Colombia contra España.' },
       { ini: '22:30', fin: '00:30', icon: '💃', c: 'var(--teal)', titulo: '¡A la pista!', texto: 'Salsa, cumbia, merengue, rumba, pop de los 80… y mucho Marco Antonio Solís.' },
@@ -1070,31 +1158,222 @@
       Promise.all([document.fonts.load('72px "Titan One"'), document.fonts.load('34px Righteous')]).then(dibujarPolaroid, dibujarPolaroid);
     }
 
-    // ---------------- Trivia ----------------
+    // ---------------- Almacén (fotos, quiz y mensajes) ----------------
+    let DATOS = { fotos: [], mensajes: [], ranking: [] };
+    const vistos = { fotos: null, mensajes: null };
+
+    function leer(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+    function guardar(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* sin almacenamiento */ } }
+    function esc(t) { return String(t == null ? '' : t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]); }
+
+    // Un identificador por móvil, para que en el ranking cuente solo la primera partida.
+    const MOVIL = leer('movil') || Math.random().toString(36).slice(2, 12);
+    guardar('movil', MOVIL);
+
+    async function enviar(datos) {
+      if (!CONFIG.servidor) throw new Error('sin servidor');
+      // text/plain para que Google lo acepte sin preguntas previas del navegador.
+      const r = await fetch(CONFIG.servidor, { method: 'POST', body: JSON.stringify(datos) });
+      const j = await r.json();
+      if (!j.ok) throw new Error(j.error || 'error');
+      return j;
+    }
+
+    async function cargarDatos() {
+      if (!CONFIG.servidor) return;
+      try {
+        const r = await fetch(CONFIG.servidor + '?t=' + Date.now());
+        const j = await r.json();
+        if (!j.ok) return;
+        DATOS = j;
+        avisarNovedades();
+        pintarAlbum();
+        pintarMensajes();
+        pintarRanking();
+      } catch (e) { /* sin conexión: se reintenta en el siguiente ciclo */ }
+    }
+
+    // Coco avisa cuando llega algo nuevo de otra persona.
+    function avisarNovedades() {
+      const yo = (leer('nombre') || '').toLowerCase();
+      if (vistos.fotos !== null && DATOS.fotos.length > vistos.fotos) {
+        const f = DATOS.fotos[0];
+        if ((f.n || '').toLowerCase() !== yo) cocoDice(`¡Foto nueva de ${f.n}! 📸`);
+      } else if (vistos.mensajes !== null && DATOS.mensajes.length > vistos.mensajes) {
+        const m = DATOS.mensajes[0];
+        if ((m.n || '').toLowerCase() !== yo) cocoDice(`¡${m.n} le ha escrito a María Inés! 💌`);
+      }
+      vistos.fotos = DATOS.fotos.length;
+      vistos.mensajes = DATOS.mensajes.length;
+    }
+
+    // El nombre se escribe una vez y se recuerda en todos los formularios.
+    function iniciarNombres() {
+      const n = leer('nombre') || '';
+      document.querySelectorAll('.tu-nombre').forEach((inp) => {
+        inp.value = n;
+        inp.addEventListener('change', () => {
+          guardar('nombre', inp.value.trim());
+          document.querySelectorAll('.tu-nombre').forEach((o) => { if (o !== inp) o.value = inp.value.trim(); });
+        });
+      });
+    }
+
+    function estado(id, txt, tipo) {
+      const el = $(id);
+      el.textContent = txt;
+      el.className = 'estado' + (tipo ? ' ' + tipo : '');
+    }
+
+    // ---------------- Álbum de fotos ----------------
+    const fotoUrl = (id, w) => `https://lh3.googleusercontent.com/d/${encodeURIComponent(id)}=w${w}`;
+
+    function pintarAlbum() {
+      const fotos = DATOS.fotos;
+      $('foto-live').hidden = !CONFIG.servidor;
+      $('foto-cuenta').textContent = fotos.length === 1 ? '1 foto en el álbum · se actualiza solo' : `${fotos.length} fotos en el álbum · se actualiza solo`;
+      if (!fotos.length) {
+        $('foto-wall').innerHTML = `<div class="wall-empty">${CONFIG.servidor ? '¡Todavía no hay fotos! Sé el primero en subir una 📸' : 'El álbum se abre muy pronto 📸'}</div>`;
+        return;
+      }
+      $('foto-wall').innerHTML = fotos.map((f, i) => `
+        <figure style="--r:${[-1.5, 1, -.5, 1.8][i % 4]}deg">
+          <a href="https://drive.google.com/file/d/${encodeURIComponent(f.id)}/view" target="_blank" rel="noopener">
+            <img src="${fotoUrl(f.id, 600)}" alt="Foto de ${esc(f.n)}" loading="lazy"
+              onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=${encodeURIComponent(f.id)}&sz=w600'">
+          </a>
+          <figcaption><b>${esc(f.n)}</b>${esc(f.c)}</figcaption>
+        </figure>`).join('');
+    }
+
+    // Reduce la foto en el móvil antes de subirla (más rápido y sin gastar datos).
+    function reducirFoto(file) {
+      return new Promise((res, rej) => {
+        const img = new Image();
+        img.onload = () => {
+          const max = 1600, r = Math.min(1, max / Math.max(img.width, img.height));
+          const c = document.createElement('canvas');
+          c.width = Math.round(img.width * r); c.height = Math.round(img.height * r);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+          URL.revokeObjectURL(img.src);
+          res(c.toDataURL('image/jpeg', 0.82));
+        };
+        img.onerror = () => rej(new Error('No se pudo leer la foto'));
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    function iniciarAlbum() {
+      const inp = $('foto-file');
+      inp.addEventListener('change', () => {
+        $('foto-preview').innerHTML = '';
+        [...inp.files].slice(0, 10).forEach((f) => {
+          const im = document.createElement('img');
+          im.src = URL.createObjectURL(f); im.alt = '';
+          $('foto-preview').appendChild(im);
+        });
+        if (inp.files.length) estado('foto-estado', inp.files.length === 1 ? '1 foto lista para subir 👍' : `${Math.min(inp.files.length, 10)} fotos listas para subir 👍`);
+      });
+      $('foto-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const files = [...inp.files].slice(0, 10);
+        const nombre = $('foto-nombre').value.trim();
+        if (!CONFIG.servidor) return estado('foto-estado', 'El álbum aún no está abierto. ¡Prueba en un rato!', 'ko');
+        if (!files.length) return estado('foto-estado', 'Primero elige una foto 📷', 'ko');
+        if (!nombre) { $('foto-nombre').focus(); return estado('foto-estado', 'Escribe tu nombre, así sabemos de quién es 😊', 'ko'); }
+        guardar('nombre', nombre);
+        const btn = $('foto-enviar');
+        btn.disabled = true;
+        let bien = 0;
+        for (let i = 0; i < files.length; i++) {
+          estado('foto-estado', `Subiendo ${files.length > 1 ? `foto ${i + 1} de ${files.length}` : 'la foto'}… ⏳`);
+          try {
+            await enviar({ tipo: 'foto', nombre, comentario: $('foto-comentario').value, foto: await reducirFoto(files[i]) });
+            bien++;
+          } catch (err) { /* se cuenta abajo */ }
+        }
+        btn.disabled = false;
+        if (bien === files.length) {
+          estado('foto-estado', bien === 1 ? '¡Foto subida! Ya está en el álbum 🎉' : `¡${bien} fotos subidas! 🎉`, 'ok');
+          inp.value = ''; $('foto-preview').innerHTML = ''; $('foto-comentario').value = '';
+          miniConfeti();
+        } else {
+          estado('foto-estado', `Se subieron ${bien} de ${files.length}. Revisa la conexión e inténtalo otra vez.`, 'ko');
+        }
+        cargarDatos();
+      });
+    }
+
+    // ---------------- Mensajes ----------------
+    function pintarMensajes() {
+      const ms = DATOS.mensajes;
+      const colores = ['#FFF7C9', '#FFE0EA', '#E3F2D5', '#FFE6CC', '#E7E0F5'];
+      $('msgs').innerHTML = ms.length
+        ? ms.map((m, i) => `<div class="msg" style="--c:${colores[i % 5]};--r:${[-.8, .6, -.3, 1][i % 4]}deg"><p>${esc(m.m)}</p><b>— ${esc(m.n)}</b></div>`).join('')
+        : `<div class="wall-empty">${CONFIG.servidor ? 'Aún no hay mensajes. ¡Escribe el primero! 💌' : 'Muy pronto podrás dejar tu mensaje aquí 💌'}</div>`;
+    }
+
+    function iniciarMensajes() {
+      $('msg-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nombre = $('msg-nombre').value.trim(), mensaje = $('msg-texto').value.trim();
+        if (!CONFIG.servidor) return estado('msg-estado', 'Los mensajes aún no están abiertos. ¡Prueba en un rato!', 'ko');
+        if (!nombre) { $('msg-nombre').focus(); return estado('msg-estado', 'Escribe tu nombre 😊', 'ko'); }
+        if (!mensaje) { $('msg-texto').focus(); return estado('msg-estado', 'Escribe tu mensaje 💌', 'ko'); }
+        guardar('nombre', nombre);
+        $('msg-enviar').disabled = true;
+        estado('msg-estado', 'Enviando… ⏳');
+        try {
+          await enviar({ tipo: 'mensaje', nombre, mensaje });
+          estado('msg-estado', '¡Mensaje guardado para María Inés! 💖', 'ok');
+          $('msg-texto').value = '';
+          miniConfeti();
+          cargarDatos();
+        } catch (err) {
+          estado('msg-estado', 'No se pudo enviar. Revisa la conexión e inténtalo otra vez.', 'ko');
+        }
+        $('msg-enviar').disabled = false;
+      });
+    }
+
+    // ---------------- Quiz ----------------
     const PREGUNTAS = [
       { q: '¿Quién es su cantante favorito?', o: ['Julio Iglesias', 'Marco Antonio Solís', 'Raphael'], ok: 1 },
+      { q: '¿Cuál es su canción favorita de Marco Antonio Solís?', o: ['Tu cárcel', 'Mi eterno amor secreto', 'Si no te hubieras ido'], ok: 2 },
       { q: '¿Cómo se llama su perrito?', o: ['Coco', 'Toby', 'Rocky'], ok: 0 },
-      { q: '¿De qué país es María Inés?', o: ['México', 'Venezuela', 'Colombia'], ok: 2 },
+      { q: '¿De qué país es María Inés?', o: ['Perú', 'Colombia', 'Ecuador'], ok: 1 },
+      { q: '¿Cuántos hijos tiene María Inés?', o: ['5', '6', '7 (6 + Coco 🐩)'], ok: 2, si: '¡Claro! 6 hijos… ¡y Coco, que cuenta como uno más! 🐩' },
       { q: '¿Cuántos años lleva viviendo en España?', o: ['10 años', '25 años', '40 años'], ok: 1 },
+      { q: '¿Qué hace María Inés cuando cocina?', o: ['Ve la tele', 'Tararea canciones', 'Habla por teléfono'], ok: 1, si: '¡Sí! Siempre tarareando mientras cocina 🎶' },
       { q: '¿En qué año nació?', o: ['1956', '1960', '1950'], ok: 0 },
       { q: '¿Junto a qué puente de Logroño es la fiesta?', o: ['Puente de Piedra', 'Puente Sancho el Mayor', 'Puente de Hierro'], ok: 2 },
-      { q: '¿Con qué grupo cantaba Marco Antonio Solís en los 70 y 80?', o: ['Los Bukis', 'Los Temerarios', 'Los Panchos'], ok: 0 },
+      { q: '¿Con qué grupo cantaba Marco Antonio Solís en los 70 y 80?', o: ['Los Temerarios', 'Los Bukis', 'Los Panchos'], ok: 1 },
     ];
-    let pq = 0, aciertos = 0;
+    let pq = 0, aciertos = 0, quizNombre = '', quizInicio = 0;
+
+    function pintarInicioQuiz() {
+      const ya = leer('quiz-enviado');
+      $('quiz').innerHTML = `<div class="quiz-start" style="text-align:center">
+        <div style="font-size:3rem;line-height:1">🧠</div>
+        <p style="font-weight:800;font-size:1.15rem;margin:10px 0 0">${PREGUNTAS.length} preguntas · ¡el reloj corre!</p>
+        <div class="field"><label for="quiz-nombre">Tu nombre</label>
+          <input type="text" id="quiz-nombre" class="tu-nombre" maxlength="40" placeholder="Ej.: Amparo" value="${esc(leer('nombre') || '')}"></div>
+        <button type="button" class="btn btn-pink" id="quiz-go">▶ ¡Empezar!</button>
+        ${ya ? '<p class="hint" style="margin-top:12px;color:var(--brown-soft)">Ya tienes tu resultado en el ranking: esta partida es solo por diversión 😉</p>' : ''}
+      </div>`;
+      $('quiz-go').onclick = () => {
+        quizNombre = $('quiz-nombre').value.trim();
+        if (!quizNombre) { $('quiz-nombre').focus(); aviso('Escribe tu nombre para el ranking 😊'); return; }
+        guardar('nombre', quizNombre);
+        document.querySelectorAll('.tu-nombre').forEach((o) => { o.value = quizNombre; });
+        pq = 0; aciertos = 0; quizInicio = Date.now();
+        pintarPregunta();
+      };
+    }
 
     function pintarPregunta() {
       const quiz = $('quiz');
-      if (pq >= PREGUNTAS.length) {
-        const frases = ['¡Uy! Toca pasar más tiempo con ella 😅', '¡No está mal! Pero se puede mejorar 😉', '¡Muy bien! Se nota el cariño 💖', '¡Perfecto! Eres familia de verdad 👑'];
-        const nivel = aciertos === PREGUNTAS.length ? 3 : aciertos >= 5 ? 2 : aciertos >= 3 ? 1 : 0;
-        quiz.innerHTML = `<div class="quiz-end">
-          <div class="score">${aciertos}/${PREGUNTAS.length}</div>
-          <p style="font-weight:800;font-size:1.2rem;margin-top:10px">${frases[nivel]}</p>
-          <button type="button" class="btn" id="quiz-again">🔄 Jugar otra vez</button></div>`;
-        $('quiz-again').onclick = () => { pq = 0; aciertos = 0; pintarPregunta(); };
-        if (nivel >= 2) celebrar();
-        return;
-      }
+      if (pq >= PREGUNTAS.length) return terminarQuiz();
       const p = PREGUNTAS[pq];
       quiz.innerHTML = `
         <div class="quiz-progress" aria-hidden="true"><div style="width:${pq / PREGUNTAS.length * 100}%"></div></div>
@@ -1111,23 +1390,155 @@
       botones.forEach((b) => b.disabled = true);
       botones[p.ok].classList.add('ok');
       const fb = $('quiz').querySelector('.quiz-feedback');
-      if (i === p.ok) { aciertos++; fb.textContent = '¡Correcto! 🎉'; miniConfeti(); }
+      if (i === p.ok) { aciertos++; fb.textContent = p.si || '¡Correcto! 🎉'; miniConfeti(); }
       else { botones[i].classList.add('ko'); fb.textContent = `¡Casi! Era: ${p.o[p.ok]}`; }
-      setTimeout(() => { pq++; pintarPregunta(); }, 1400);
+      setTimeout(() => { pq++; pintarPregunta(); }, p.si ? 2000 : 1400);
+    }
+
+    async function terminarQuiz() {
+      const segundos = Math.round((Date.now() - quizInicio) / 1000);
+      const frases = ['¡Uy! Toca pasar más tiempo con ella 😅', '¡No está mal! Pero se puede mejorar 😉', '¡Muy bien! Se nota el cariño 💖', '¡Perfecto! Eres familia de verdad 👑'];
+      const n = PREGUNTAS.length;
+      const nivel = aciertos === n ? 3 : aciertos >= n * 0.7 ? 2 : aciertos >= n * 0.4 ? 1 : 0;
+      const cuenta = CONFIG.servidor && !leer('quiz-enviado');
+      $('quiz').innerHTML = `<div class="quiz-end">
+        <div class="score">${aciertos}/${n}</div>
+        <p style="margin:4px 0 0;color:var(--brown-soft);font-weight:800">en ${segundos} segundos</p>
+        <p style="font-weight:800;font-size:1.2rem;margin-top:10px">${frases[nivel]}</p>
+        <p class="estado" id="quiz-estado" role="status"></p>
+        <button type="button" class="btn" id="quiz-again">🔄 Jugar otra vez</button></div>`;
+      $('quiz-again').onclick = pintarInicioQuiz;
+      if (nivel >= 2) celebrar();
+      if (!cuenta) {
+        if (CONFIG.servidor) estado('quiz-estado', 'Esta partida no cuenta: en el ranking está tu primera 😉');
+        return;
+      }
+      estado('quiz-estado', 'Guardando en el ranking… ⏳');
+      try {
+        await enviar({ tipo: 'quiz', nombre: quizNombre, aciertos, total: n, segundos, movil: MOVIL });
+        guardar('quiz-enviado', '1');
+        estado('quiz-estado', '¡Ya estás en el ranking! 🏆', 'ok');
+        cargarDatos();
+      } catch (err) {
+        estado('quiz-estado', 'No se pudo guardar. Revisa la conexión y juega otra vez.', 'ko');
+      }
+    }
+
+    function pintarRanking() {
+      const r = DATOS.ranking.slice(0, 10);
+      const medallas = ['🥇', '🥈', '🥉'];
+      $('ranking').innerHTML = r.length
+        ? r.map((x, i) => `<li><span class="pos">${medallas[i] || i + 1}</span><span class="who">${esc(x.n)}</span>
+            <span class="pts">${x.a}/${x.t} <small>· ${x.s}s</small></span></li>`).join('')
+        : `<li style="justify-content:center;font-weight:600;color:var(--brown-soft)">${CONFIG.servidor ? '¡Nadie ha jugado aún! ¿Serás el primero?' : 'El ranking se abre muy pronto 🏆'}</li>`;
+      if (DATOS.ranking.length > 10) $('ranking').insertAdjacentHTML('beforeend', `<li style="justify-content:center;font-weight:600;color:var(--brown-soft)">…y ${DATOS.ranking.length - 10} jugadores más</li>`);
     }
 
     // ---------------- Coco ----------------
-    const FRASES_COCO = [
-      '¡Guau! ¡Felices 70, María Inés! 🌸',
-      'Soy Coco, el poodle más hippie de Logroño ✌️',
-      '¿Ya sabes qué ponerte? Mira el dress code 🕶️',
-      '¡Que suene Marco Antonio Solís! 👑',
-      'Pide el Baile del Perrito, ¡es por mí! 🐾',
-      '¡La Hora Loca va a ser brutal! 🥳',
-      'Hazte una polaroid conmigo 📸',
-    ];
-    let fraseCoco = 0, timerCoco = null, audioCtx = null;
+    // Coco pasea por la parte de abajo de la pantalla y, de vez en cuando, dice algo
+    // según la sección que se esté viendo (o lo que toque en la fiesta).
+    const COCO_DICE = {
+      inicio: ['¡Guau! ¡Felices 70, María Inés! 🌸', 'Soy Coco, el caniche más hippie de Logroño ✌️'],
+      programa: ['A las 21:00, brindis y tarta 🎂 ¡No te lo pierdas!', 'De 00:30 a 01:30… ¡Hora Loca! 🥳'],
+      lugar: ['Estamos junto al Puente de Hierro 📍', 'Si vas a beber, ¡vuelve en taxi! 🚕'],
+      fotos: ['¡Sube una foto conmigo! 📸', 'Las fotos se guardan para María Inés 💖'],
+      trivia: ['¿Te atreves con el quiz? 🧠', 'Pista: ¡yo también cuento como hijo! 🐩'],
+      mensajes: ['Escríbele algo bonito a María Inés 💌', '¡Ella leerá todos los mensajes! 🥹'],
+      musica: ['¡Que suene Marco Antonio Solís! 👑', 'Pide el Baile del Perrito, ¡es por mí! 🐾'],
+      historia: ['¡70 años de alegría! 💖'],
+      polaroid: ['Hazte una polaroid setentera 📸'],
+    };
+    const coco = { x: 0, dir: -1, meta: 0, parado: 0, ultimo: 0, seccion: 'inicio', dichas: {}, timer: null };
 
+    function cocoDice(txt) {
+      const b = $('coco-bubble');
+      b.textContent = txt;
+      b.classList.add('show');
+      colocarBocadillo();
+      $('coco').classList.remove('mira'); void $('coco').offsetWidth; $('coco').classList.add('mira');
+      coco.ultimo = Date.now();
+      clearTimeout(coco.timer);
+      coco.timer = setTimeout(() => b.classList.remove('show'), 5000);
+    }
+
+    function fraseCoco() {
+      const ahora = new Date();
+      const bloque = PROGRAMA.find((p) => ahora >= horaADate(p.ini) && ahora < horaADate(p.fin));
+      const lista = (COCO_DICE[coco.seccion] || COCO_DICE.inicio).slice();
+      if (bloque) lista.push(`Ahora toca: ${bloque.titulo} ${bloque.icon}`);
+      const n = coco.dichas[coco.seccion] = (coco.dichas[coco.seccion] || 0) + 1;
+      return lista[(n - 1) % lista.length];
+    }
+
+    function colocarBocadillo() {
+      const b = $('coco-bubble');
+      const w = $('coco').offsetWidth;
+      const x = Math.max(8, Math.min(innerWidth - b.offsetWidth - 8, coco.x + w / 2 - b.offsetWidth / 2));
+      b.style.left = x + 'px';
+    }
+
+    function tocarCoco() {
+      const btn = $('coco-btn');
+      btn.classList.remove('hop'); void btn.offsetWidth; btn.classList.add('hop');
+      cocoDice(fraseCoco());
+      ladrido();
+      miniConfeti();
+    }
+
+    function iniciarCoco() {
+      const el = $('coco');
+      const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const ancho = () => el.offsetWidth;
+      coco.x = innerWidth - ancho() - 12;
+      coco.meta = coco.x;
+      coco.parado = Date.now() + 2500;
+
+      // Qué sección se está viendo.
+      const obs = new IntersectionObserver((entradas) => {
+        entradas.forEach((e) => { if (e.isIntersecting) coco.seccion = e.target.id; });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      document.querySelectorAll('main section[id]').forEach((s) => obs.observe(s));
+
+      // Se esconde mientras alguien escribe, para no tapar el teclado.
+      document.addEventListener('focusin', (e) => { if (e.target.matches('input, textarea')) el.classList.add('oculto'); });
+      document.addEventListener('focusout', () => el.classList.remove('oculto'));
+
+      let antes = performance.now();
+      function paso(t) {
+        const dt = Math.min(0.1, (t - antes) / 1000);
+        antes = t;
+        const max = innerWidth - ancho() - 6;
+        if (!quieto && Date.now() > coco.parado) {
+          if (Math.abs(coco.meta - coco.x) < 2) {
+            // Llega: se para un rato y elige otro sitio.
+            coco.parado = Date.now() + 2500 + Math.random() * 6000;
+            coco.meta = 6 + Math.random() * Math.max(0, max - 6);
+            el.classList.remove('andando');
+          } else {
+            coco.dir = coco.meta > coco.x ? 1 : -1;
+            coco.x += coco.dir * Math.min(Math.abs(coco.meta - coco.x), 55 * dt);
+            el.classList.add('andando');
+          }
+        } else {
+          el.classList.remove('andando');
+        }
+        coco.x = Math.max(6, Math.min(max, coco.x));
+        el.classList.toggle('izq', coco.dir < 0);
+        el.style.transform = `translateX(${coco.x}px)`;
+        if ($('coco-bubble').classList.contains('show')) colocarBocadillo();
+        requestAnimationFrame(paso);
+      }
+      requestAnimationFrame(paso);
+
+      // Habla solo cada ~20 segundos.
+      setTimeout(() => cocoDice(fraseCoco()), 1800);
+      setInterval(() => {
+        if (document.hidden || el.classList.contains('oculto') || Date.now() - coco.ultimo < 15000) return;
+        cocoDice(fraseCoco());
+      }, 5000);
+    }
+
+    let audioCtx = null;
     function ladrido() {
       try {
         audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
@@ -1146,17 +1557,6 @@
           o.start(t); o.stop(t + 0.11);
         });
       } catch (e) { /* sin audio */ }
-    }
-
-    function tocarCoco() {
-      const b = $('coco-bubble'), btn = $('coco-btn');
-      b.textContent = FRASES_COCO[fraseCoco++ % FRASES_COCO.length];
-      b.classList.add('show');
-      btn.classList.remove('hop'); void btn.offsetWidth; btn.classList.add('hop');
-      ladrido();
-      miniConfeti();
-      clearTimeout(timerCoco);
-      timerCoco = setTimeout(() => b.classList.remove('show'), 4000);
     }
 
     // ---------------- Efectos y utilidades ----------------
@@ -1202,7 +1602,17 @@
     pintarCoro();
     ponerCancion(LISTA[0], false);
     iniciarPolaroid();
-    pintarPregunta();
+    iniciarNombres();
+    iniciarAlbum();
+    iniciarMensajes();
+    pintarInicioQuiz();
+    pintarAlbum();
+    pintarMensajes();
+    pintarRanking();
+    cargarDatos();
+    setInterval(() => { if (!document.hidden) cargarDatos(); }, 30000);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) cargarDatos(); });
+    iniciarCoco();
     cuentaAtras();
     marcarBloqueActual();
     setInterval(cuentaAtras, 1000);
@@ -1222,10 +1632,6 @@
       if (b) ponerCancion(CANCIONES[b.dataset.i], true);
     });
     $('coco-btn').addEventListener('click', tocarCoco);
-    setTimeout(() => {
-      $('coco-bubble').classList.add('show');
-      timerCoco = setTimeout(() => $('coco-bubble').classList.remove('show'), 4000);
-    }, 1500);
   </script>
 </body>
 </html>
